@@ -1,0 +1,617 @@
+/* For SamToki.github.io/Yamanobo-Ryou */
+/* Released under GNU GPL v3 open source license. */
+/* (C) 2024 SAM TOKI STUDIO */
+
+/* General */
+	/* Basics */
+		/* Overall */
+		#Ctnr_BgImage {
+			background-image: url(../images/Background.jpg);
+		}
+
+/* Area specific */
+	/* Header */
+	#Ctrl_Title {
+		width: 172px;
+	}
+	#Ctrl_Nav {
+		width: calc(100% - 182px);
+	}
+
+	/* Main */
+		/* Game */
+			/* Terrain */
+			#Ctnr_GameTerrain {
+				position: absolute; bottom: calc(50% - 1980px); right: 50%;
+			}
+			.Terrain {
+				position: absolute; bottom: 0; left: 500000px;
+				min-width: 10px; height: 0;
+				background-color: #FFFFC0C0;
+				font-size: 2.00em; text-align: center;
+			}
+			.Terrain.Ahead {
+				color: #00000060;
+			}
+			#Terrain_Game0 {
+				width: 4000px;
+			}
+
+			/* Characters */
+			.Character {
+				position: absolute; bottom: calc(50% + 20px); left: unset;
+				width: 100px;
+				display: flex;
+			}
+			#Character_GamePlayer, #Character_GameChaser {
+				right: 50%;
+			}
+			#Ctnr_GameCharacters img {
+				width: 100%; border: none;
+			}
+			#GameChaserBalloon {
+				position: absolute; bottom: 20%; left: 175px;
+				width: 160px; height: 60%; transform-origin: bottom left;
+				filter: drop-shadow(0 0 1px #000000);
+				overflow: hidden;
+			}
+			#GameChaserBalloon.Faded {
+				transform: scale(0.5);
+			}
+			#GameChaserBalloon .CtrlGroup {
+				width: 100%; height: 100%;
+			}
+			#GameChaserBalloon .Ctrl {
+				position: absolute; top: unset; left: unset;
+				height: unset;
+				background-color: #E0E0E0;
+			}
+			#GameChaserBalloon .Balloon {
+				bottom: 50px; left: 20px;
+				width: calc(100% - 40px); border-radius: 5px; padding: 10px;
+				display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden;
+			}
+			#Label_GameDistance {
+				margin: 10px 0 0 0;
+				font-size: 1.50em;
+			}
+			#GameChaserBalloon .BalloonTail {
+				bottom: 0; left: 0;
+				width: 100%; height: 50px; clip-path: polygon(20% 0, 40% 0, 0 100%);
+			}
+
+			/* Textbox */
+			#Ctnr_GameTextbox {
+				position: absolute; top: calc(50% - 20px); left: 50%;
+				width: calc(50% - 175px);
+			}
+			#Textbox_Game {
+				border: none; border-radius: 0; padding: 0;
+				background-color: transparent; box-shadow: none !important;
+				color: #000000; font-size: 2.00em;
+			}
+			#Textbox_Game.HasTypo {
+				background-color: #FFA0A0C0;
+			}
+
+			/* Progbar */
+			#Ctnr_GameProgbar {
+				position: absolute; top: 0; left: 0;
+				width: 100%; height: 10px;
+			}
+
+			/* Stats */
+			#Ctnr_GameStats {
+				position: absolute; top: 25px; left: 175px;
+				width: calc(100% - 350px);
+			}
+			#Ctnr_GameStats .CtrlGroup {
+				width: 100%;
+				justify-content: center;
+			}
+			#Ctnr_GameStats .Ctrl {
+				width: 160px; height: 70px; padding: 5px;
+				text-align: center;
+				display: flex; flex-direction: column; justify-content: center; align-items: center;
+			}
+			.GameStatsValue {
+				font-size: 1.50em;
+			}
+
+			/* Speed */
+			#Ctnr_GameSpeed {
+				position: absolute; top: 25px; left: 0;
+				width: 145px; height: calc(100% - 50px);
+			}
+			#CtrlGroup_GameSpeed {
+				width: 100%; height: 100%;
+			}
+				/* Tape */
+				.Tape {
+					position: absolute; top: 0; left: 0;
+					width: 100%; height: 100%; border-radius: 5px;
+					background-color: #FFFFFF80; backdrop-filter: blur(5px);
+					overflow: hidden;
+				}
+				.Tape .CtrlGroup {
+					position: absolute; top: unset; left: 0;
+					width: 100%;
+					flex-direction: column;
+				}
+				#CtrlGroup_GameSpeedTape {
+					top: calc(50% - 2500px);
+					height: 2500px;
+				}
+				.Tape .Ctrl {
+					width: 100%; height: 0;
+					display: flex; align-items: center;
+				}
+				#CtrlGroup_GameSpeedTape .Ctrl {
+					flex-direction: row-reverse;
+				}
+				.TapeScale {
+					width: 25px; height: 2px; border-radius: 1px;
+					background-color: #00000080;
+				}
+				.TapeNumber {
+					color: #00000080; font-size: 1.50em;
+				}
+				#CtrlGroup_GameSpeedTape .TapeNumber {
+					margin: 0 20px 0 0;
+				}
+
+				/* Additional indicators */
+				#Ctrl_GameSpeedAdditionalIndicators {
+					position: absolute; top: 0; left: 0;
+					width: calc(100% + 20px); height: 100%;
+					overflow: hidden;
+					pointer-events: none;
+				}
+					/* Speed trend */
+					#CtrlGroup_GameSpeedTrend {
+						position: absolute; top: 0; left: 0;
+						width: 100%; height: 100%;
+					}
+					#Ctrl_GameSpeedTrend {
+						position: absolute; bottom: 50%; right: 35px;
+						width: 15px; height: 0;
+						display: flex; align-items: center;
+					}
+					#Ctrl_GameSpeedTrend.Increasing {
+						flex-direction: column-reverse;
+					}
+					#Ctrl_GameSpeedTrend.Decreasing {
+						flex-direction: column;
+					}
+					#GameSpeedTrendLine {
+						width: 2px; height: calc(100% - 10px); border-radius: 1px;
+						background-color: #000000;
+					}
+					#GameSpeedTrendArrow {
+						width: 15px; height: 15px; margin: -5px 0;
+						background-color: #000000;
+					}
+					#Ctrl_GameSpeedTrend.Increasing #GameSpeedTrendArrow {
+						clip-path: polygon(50% 0, 100% 100%, 0 100%);
+					}
+					#Ctrl_GameSpeedTrend.Decreasing #GameSpeedTrendArrow {
+						clip-path: polygon(0 0, 100% 0, 50% 100%);
+					}
+
+					/* Other speeds */
+					#CtrlGroup_GameOtherSpeeds {
+						position: absolute; top: calc(50% - 2500px); left: 0;
+						width: 100%; height: 2500px;
+					}
+					#CtrlGroup_GameOtherSpeeds .Ctrl {
+						position: absolute; top: unset; left: unset;
+					}
+					#CtrlGroup_GameOtherSpeeds #Ctrl_GameChaserSpeed {
+						bottom: 0; right: 10px;
+						width: 10px; height: 0;
+						background-color: #FFC000;
+					}
+					#CtrlGroup_GameOtherSpeeds #Ctrl_GameDangerousSpeed {
+						bottom: 0; right: 10px;
+						width: 10px; height: 0;
+						background-color: #FF0000;
+					}
+					#CtrlGroup_GameOtherSpeeds #Ctrl_GameAvgSpeed {
+						bottom: -35px; right: 0;
+						width: 20px; height: 70px; clip-path: polygon(100% 30%, 100% 70%, 0 50%);
+						background-color: #0090D0C0;
+					}
+
+				/* Balloon */
+				#Ctrl_GameSpeedBalloon {
+					position: absolute; top: calc(50% - 35px); left: 0;
+					width: 125px; height: 70px;
+					filter: drop-shadow(0 0 1px #000000);
+				}
+				#Ctrl_GameSpeedBalloon > .CtrlGroup {
+					width: 100%; height: 100%;
+				}
+				#Ctrl_GameSpeedBalloon > .CtrlGroup > .Ctrl {
+					position: absolute; top: 0; left: unset;
+					height: 100%;
+					background-color: #FFFFFF;
+				}
+				#Ctrl_GameSpeedBalloon .CtrlGroup .Balloon {
+					left: 0;
+					width: 105px; border-radius: 5px;
+				}
+				#Ctrl_GameSpeedBalloon .CtrlGroup .BalloonTail {
+					right: 0;
+					width: 20px; clip-path: polygon(100% 50%, 0 70%, 0 30%);
+				}
+				#Ctrl_GameSpeedBalloon .CtrlGroup .Balloon .CtrlGroup {
+					width: 100%; height: 100%; padding: 5px;
+					justify-content: end;
+				}
+				#Ctrl_GameSpeedBalloon .CtrlGroup .Balloon .Ctrl {
+					width: 20px; height: 100%;
+				}
+				#ScrollingNumber_GameSpeed1 {
+					top: calc(-45px * 5);
+				}
+				#ScrollingNumber_GameSpeed2 {
+					top: calc(-45px * 11);
+				}
+				#ScrollingNumber_GameSpeed3 {
+					top: calc(15px - 30px * 11);
+				}
+				.ScrollingNumber span {
+					height: 30px; margin: 15px 0;
+					font-size: 2.00em;
+				}
+				#ScrollingNumber_GameSpeed3 span {
+					margin: 0;
+				}
+
+			/* Altitude */
+			#Ctnr_GameAltitude {
+				position: absolute; top: 25px; right: 0;
+				width: 145px; height: calc(100% - 50px);
+			}
+			#CtrlGroup_GameAltitude {
+				width: 100%; height: 100%;
+			}
+				/* Tape */
+				#CtrlGroup_GameAltitudeTape {
+					top: calc(50% - 30000px);
+					height: 32000px;
+				}
+				#CtrlGroup_GameAltitudeTape .Ctrl {
+					flex-direction: row;
+				}
+				#CtrlGroup_GameAltitudeTape .TapeNumber {
+					margin: 0 0 0 20px;
+				}
+
+				/* Balloon */
+				#Ctrl_GameAltitudeBalloon {
+					position: absolute; top: calc(50% - 35px); right: 0;
+					width: 125px; height: 70px;
+					filter: drop-shadow(0 0 1px #000000);
+				}
+				#Ctrl_GameAltitudeBalloon > .CtrlGroup {
+					width: 100%; height: 100%;
+				}
+				#Ctrl_GameAltitudeBalloon > .CtrlGroup > .Ctrl {
+					position: absolute; top: 0; left: unset;
+					height: 100%;
+					background-color: #FFFFFF;
+				}
+				#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon {
+					right: 0;
+					width: 105px; border-radius: 5px;
+				}
+				#Ctrl_GameAltitudeBalloon .CtrlGroup .BalloonTail {
+					left: 0;
+					width: 20px; clip-path: polygon(100% 30%, 100% 70%, 0 50%);
+				}
+				#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon .CtrlGroup {
+					width: 100%; height: 100%; padding: 5px;
+					justify-content: start;
+				}
+				#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon .Ctrl {
+					width: 20px; height: 100%;
+				}
+				#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon #Ctrl_GameAltitude4 {
+					width: 35px;
+				}
+				#ScrollingNumber_GameAltitude1 {
+					top: calc(-45px * 3);
+				}
+				#ScrollingNumber_GameAltitude2 {
+					top: calc(-45px * 11);
+				}
+				#ScrollingNumber_GameAltitude3 {
+					top: calc(-45px * 11);
+				}
+				#ScrollingNumber_GameAltitude4 {
+					top: calc(17.5px - 25px * 6);
+				}
+				#ScrollingNumber_GameAltitude4 span {
+					height: 25px; margin: 0;
+					font-size: 1.60em;
+				}
+
+			/* Prompts */
+			#Ctnr_GamePrompts {
+				position: absolute; bottom: 55px; left: 175px;
+				width: calc(100% - 350px);
+			}
+			#Ctnr_GamePrompts .CtrlGroup {
+				width: 100%;
+				flex-direction: column; align-items: center;
+			}
+			#Ctnr_GamePrompts .Ctrl {
+				height: unset; padding: 5px; margin: 10px 0 0 0;
+			}
+
+			/* Game ctrl */
+			#Ctnr_GameCtrl {
+				position: absolute; bottom: 0; left: calc(50% - 60px);
+				width: 120px; height: 40px;
+			}
+			#Ctnr_GameCtrl .CtrlGroup {
+				width: 100%; height: 100%;
+			}
+			#Ctnr_GameCtrl .Ctrl {
+				width: 100%;
+			}
+			#Ctnr_GameCtrl .HotkeyIndicator {
+				left: calc(50% - 20px);
+				width: 40px;
+			}
+		
+		/* Highscore */
+		#ItemGroup_Highscore {
+			margin: 0;
+			flex-direction: column; align-items: center;
+		}
+		#ItemGroup_Highscore .Item {
+			width: unset; height: 50px; margin: 0;
+			display: flex; justify-content: space-between;
+		}
+		#ItemGroup_Highscore .Item span {
+			text-align: center;
+			display: flex; justify-content: center; align-items: center;
+		}
+		.HighscoreSequence {
+			width: 65px;
+		}
+		.HighscoreDate {
+			width: 125px;
+		}
+		.HighscoreScore {
+			width: 115px;
+		}
+		.HighscoreAvgSpeed {
+			width: 95px;
+		}
+		.HighscoreAvgKeystrokeSpeed {
+			width: 125px;
+		}
+		.HighscoreAccuracy {
+			width: 105px;
+		}
+
+		/* Library */
+		#Label_LibraryItemCount {
+			position: absolute; top: unset; right: 5px;
+		}
+		.ListItemLabel {
+			width: calc(100% - 82px);
+		}
+		.ListItemName {
+			max-width: 233px;
+			overflow: hidden;
+		}
+		#Library .Cmdbtn.ShownAsLabel {
+			width: 24px; height: 24px; margin: 0;
+			justify-content: center;
+		}
+		.ListItemDuplicate {
+			position: absolute; top: calc(50% - 12px); right: 53px;
+		}
+		.ListItemExport {
+			position: absolute; top: calc(50% - 12px); right: 29px;
+		}
+		.ListItemDelete {
+			position: absolute; top: calc(50% - 12px); right: 5px;
+		}
+		#Ctrl_LibraryImport {
+			width: calc(100% - 90px); height: 90px;
+		}
+		#Textbox_LibraryImport {
+			width: 100%;
+			white-space: pre;
+		}
+		#Ctrl_LibraryImport2 {
+			width: 80px; height: 90px;
+		}
+
+/* Responsive web design */
+@media (max-width: 1070px) {
+	/* Area specific */
+		/* Header */
+		#Ctrl_Title {
+			width: 40px;
+		}
+		#Ctrl_Nav {
+			width: calc(100% - 50px);
+		}
+}
+@media (max-width: 830px) {
+	/* Area specific */
+		/* Header */
+		#Ctrl_Nav .Nav {
+			width: calc(100% / 6);
+		}
+
+		/* Main */
+			/* Game */
+				/* Terrain */
+				#Ctnr_GameTerrain {
+					bottom: calc(85px + (100% - 260px) / 2 - 1980px); right: 50%;
+				}
+
+				/* Characters */
+				.Character {
+					bottom: calc(85px + (100% - 260px) / 2 + 20px);
+					width: 50px;
+				}
+				#GameChaserBalloon {
+					left: 0;
+					width: 70px;
+				}
+				#GameChaserBalloon .Balloon {
+					bottom: 40px; left: 0;
+					width: 100%;
+				}
+				#Label_GameDistance {
+					font-size: 1.00em;
+				}
+				#GameChaserBalloon .BalloonTail {
+					width: 100%; height: 40px;
+				}
+
+				/* Textbox */
+				#Ctnr_GameTextbox {
+					top: calc(175px + (100% - 260px) / 2 - 20px);
+					width: 50%;
+				}
+
+				/* Stats */
+				#Ctnr_GameStats {
+					left: 120px;
+					width: calc(100% - 240px); height: 150px;
+				}
+				#Ctnr_GameStats .CtrlGroup {
+					height: 100%;
+				}
+				#Ctnr_GameStats .Ctrl {
+					width: 50%; height: calc(100% / 3);
+				}
+				.GameStatsTitle {
+					font-size: 0.75em;
+				}
+				.GameStatsValue {
+					font-size: 1.00em;
+				}
+
+				/* Speed */
+				#Ctnr_GameSpeed {
+					width: 100px; height: 150px;
+				}
+					/* Tape */
+					.TapeScale {
+						width: 15px;
+					}
+					.TapeNumber {
+						font-size: 1.00em;
+					}
+
+					/* Additional indicators */
+					#Ctrl_GameSpeedAdditionalIndicators {
+						width: calc(100% + 15px);
+					}
+						/* Speed trend */
+						#Ctrl_GameSpeedTrend {
+							right: 25px;
+							width: 10px;
+						}
+						#GameSpeedTrendArrow {
+							width: 10px; height: 10px;
+						}
+
+						/* Other speeds */
+						#CtrlGroup_GameOtherSpeeds #Ctrl_GameChaserSpeed, #CtrlGroup_GameOtherSpeeds #Ctrl_GameDangerousSpeed {
+							width: 5px;
+						}
+						#CtrlGroup_GameOtherSpeeds #Ctrl_GameAvgSpeed {
+							width: 15px; clip-path: polygon(100% 36%, 100% 64%, 0 50%);
+						}
+
+					/* Balloon */
+					#Ctrl_GameSpeedBalloon {
+						top: calc(50% - 25px);
+						width: 85px; height: 50px;
+					}
+					#Ctrl_GameSpeedBalloon .CtrlGroup .Balloon {
+						width: 70px;
+					}
+					#Ctrl_GameSpeedBalloon .CtrlGroup .BalloonTail {
+						width: 15px;
+					}
+					#Ctrl_GameSpeedBalloon .CtrlGroup .Balloon .Ctrl {
+						width: 12.5px;
+					}
+					#ScrollingNumber_GameSpeed1 {
+						top: calc(-30px * 5);
+					}
+					#ScrollingNumber_GameSpeed2 {
+						top: calc(-30px * 11);
+					}
+					#ScrollingNumber_GameSpeed3 {
+						top: calc(10px - 20px * 11);
+					}
+					.ScrollingNumber span {
+						height: 20px; margin: 10px 0;
+						font-size: 1.25em;
+					}
+
+				/* Altitude */
+				#Ctnr_GameAltitude {
+					width: 100px; height: 150px;
+				}
+					/* Balloon */
+					#Ctrl_GameAltitudeBalloon {
+						top: calc(50% - 25px);
+						width: 85px; height: 50px;
+					}
+					#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon {
+						width: 70px;
+					}
+					#Ctrl_GameAltitudeBalloon .CtrlGroup .BalloonTail {
+						width: 15px;
+					}
+					#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon .Ctrl {
+						width: 12.5px;
+					}
+					#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon #Ctrl_GameAltitude4 {
+						width: 22.5px;
+					}
+					#ScrollingNumber_GameAltitude1 {
+						top: calc(-30px * 3);
+					}
+					#ScrollingNumber_GameAltitude2 {
+						top: calc(-30px * 11);
+					}
+					#ScrollingNumber_GameAltitude3 {
+						top: calc(-30px * 11);
+					}
+					#ScrollingNumber_GameAltitude4 {
+						top: calc(12px - 16px * 6);
+					}
+					#ScrollingNumber_GameAltitude4 span {
+						height: 16px;
+						font-size: 1.00em;
+					}
+
+				/* Prompts */
+				#Ctnr_GamePrompts {
+					left: 0;
+					width: 100%;
+				}
+
+			/* Highscore */
+			.HighscoreAvgSpeed, .HighscoreAvgKeystrokeSpeed, .HighscoreAccuracy { /* .HiddenHorizontally */
+				width: 0 !important; border: none !important; padding: 0 !important; margin: 0 !important;
+				opacity: 0 !important;
+				overflow: hidden !important;
+				pointer-events: none !important;
+			}
+}

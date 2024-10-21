@@ -1,0 +1,90 @@
+/* For SamToki.github.io/Yamanobo-Ryou */
+/* Released under GNU GPL v3 open source license. */
+/* (C) 2024 SAM TOKI STUDIO */
+
+/* This is a theme variant, so only colors along with few things are configured. */
+
+/* Area specific */
+	/* Main */
+		/* Game */
+		#Game {
+			background-color: #0060A0;
+		}
+			/* Terrain */
+			.Terrain {
+				background-color: #604000;
+			}
+			.Terrain.Ahead {
+				color: #FF80FF;
+			}
+
+			/* Characters */
+			#GameChaserBalloon {
+				filter: drop-shadow(0 0 1px #FFFFFF);
+			}
+			#GameChaserBalloon .Ctrl {
+				background-color: #402050;
+			}
+
+			/* Textbox */
+			#Textbox_Game {
+				color: #FFFFFF;
+			}
+			#Textbox_Game.HasTypo {
+				background-color: #FF0000;
+			}
+
+			/* Stats */
+			#Ctnr_GameStats .CtrlGroup {
+				border-radius: 5px;
+				background-color: #404040;
+			}
+
+			/* Speed */
+				/* Tape */
+				.Tape {
+					background-color: #404040;
+				}
+				.TapeScale {
+					background-color: #FFFFFF;
+				}
+				.TapeNumber {
+					color: #FFFFFF;
+				}
+
+				/* Additional indicators */
+					/* Speed trend */
+					#GameSpeedTrendLine {
+						background-color: #00FF00;
+					}
+					#GameSpeedTrendArrow {
+						background-color: #00FF00;
+					}
+
+					/* Other speeds */
+					#CtrlGroup_GameOtherSpeeds #Ctrl_GameChaserSpeed {
+						background-color: #FFC000;
+					}
+					#CtrlGroup_GameOtherSpeeds #Ctrl_GameDangerousSpeed {
+						background-color: #FF4040;
+					}
+					#CtrlGroup_GameOtherSpeeds #Ctrl_GameAvgSpeed {
+						background-color: #FF80FF;
+					}
+
+				/* Balloon */
+				#Ctrl_GameSpeedBalloon {
+					filter: drop-shadow(0 0 1px #FFFFFF);
+				}
+				#Ctrl_GameSpeedBalloon > .CtrlGroup > .Ctrl {
+					background-color: #000000;
+				}
+
+			/* Altitude */
+				/* Balloon */
+				#Ctrl_GameAltitudeBalloon {
+					filter: drop-shadow(0 0 1px #FFFFFF);
+				}
+				#Ctrl_GameAltitudeBalloon > .CtrlGroup > .Ctrl {
+					background-color: #000000;
+				}

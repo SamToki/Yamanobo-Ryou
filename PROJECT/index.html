@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+
+<!-- For SamToki.github.io/Yamanobo-Ryou -->
+<!-- Released under GNU GPL v3 open source license. -->
+<!-- (C) 2024 SAM TOKI STUDIO -->
+
+<html id="Html" lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="山田凉上山，「孤独摇滚！」同人打字训练游戏。屑凉被讨债的波奇酱追上山，开始无尽的逃亡。" />
+		<meta name="keywords" content="Sam Toki, SAM TOKI STUDIO, 山田凉上山, Yamanobo-Ryou, 山登リョウ, 孤独摇滚, Bocchi the Rock, 打字训练, 打字游戏, Typing game" />
+		<meta name="version" content="v0.23 (2024/10/20) Beta Test. Since 2024/10/13." />
+		<meta name="author" content="Sam Toki" />
+		<meta name="copyright" content="(C) 2024 SAM TOKI STUDIO" />
+		<title>山田凉上山</title>
+		<link rel="icon" type="image/x-icon" href="icons/favicon.ico" />
+		<link rel="stylesheet" href="../styles/common.css" />
+		<link id="ThemeVariant_Common" rel="stylesheet" href="../styles/common_Dark.css" media="(prefers-color-scheme: dark)" />
+		<link id="ThemeVariant_Common_HighContrast" rel="stylesheet" href="../styles/common_HighContrast.css" media="(prefers-contrast: more)" />
+		<link rel="stylesheet" href="styles/style.css" />
+		<link id="ThemeVariant_Style" rel="stylesheet" href="styles/style_Dark.css" media="(prefers-color-scheme: dark)" />
+		<link id="ThemeVariant_Style_HighContrast" rel="stylesheet" href="styles/style_HighContrast.css" media="(prefers-contrast: more)" />
+		<script defer src="../scripts/common.js"></script>
+		<script defer src="../scripts/common_UserDataRepairer.js"></script>
+		<script defer src="scripts/script.js"></script>
+	</head>
+
+	<body>
+		<div id="Ctnr_BgImage"></div>
+
+		<header id="Topbar">
+			<ul class="CtrlGroup">
+				<li class="Ctrl" id="Ctrl_Title">
+					<a href="https://SamToki.github.io/Yamanobo-Ryou" aria-label="山田凉上山">
+						<img src="images/Title.png" alt="标题图像" />
+					</a>
+				</li>
+				<li class="Ctrl" id="Ctrl_Nav">
+					<nav>
+						<ul class="CtrlGroup">
+							<li class="Ctrl Nav" id="Nav_Game">
+								<a class="NavLinkbtn" id="NavLinkbtn_Game" href="#Game" onclick="setTimeout(function() {Focus('Textbox_Game');}, 20)">
+									<svg class="Icon Larger" viewBox="0 0 512 512">
+										<path d="M510.002,309.835l-0.068-0.326l-0.076-0.334l-26.508-112.721l-0.106-0.417l-0.106-0.418 c-16.668-62.217-73.294-105.666-137.712-105.666H166.579c-64.418,0-121.045,43.449-137.712,105.666l-0.114,0.418l-0.099,0.417 L2.147,309.174l-0.076,0.326l-0.068,0.326c-9.749,46.43,16.926,92.496,62.036,107.168l1.586,0.509 c9.24,3.012,18.89,4.544,28.624,4.544c32.668,0,63.128-17.404,79.758-45.489l22.556-33.343l0.561-0.835l0.509-0.872 c0.796-1.388,2.276-2.253,3.861-2.253h109.02c1.586,0,3.066,0.865,3.862,2.253l0.508,0.872l0.562,0.835l22.555,33.343 c16.63,28.085,47.09,45.489,79.766,45.489c9.734,0,19.384-1.532,28.67-4.56l1.533-0.493 C493.07,402.331,519.737,356.257,510.002,309.835z M439.318,390.397l-1.54,0.501c-6.608,2.154-13.353,3.186-20.014,3.186 c-22.646,0-44.283-11.949-56.088-32.433l-23.064-34.101c-5.788-10.053-16.508-16.258-28.101-16.258h-109.02 c-11.592,0-22.312,6.206-28.101,16.258l-23.063,34.101c-11.804,20.484-33.434,32.433-56.081,32.433 c-6.661,0-13.405-1.032-20.013-3.186l-1.548-0.501c-31.431-10.219-50.102-42.485-43.311-74.819l26.508-112.722 c13.42-50.102,58.826-84.94,110.696-84.94h178.847c51.869,0,97.276,34.838,110.696,84.94l26.508,112.722 C489.413,347.912,470.75,380.178,439.318,390.397z"/>
+										<polygon points="157.453,172.061 123.912,172.061 123.912,210.579 85.387,210.579 85.387,244.105 123.912,244.105 123.912,282.637 157.453,282.637 157.453,244.105 195.978,244.105 195.978,210.579 157.453,210.579"></polygon>
+										<path d="M365.721,206.247c11.668,0,21.113-9.445,21.113-21.098c0-11.669-9.445-21.114-21.113-21.114 c-11.653,0-21.098,9.445-21.098,21.114C344.622,196.802,354.068,206.247,365.721,206.247z"/>
+										<path d="M323.509,206.247c-11.653,0-21.106,9.453-21.106,21.098c0,11.669,9.453,21.122,21.106,21.122 c11.661,0,21.106-9.453,21.106-21.122C344.615,215.7,335.17,206.247,323.509,206.247z"/>
+										<path d="M365.721,248.459c-11.653,0-21.098,9.445-21.098,21.114c0,11.653,9.445,21.098,21.098,21.098 c11.668,0,21.113-9.445,21.113-21.098C386.834,257.904,377.388,248.459,365.721,248.459z"/>
+										<path d="M407.933,206.247c-11.653,0-21.099,9.453-21.099,21.098c0,11.669,9.446,21.122,21.099,21.122 c11.66,0,21.113-9.453,21.113-21.122C429.046,215.7,419.593,206.247,407.933,206.247z"/>
+									</svg>
+									<span class="LabelAfterIcon">游戏</span>
+								</a>
+							</li>
+							<li class="Ctrl Nav" id="Nav_Highscore">
+								<a class="NavLinkbtn" id="NavLinkbtn_Highscore" href="#Highscore">
+									<svg class="Icon" viewBox="0 0 16 16">
+										<path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935M3.504 1q.01.775.056 1.469c.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.5.5 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667q.045-.694.056-1.469z"/>
+									</svg>
+									<span class="LabelAfterIcon">高分榜</span>
+								</a>
+							</li>
+							<li class="Ctrl Nav" id="Nav_Library">
+								<a class="NavLinkbtn" id="NavLinkbtn_Library" href="#Library">
+									<svg class="Icon" viewBox="0 0 16 16">
+										<path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+									</svg>
+									<span class="LabelAfterIcon">文库</span>
+								</a>
+							</li>
+							<li class="Ctrl Nav" id="Nav_Settings">
+								<a class="NavLinkbtn" id="NavLinkbtn_Settings" href="#Settings">
+									<svg class="Icon" viewBox="0 0 16 16">
+										<path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+										<path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+									</svg>
+									<span class="LabelAfterIcon">设定</span>
+								</a>
+							</li>
+							<li class="Ctrl Nav" id="Nav_Help">
+								<a class="NavLinkbtn" id="NavLinkbtn_Help" href="#Help">
+									<svg class="Icon" viewBox="0 0 16 16">
+										<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+										<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"/>
+									</svg>
+									<span class="LabelAfterIcon">帮助</span>
+								</a>
+							</li>
+							<li class="Ctrl Nav" id="Nav_BackToMainPage">
+								<a class="NavLinkbtn" id="NavLinkbtn_BackToMainPage" href="../#ToyStore">
+									<svg class="Icon" viewBox="0 0 16 16">
+										<path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+									</svg>
+									<span class="LabelAfterIcon">返回主页</span>
+								</a>
+							</li>
+							<li class="Ctrl" id="Ctrl_NavUnderline" inert="true"></li>
+						</ul>
+					</nav>
+				</li>
+			</ul>
+		</header>
+
+		<main id="Main">
+			<section id="Game" onclick="Focus('Textbox_Game')">
+				<h1 class="SectionTitle Hidden" inert="true">游戏</h1>
+				<div class="Viewport">
+					<div id="Ctnr_GameTerrain" lang="en-US">
+						<!-- Content will be inserted using script. -->
+					</div>
+					<div id="Ctnr_GameCharacters">
+						<div class="Character" id="Character_GamePlayer">
+							<img id="Image_GamePlayer" src="images/YamadaRyou.png" alt="玩家图像" />
+						</div>
+						<div class="Character" id="Character_GameChaser">
+							<img id="Image_GameChaser" src="images/GotouHitori.png" alt="追逐者图像" />
+						</div>
+						<div class="Faded" id="GameChaserBalloon" inert="true">
+							<ul class="CtrlGroup">
+								<li class="Ctrl Balloon">
+									<img id="Image_GameChaserBalloon" src="images/GotouHitori.png" alt="追逐者图像" />
+									<span id="Label_GameDistance">间距</span>
+								</li>
+								<li class="Ctrl BalloonTail"></li>
+							</ul>
+						</div>
+					</div>
+					<div id="Ctnr_GameTextbox">
+						<input class="Textbox" id="Textbox_Game" lang="en-US" type="text" onfocus="ClockGame()" onfocusout="ClockGame()" oninput="ClockGame()" onkeydown="setTimeout(Keypress, 20)" onpaste="setTimeout(WarnAboutPasting, 20)" />
+					</div>
+					<div id="Ctnr_GameProgbar">
+						<div class="Progbar" id="Progbar_Game">
+							<div class="ProgbarFg" id="ProgbarFg_Game"></div>
+						</div>
+					</div>
+					<div id="Ctnr_GameStats">
+						<ul class="CtrlGroup">
+							<li class="Ctrl">
+								<span class="GameStatsTitle" id="Label_GameOdometer">里程</span>
+								<span class="GameStatsValue" id="Label_GameOdometerValue">里程</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStatsTitle" id="Label_GameTypoCount">失误</span>
+								<span class="GameStatsValue" id="Label_GameTypoCountValue">失误</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStatsTitle" id="Label_GameElapsedTime">时长</span>
+								<span class="GameStatsValue" id="Label_GameElapsedTimeValue">时长</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStatsTitle" id="Label_GameKeystrokeSpeed">击键速度</span>
+								<span class="GameStatsValue" id="Label_GameKeystrokeSpeedValue">击键速度</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStatsTitle" id="Label_GameAccuracy">准确率</span>
+								<span class="GameStatsValue" id="Label_GameAccuracyValue">准确率</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStatsTitle" id="Label_GameScore">总分</span>
+								<span class="GameStatsValue" id="Label_GameScoreValue">总分</span>
+							</li>
+						</ul>
+					</div>
+					<div id="Ctnr_GameSpeed">
+						<ul class="CtrlGroup" id="CtrlGroup_GameSpeed">
+							<li class="Ctrl Tape" id="Ctrl_GameSpeedTape">
+								<ul class="CtrlGroup" id="CtrlGroup_GameSpeedTape">
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">500</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">480</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">460</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">440</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">420</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">380</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">360</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">340</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">320</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">300</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">280</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">260</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">240</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">220</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">180</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">160</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">140</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">120</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">100</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">80</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">60</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">40</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">20</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">0</span>
+									</li>
+								</ul>
+							</li>
+							<li class="Ctrl" id="Ctrl_GameSpeedAdditionalIndicators">
+								<ul class="CtrlGroup" id="CtrlGroup_GameSpeedTrend">
+									<li class="Ctrl Increasing Faded" id="Ctrl_GameSpeedTrend" inert="true">
+										<div id="GameSpeedTrendLine"></div>
+										<div id="GameSpeedTrendArrow"></div>
+									</li>
+								</ul>
+								<ul class="CtrlGroup" id="CtrlGroup_GameOtherSpeeds">
+									<li class="Ctrl" id="Ctrl_GameChaserSpeed"></li>
+									<li class="Ctrl" id="Ctrl_GameDangerousSpeed"></li>
+									<li class="Ctrl" id="Ctrl_GameAvgSpeed"></li>
+								</ul>
+							</li>
+							<li class="Ctrl" id="Ctrl_GameSpeedBalloon">
+								<ul class="CtrlGroup">
+									<li class="Ctrl Balloon">
+										<ul class="CtrlGroup" id="CtrlGroup_GameSpeedBalloon">
+											<li class="Ctrl Box">
+												<div class="ScrollingNumber" id="ScrollingNumber_GameSpeed1">
+													<span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span> </span>
+												</div>
+											</li>
+											<li class="Ctrl Box">
+												<div class="ScrollingNumber" id="ScrollingNumber_GameSpeed2">
+													<span>1</span><span>0</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span><span>9</span>
+												</div>
+											</li>
+											<li class="Ctrl Box">
+												<div class="ScrollingNumber" id="ScrollingNumber_GameSpeed3">
+													<span>1</span><span>0</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span><span>9</span>
+												</div>
+											</li>
+										</ul>
+									</li>
+									<li class="Ctrl BalloonTail"></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div id="Ctnr_GameAltitude">
+						<ul class="CtrlGroup" id="CtrlGroup_GameAltitude">
+							<li class="Ctrl Tape" id="Ctrl_GameAltitudeTape">
+								<ul class="CtrlGroup" id="CtrlGroup_GameAltitudeTape">
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">30000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">29800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">29600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">29400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">29200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">29000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">28800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">28600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">28400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">28200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">28000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">27800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">27600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">27400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">27200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">27000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">26800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">26600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">26400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">26200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">26000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">25800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">25600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">25400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">25200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">25000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">24800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">24600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">24400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">24200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">24000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">23800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">23600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">23400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">23200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">23000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">22800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">22600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">22400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">22200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">22000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">21800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">21600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">21400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">21200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">21000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">20800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">20600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">20400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">20200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">20000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">19800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">19600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">19400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">19200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">19000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">18800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">18600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">18400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">18200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">18000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">17800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">17600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">17400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">17200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">17000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">16800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">16600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">16400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">16200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">16000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">15800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">15600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">15400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">15200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">15000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">14800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">14600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">14400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">14200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">14000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">13800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">13600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">13400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">13200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">13000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">12800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">12600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">12400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">12200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">12000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">11800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">11600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">11400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">11200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">11000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">10800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">10600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">10400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">10200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">10000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">9800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">9600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">9400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">9200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">9000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">8800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">8600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">8400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">8200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">8000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">7800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">7600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">7400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">7200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">7000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">6800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">6600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">6400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">6200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">6000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">5800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">5600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">5400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">5200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">5000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">4800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">4600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">4400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">4200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">4000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">3800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">3600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">3400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">3200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">3000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">2800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">2600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">2400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">2200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">2000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">1800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">1600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">1400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">1200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">1000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">0</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">-200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">-400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">-600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">-800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">-1000</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">-1200</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">-1400</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">-1600</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">-1800</span>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+									</li>
+									<li class="Ctrl">
+										<div class="TapeScale"></div>
+										<span class="TapeNumber">-2000</span>
+									</li>
+								</ul>
+							</li>
+							<li class="Ctrl" id="Ctrl_GameAltitudeBalloon">
+								<ul class="CtrlGroup">
+									<li class="Ctrl Balloon">
+										<ul class="CtrlGroup">
+											<li class="Ctrl Box">
+												<div class="ScrollingNumber" id="ScrollingNumber_GameAltitude1">
+													<span>3</span><span>2</span><span>1</span><span> </span>
+												</div>
+											</li>
+											<li class="Ctrl Box">
+												<div class="ScrollingNumber" id="ScrollingNumber_GameAltitude2">
+													<span>1</span><span>0</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span><span>9</span>
+												</div>
+											</li>
+											<li class="Ctrl Box">
+												<div class="ScrollingNumber" id="ScrollingNumber_GameAltitude3">
+													<span>1</span><span>0</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span><span>9</span>
+												</div>
+											</li>
+											<li class="Ctrl Box" id="Ctrl_GameAltitude4">
+												<div class="ScrollingNumber" id="ScrollingNumber_GameAltitude4">
+													<span>20</span><span>00</span><span>80</span><span>60</span><span>40</span><span>20</span><span>00</span><span>80</span>
+												</div>
+											</li>
+										</ul>
+									</li>
+									<li class="Ctrl BalloonTail"></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div id="Ctnr_GamePrompts">
+						<ul class="CtrlGroup">
+							<li class="Ctrl Box Glow" id="Ctrl_GameStartPrompt">
+								<span id="Label_GameStartPrompt">请点击画面</span>
+							</li>
+							<li class="Ctrl Box Hidden" id="Ctrl_GameChasePrompt" inert="true">
+								<span>20个字符后开始追逐...</span>
+							</li>
+						</ul>
+					</div>
+					<div id="Ctnr_GameCtrl">
+						<ul class="CtrlGroup">
+							<li class="Ctrl">
+								<button class="Cmdbtn" id="Cmdbtn_GamePauseOrReset" disabled="true" onclick="PauseOrResetGame()">暂停</button>
+								<span class="HotkeyIndicator Faded" inert="true">Del</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section id="Highscore">
+				<h1 class="SectionTitle">高分榜</h1>
+				<ul class="ItemGroup" id="ItemGroup_Highscore">
+					<li class="Item TableHeader">
+						<span class="HighscoreSequence" id="Label_HighscoreRowHeaderSequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRowHeaderDate">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRowHeaderScore">总分</span>
+						<span class="HighscoreAvgSpeed" id="Label_HighscoreRowHeaderAvgSpeed">平均速度</span>
+						<span class="HighscoreAvgKeystrokeSpeed" id="Label_HighscoreRowHeaderAvgKeystrokeSpeed">平均击键速度</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRowHeaderAccuracy">准确率</span>
+					</li>
+					<li class="Item" id="Item_HighscoreRow1">
+						<span class="HighscoreSequence" id="Label_HighscoreRow1Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow1Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow1Score">总分</span>
+						<span class="HighscoreAvgSpeed" id="Label_HighscoreRow1AvgSpeed">平均速度</span>
+						<span class="HighscoreAvgKeystrokeSpeed" id="Label_HighscoreRow1AvgKeystrokeSpeed">平均击键速度</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow1Accuracy">准确率</span>
+					</li>
+					<li class="Item" id="Item_HighscoreRow2">
+						<span class="HighscoreSequence" id="Label_HighscoreRow2Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow2Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow2Score">总分</span>
+						<span class="HighscoreAvgSpeed" id="Label_HighscoreRow2AvgSpeed">平均速度</span>
+						<span class="HighscoreAvgKeystrokeSpeed" id="Label_HighscoreRow2AvgKeystrokeSpeed">平均击键速度</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow2Accuracy">准确率</span>
+					</li>
+					<li class="Item" id="Item_HighscoreRow3">
+						<span class="HighscoreSequence" id="Label_HighscoreRow3Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow3Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow3Score">总分</span>
+						<span class="HighscoreAvgSpeed" id="Label_HighscoreRow3AvgSpeed">平均速度</span>
+						<span class="HighscoreAvgKeystrokeSpeed" id="Label_HighscoreRow3AvgKeystrokeSpeed">平均击键速度</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow3Accuracy">准确率</span>
+					</li>
+					<li class="Item" id="Item_HighscoreRow4">
+						<span class="HighscoreSequence" id="Label_HighscoreRow4Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow4Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow4Score">总分</span>
+						<span class="HighscoreAvgSpeed" id="Label_HighscoreRow4AvgSpeed">平均速度</span>
+						<span class="HighscoreAvgKeystrokeSpeed" id="Label_HighscoreRow4AvgKeystrokeSpeed">平均击键速度</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow4Accuracy">准确率</span>
+					</li>
+					<li class="Item" id="Item_HighscoreRow5">
+						<span class="HighscoreSequence" id="Label_HighscoreRow5Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow5Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow5Score">总分</span>
+						<span class="HighscoreAvgSpeed" id="Label_HighscoreRow5AvgSpeed">平均速度</span>
+						<span class="HighscoreAvgKeystrokeSpeed" id="Label_HighscoreRow5AvgKeystrokeSpeed">平均击键速度</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow5Accuracy">准确率</span>
+					</li>
+					<li class="Item" id="Item_HighscoreRow6">
+						<span class="HighscoreSequence" id="Label_HighscoreRow6Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow6Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow6Score">总分</span>
+						<span class="HighscoreAvgSpeed" id="Label_HighscoreRow6AvgSpeed">平均速度</span>
+						<span class="HighscoreAvgKeystrokeSpeed" id="Label_HighscoreRow6AvgKeystrokeSpeed">平均击键速度</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow6Accuracy">准确率</span>
+					</li>
+				</ul>
+			</section>
+
+			<section id="Library">
+				<h1 class="SectionTitle">文库</h1>
+				<ul class="ItemGroup">
+					<li class="Item">
+						<fieldset id="Fieldset_Library">
+							<legend>文库</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
+									<label for="Textbox_LibraryFilter">
+										<span>筛选：</span>
+										<input class="Textbox Width160" id="Textbox_LibraryFilter" type="text" placeholder="名称/各种属性" oninput="FilterLibrary()" />
+										<span id="Label_LibraryItemCount">项目数</span>
+									</label>
+								</li>
+								<li class="Ctrl ScrollableList">
+									<ul class="CtrlGroup" id="CtrlGroup_LibraryList">
+										<!-- Content will be inserted using script. -->
+									</ul>
+								</li>
+								<li class="Ctrl">
+									<button class="Cmdbtn" id="Cmdbtn_LibraryRandomlySelect" onclick="SetText(Randomize(1, Library.Text.length - 1))">随机选择</button>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<button class="Cmdbtn" id="Cmdbtn_LibraryNew" onclick="NewText()">新建</button>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<button class="Cmdbtn" id="Cmdbtn_LibrarySortByName" onclick="SortByName()">按名称排序</button>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item" id="Item_LibraryTextProperties">
+						<fieldset id="Fieldset_LibraryTextProperties">
+							<legend>文本属性</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
+									<label for="Textbox_LibraryName">
+										<span>名称：</span>
+										<input class="Textbox" id="Textbox_LibraryName" type="text" onchange="SetTextName()" />
+									</label>
+								</li>
+							</ul>
+							<p>文本内容应为一个长度适中且不含换行的字符串。推荐长度为500至2000字符。语言代码用于正确显示文本内容。</p>
+							<ul class="CtrlGroup BelowParagraph">
+								<li class="Ctrl">
+									<label for="Textbox_LibraryContent">
+										<span>内容：</span>
+										<input class="Textbox" id="Textbox_LibraryContent" lang="en-US" type="text" placeholder="粘贴文本" onclick="SelectText('Textbox_LibraryContent')" onchange="SetTextContent()" />
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Textbox_LibraryLanguage">
+										<span>语言代码：</span>
+										<input class="Textbox" id="Textbox_LibraryLanguage" type="text" value="en-US" placeholder="例: en-US" onchange="SetTextLanguage()" />
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Textbox_LibrarySource">
+										<span>来源：</span>
+										<input class="Textbox" id="Textbox_LibrarySource" type="text" onchange="SetTextSource()" />
+									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset id="Fieldset_LibraryManagement">
+							<legend>管理</legend>
+							<p>「导入」功能可导入文本或整个文库。支持批量导入，每行一个对象。</p>
+							<ul class="CtrlGroup BelowParagraph">
+								<li class="Ctrl" id="Ctrl_LibraryImport">
+									<textarea class="Textbox" id="Textbox_LibraryImport" placeholder="粘贴 JSON 字符串"></textarea>
+								</li>
+								<li class="Ctrl" id="Ctrl_LibraryImport2">
+									<button class="Cmdbtn" id="Cmdbtn_LibraryImport" onclick="ImportLibraryObjects()">导入</button>
+								</li>
+							</ul>
+							<p>若要分享导出的数据，请注意其中是否包含个人信息。「重置文库」可将文库恢复至初始状态，仅有内置文本。重置前建议先备份当前文库。</p>
+							<ul class="CtrlGroup BelowParagraph">
+								<li class="Ctrl WidthDividedBy2">
+									<button class="Cmdbtn" id="Cmdbtn_LibraryExport" onclick="ExportLibrary()">导出文库</button>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<button class="Cmdbtn" id="Cmdbtn_LibraryReset" onclick="ConfirmResetLibrary()">重置文库...</button>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+				</ul>
+			</section>
+
+			<section id="Settings">
+				<h1 class="SectionTitle">设定</h1>
+				<ul class="ItemGroup">
+					<li class="Item">
+						<fieldset id="Fieldset_SettingsProgressing">
+							<legend>进度方式</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
+									<label for="Radiobtn_SettingsDuration">
+										<input class="Radiobtn" id="Radiobtn_SettingsDuration" type="radio" checked="true" onchange="SetProgressing('Duration')" />
+										<span>时长：</span>
+										<input class="Textbox Width120" id="Textbox_SettingsDuration" type="number" min="1" max="60" step="1" value="3" placeholder="1~60" onclick="SelectText('Textbox_SettingsDuration')" onchange="SetDuration()" />
+										<span>分钟</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Radiobtn_SettingsTravelDistance">
+										<input class="Radiobtn" id="Radiobtn_SettingsTravelDistance" type="radio" checked="false" onchange="SetProgressing('TravelDistance')" />
+										<span>里程：</span>
+										<input class="Textbox Width120" id="Textbox_SettingsTravelDistance" type="number" min="50" max="9999" step="50" value="500" placeholder="50~9999" onclick="SelectText('Textbox_SettingsTravelDistance')" onchange="SetTravelDistance()" />
+										<span>字符</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Radiobtn_SettingsAltitude">
+										<input class="Radiobtn" id="Radiobtn_SettingsAltitude" type="radio" checked="false" onchange="SetProgressing('Altitude')" />
+										<span>高度：</span>
+										<input class="Textbox Width120" id="Textbox_SettingsAltitude" type="number" min="200" max="29000" step="200" value="1600" placeholder="200~29000" onclick="SelectText('Textbox_SettingsAltitude')" onchange="SetAltitude()" />
+									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset id="Fieldset_SettingsDifficulty">
+							<legend>难度</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
+									<label for="Textbox_SettingsChaserSpeedInitial">
+										<span>追逐者速度：从</span>
+										<input class="Textbox Width80" id="Textbox_SettingsChaserSpeedInitial" type="number" min="10" max="500" step="5" value="180" placeholder="10~500" onclick="SelectText('Textbox_SettingsChaserSpeedInitial')" onchange="SetChaserSpeedInitial()" />
+										<span>至</span>
+										<input class="Textbox Width80" id="Textbox_SettingsChaserSpeedFinal" type="number" min="10" max="500" step="5" value="240" placeholder="初始速度~500" onclick="SelectText('Textbox_SettingsChaserSpeedFinal')" onchange="SetChaserSpeedFinal()" />
+										<span class="SmallerText">字符<br />
+											/分钟</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy3">
+									<button class="Cmdbtn Active" id="Cmdbtn_SettingsChaserSpeedWestern" onclick="SetChaserSpeedWestern()">西文</button>
+								</li>
+								<li class="Ctrl WidthDividedBy3">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsChaserSpeedCJK" onclick="SetChaserSpeedCJK()">中日韩</button>
+								</li>
+								<li class="Ctrl WidthDividedBy3">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsChaserSpeedZenMode" onclick="SetChaserSpeedZenMode()">禅境模式</button>
+								</li>
+								<li class="Ctrl">
+									<label for="Textbox_SettingsMaxSeparation">
+										<span>最大间距：</span>
+										<input class="Textbox Width120" id="Textbox_SettingsMaxSeparation" type="number" min="10" max="100" step="10" value="50" placeholder="10~100" onclick="SelectText('Textbox_SettingsMaxSeparation')" onchange="SetMaxSeparation()" />
+										<span>字符</span>
+									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>自定义角色</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
+									<label for="Textbox_SettingsPlayerImage">
+										<span>玩家图像：</span>
+										<input class="Textbox" id="Textbox_SettingsPlayerImage" type="text" placeholder="粘贴 URL" onclick="SelectText('Textbox_SettingsPlayerImage')" onchange="SetPlayerImage()" />
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Textbox_SettingsChaserImage">
+										<span>追逐者图像：</span>
+										<input class="Textbox" id="Textbox_SettingsChaserImage" type="text" placeholder="粘贴 URL" onclick="SelectText('Textbox_SettingsChaserImage')" onchange="SetChaserImage()" />
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Textbox_SettingsBgImage">
+										<span>背景图像：</span>
+										<input class="Textbox" id="Textbox_SettingsBgImage" type="text" placeholder="粘贴 URL" onclick="SelectText('Textbox_SettingsBgImage')" onchange="SetBgImage()" />
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsSwapCharacters" onclick="SwapCharacters()">对调角色</button>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsResetCustomCharacters" onclick="ResetCustomCharacters()">重置</button>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>显示</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
+									<label for="Combobox_SettingsTheme">
+										<span>主题：</span>
+										<select class="Combobox" id="Combobox_SettingsTheme" onchange="SetTheme()">
+											<option value="Auto" selected>自动 (跟随系统)</option>
+											<option value="Light">浅色</option>
+											<option value="Dark">深色</option>
+											<option value="Genshin">原神</option>
+											<option value="HighContrast">高对比度 (无障碍)</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsCursor">
+										<span>鼠标指针：</span>
+										<select class="Combobox" id="Combobox_SettingsCursor" onchange="SetCursor()">
+											<option value="Default" selected>默认</option>
+											<option value="BTRAhoge">孤独摇滚！</option>
+											<option value="Genshin">原神</option>
+											<option value="GenshinFurina">原神-芙宁娜</option>
+											<option value="GenshinNahida">原神-纳西妲</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Checkbox_SettingsBlurBgImage">
+										<input class="Checkbox" id="Checkbox_SettingsBlurBgImage" type="checkbox" checked="false" onchange="SetBlurBgImage()" />
+										<span>模糊背景图像</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Checkbox_SettingsShowTopbar">
+										<input class="Checkbox" id="Checkbox_SettingsShowTopbar" type="checkbox" checked="true" onchange="SetShowTopbar()" />
+										<span>显示顶栏</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsHotkeyIndicators">
+										<span>快捷键提示：</span>
+										<select class="Combobox Width200" id="Combobox_SettingsHotkeyIndicators" onchange="SetHotkeyIndicators()">
+											<option value="Disabled">禁用</option>
+											<option value="ShowOnWrongKeyPress">按下无关按键时显示</option>
+											<option value="ShowOnAnyKeyPress" selected>按下任意按键时显示</option>
+											<option value="AlwaysShow">始终显示</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsAnim">
+										<span>动画：</span>
+										<select class="Combobox" id="Combobox_SettingsAnim" onchange="SetAnim()">
+											<option value="0">禁用 (无障碍)</option>
+											<option value="100">快速 (100ms)</option>
+											<option value="250" selected>中速 (250ms)</option>
+											<option value="500">慢速 (500ms)</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsGameFont">
+										<span>游戏字体：</span>
+										<select class="Combobox Width200" id="Combobox_SettingsGameFont" onchange="SetGameFont()">
+											<option value="Default">默认</option>
+											<option value="Sans">黑体 (Sans)</option>
+											<option value="Serif">宋体 (Serif)</option>
+											<option value="Monospace" selected>等宽字体 (Monospace) (推荐)</option>
+										</select>
+									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>开发者选项</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
+									<label for="Checkbox_SettingsTryToOptimizePerformance">
+										<input class="Checkbox" id="Checkbox_SettingsTryToOptimizePerformance" type="checkbox" checked="false" onchange="SetTryToOptimizePerformance()" />
+										<span>尝试优化性能 (禁用 backdrop 模糊)</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Checkbox_SettingsShowDebugOutlines">
+										<input class="Checkbox" id="Checkbox_SettingsShowDebugOutlines" type="checkbox" checked="false" onchange="SetShowDebugOutlines()" />
+										<span>显示调试用描边</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Checkbox_SettingsUseOldTypeface">
+										<input class="Checkbox" id="Checkbox_SettingsUseOldTypeface" type="checkbox" checked="false" onchange="SetUseOldTypeface()" />
+										<span>使用旧字形</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Textbox_SettingsFont">
+										<span>字体：</span>
+										<input class="Textbox" id="Textbox_SettingsFont" type="text" onchange="SetFont()" />
+									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item" id="Item_SettingsUserData">
+						<fieldset>
+							<legend>用户数据</legend>
+							<p>本功能可快速更改整个网站的用户数据。若要分享导出的数据，请注意其中是否包含个人信息。若您遇到系统错误，可尝试清空用户数据。若错误仍会发生，请向我<a href="#Item_HelpGetInvolved" onclick="ShowIAmHere('Item_HelpGetInvolved')">提供反馈</a>。</p>
+							<ul class="CtrlGroup BelowParagraph">
+								<li class="Ctrl">
+									<label for="Textbox_SettingsUserDataImport">
+										<span>导入：</span>
+										<input class="Textbox" id="Textbox_SettingsUserDataImport" type="text" placeholder="粘贴 JSON 字符串" onclick="SelectText('Textbox_SettingsUserDataImport')" onchange="ImportUserData()" />
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataExport" onclick="ExportUserData()">导出</button>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataClear" onclick="ConfirmClearUserData()">清空...</button>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+				</ul>
+			</section>
+
+			<section id="Help">
+				<h1 class="SectionTitle">帮助</h1>
+				<ul class="ItemGroup">
+					<li class="Item">
+						<fieldset>
+							<legend>简介</legend>
+							<p>山田凉上山，「孤独摇滚！」同人打字训练游戏。屑凉被讨债的波奇酱追上山，开始无尽的逃亡。</p>
+							<p>本游戏相比其他打字游戏具备以下特色：①结合了「登山」与「横板卷轴游戏」的元素。文字显示在斜坡上，且坡度会变化。这降低了可读性，从而增强了挑战性。②打错字时不允许忽略，必须更正。这进一步增强了挑战性。③可调节您身后的追逐者的速度，与其展开紧张刺激的竞速。④可自由更换打字内容与角色图像。⑤实时、直观地显示打字速度。</p>
+						</fieldset>
+					</li>
+					<li class="Item" id="Item_HelpTutorial">
+						<fieldset>
+							<legend>教程</legend>
+							<p>本游戏的教程以 PDF 文档的形式提供。这方便您保存至本地，还可以打印出来备用。</p>
+							<ul class="CtrlGroup BelowParagraph">
+								<li class="Ctrl WidthDividedBy2">
+									<a class="Linkbtn" href="docs/山田凉上山%20快速入门.pdf">快速入门</a>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<a class="Linkbtn" href="docs/山田凉上山%20说明文档.pdf">说明文档</a>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item" id="Item_HelpGetInvolved">
+						<fieldset>
+							<legend>参与进来</legend>
+							<p>您可通过以下渠道向我提供反馈：</p>
+							<ul class="CtrlGroup BelowParagraph">
+								<li class="Ctrl">
+									<a class="Linkbtn" href="https://github.com/SamToki/Yamanobo-Ryou/issues">GitHub Issues</a>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<a class="Linkbtn" href="mailto:SamTokiFeedback@outlook.com">电子邮件</a>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<a class="Linkbtn" href="https://message.bilibili.com/#whisper/mid1557377413">哔哩哔哩 (B站) 私信</a>
+								</li>
+							</ul>
+							<p>Help me translate the webpage into your language! Please contact me if you are interested.</p>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>隐私权声明</legend>
+							<p>本站为 <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a> 静态网站，只使用浏览器的 Local Storage 功能在本地存储<a href="#Item_SettingsUserData" onclick="ShowIAmHere('Item_SettingsUserData')">用户数据</a>，您可随时手动删除。本站不使用 <a href="https://zh.wikipedia.org/wiki/Cookie">Cookies</a>，不收集任何个人信息。</p>
+							<p>出于安全考虑，<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection">GitHub 的服务器可能会记录您的 IP 地址</a>，但我无法访问这些数据。</p>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>版权说明</legend>
+							<p>本站的源代码遵循 <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPL v3 软件开源协议</a>。本站的部分内容为他人作品，版权为原作者所有，本站遵循 <a href="https://zh.wikipedia.org/wiki/fair_use">fair use</a> 原则使用并于 <a href="#Item_HelpCredits" onclick="ShowIAmHere('Item_HelpCredits')">Credits</a> 标注来源。</p>
+							<p>除上述内容之外，本站所有内容以及排版、美术设计均保留版权。</p>
+							<p>「孤独摇滚！」，原名「<span lang="ja-JP">ぼっち・ざ・ろっく！</span>」，作品版权为 <span lang="ja-JP">© はまじあき／芳文社・アニプレックス</span>。</p>
+						</fieldset>
+					</li>
+					<li class="Item" id="Item_HelpCredits">
+						<fieldset>
+							<legend>Credits</legend>
+							<h4>文库文本</h4>
+							<p>请见<a href="#Item_LibraryTextProperties" onclick="ShowIAmHere('Item_LibraryTextProperties')">文本属性</a>。</p>
+							<h4>图像</h4>
+							<p>背景图像：AlphaCoders Wallpaper <a href="https://wall.alphacoders.com/big.php?i=1296308">#1296308</a> by @MuGyu<br />
+								背景图像会不定期更换。且背景图像可被用户替换。</p>
+							<p>角色图像：Pixiv ID <a href="https://pixiv.net/en/artworks/112301934">112301934</a>, <a href="https://pixiv.net/en/artworks/113047912">113047912</a> by <a href="https://pixiv.net/en/users/33777297">@Grace C</a><br />
+								角色图像可被用户替换。</p>
+							<h4>图标</h4>
+							<p>UI 图标：<a href="https://icons.getbootstrap.com">Bootstrap Icons</a>, <a href="https://icooon-mono.com">ICOOON MONO</a></p>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>关于</legend>
+							<p>山田凉上山</p>
+							<p>by SAM TOKI STUDIO</p>
+							<p>版本 v0.23 (<time datetime="2024-10-20" pubdate="pubdate">2024/10/20</time>) Beta Test<br />
+								始于 2024/10/13</p>
+							<p>公测版本不代表最终内容与品质。</p>
+							<ul class="CtrlGroup BelowParagraph">
+								<li class="Ctrl">
+									<a class="Linkbtn" href="https://github.com/SamToki/Yamanobo-Ryou">查看 GitHub 项目</a>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+				</ul>
+			</section>
+		</main>
+
+		<footer>
+			<span>© 2024 SAM TOKI STUDIO</span>
+		</footer>
+
+		<div id="Toast">
+			<span id="Label_Toast">正在初始化...</span>
+		</div>
+
+		<div class="ScreenFilter Faded" id="ScreenFilter_Dialog" inert="true" onclick="AnswerDialog(3)"></div>
+		<div class="Window Hidden" id="Window_Dialog" inert="true">
+			<ul class="CtrlGroup" id="CtrlGroup_DialogPrompt">
+				<li class="Ctrl" id="Ctrl_DialogIconInfo">
+					<svg class="DialogIcon" id="DialogIcon_Info" viewBox="0 0 16 16">
+						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+						<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+					</svg>
+				</li>
+				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconQuestion" inert="true">
+					<svg class="DialogIcon" id="DialogIcon_Question" viewBox="0 0 16 16">
+						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+					</svg>
+				</li>
+				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconCaution" inert="true">
+					<svg class="DialogIcon" id="DialogIcon_Caution" viewBox="0 0 16 16">
+						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+					</svg>
+				</li>
+				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconError" inert="true">
+					<svg class="DialogIcon" id="DialogIcon_Error" viewBox="0 0 16 16">
+						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+					</svg>
+				</li>
+				<li class="Ctrl" id="Ctrl_DialogText">
+					<span id="Label_DialogText">对话框文本</span>
+				</li>
+			</ul>
+			<ul class="CtrlGroup" id="CtrlGroup_DialogCheckboxOption">
+				<li class="Ctrl Faded" id="Ctrl_DialogCheckboxOption" inert="true">
+					<label for="Checkbox_DialogCheckboxOption">
+						<input class="Checkbox" id="Checkbox_DialogCheckboxOption" type="checkbox" checked="false" />
+						<span id="Label_DialogCheckboxOption">复选框选项</span>
+					</label>
+				</li>
+			</ul>
+			<ul class="CtrlGroup" id="CtrlGroup_DialogOptions">
+				<li class="Ctrl Faded" id="Ctrl_DialogOption1" inert="true">
+					<button class="Cmdbtn" id="Cmdbtn_DialogOption1" onclick="AnswerDialog(1)">选项</button>
+				</li>
+				<li class="Ctrl Faded" id="Ctrl_DialogOption2" inert="true">
+					<button class="Cmdbtn" id="Cmdbtn_DialogOption2" onclick="AnswerDialog(2)">选项</button>
+				</li>
+				<li class="Ctrl" id="Ctrl_DialogOption3">
+					<button class="Cmdbtn" id="Cmdbtn_DialogOption3" onclick="AnswerDialog(3)">选项</button>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
