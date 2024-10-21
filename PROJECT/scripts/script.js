@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 0.23;
+		const CurrentVersion = 0.24;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -678,11 +678,11 @@
 			}
 			if(IsMobileLayout() == false) {
 				ChangeTop("ScrollingNumber_GameSpeed1", -45 * (5 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
-				ChangeTop("ScrollingNumber_GameSpeed2", -45 * (11 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
+				ChangeTop("ScrollingNumber_GameSpeed2", -45 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
 				ChangeTop("ScrollingNumber_GameSpeed3", 15 - 30 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
 			} else {
 				ChangeTop("ScrollingNumber_GameSpeed1", -30 * (5 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
-				ChangeTop("ScrollingNumber_GameSpeed2", -30 * (11 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
+				ChangeTop("ScrollingNumber_GameSpeed2", -30 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
 				ChangeTop("ScrollingNumber_GameSpeed3", 10 - 20 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
 			}
 			if(Game0.Stats.SpeedTapeDisplay < Game0.Stats.DangerousSpeedDisplay) {
@@ -711,13 +711,13 @@
 			}
 			if(IsMobileLayout() == false) {
 				ChangeTop("ScrollingNumber_GameAltitude1", -45 * (3 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
-				ChangeTop("ScrollingNumber_GameAltitude2", -45 * (11 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
-				ChangeTop("ScrollingNumber_GameAltitude3", -45 * (11 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
+				ChangeTop("ScrollingNumber_GameAltitude2", -45 * (10 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
+				ChangeTop("ScrollingNumber_GameAltitude3", -45 * (10 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
 				ChangeTop("ScrollingNumber_GameAltitude4", 17.5 - 25 * (6 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
 			} else {
 				ChangeTop("ScrollingNumber_GameAltitude1", -30 * (3 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
-				ChangeTop("ScrollingNumber_GameAltitude2", -30 * (11 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
-				ChangeTop("ScrollingNumber_GameAltitude3", -30 * (11 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
+				ChangeTop("ScrollingNumber_GameAltitude2", -30 * (10 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
+				ChangeTop("ScrollingNumber_GameAltitude3", -30 * (10 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
 				ChangeTop("ScrollingNumber_GameAltitude4", 12 - 16 * (6 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
 			}
 
