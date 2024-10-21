@@ -1205,7 +1205,6 @@
 						"成功导入" + Counter + "个对象。" + Counter2 + "个对象的 JSON 字符串不合法，无法导入。",
 						"", "", "", "确定");
 				}
-				ResetGame();
 			} else {
 				if(ReadValue("Textbox_LibraryImport") != "") {
 					ShowDialog("Library_ImportFailed",
@@ -1220,6 +1219,7 @@
 				}
 			}
 			ChangeValue("Textbox_LibraryImport", "");
+			ResetGame();
 		}
 		function ExportLibrary() {
 			navigator.clipboard.writeText(JSON.stringify(Library));
