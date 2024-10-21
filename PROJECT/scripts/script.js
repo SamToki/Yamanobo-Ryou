@@ -168,32 +168,30 @@
 		} else {
 			System.Version.YamanoboRyou = CurrentVersion;
 		}
-		RefreshSystem();
 		if(localStorage.YamanoboRyou_Subsystem != undefined) {
 			Subsystem = JSON.parse(localStorage.getItem("YamanoboRyou_Subsystem"));
 		}
-		RefreshSubsystem();
 		if(localStorage.YamanoboRyou_Game != undefined) {
 			Game = JSON.parse(localStorage.getItem("YamanoboRyou_Game"));
 			Game0.Terrain.Generation = {
 				Ahead: Game.Stats.Odometer + 1, Behind: Game.Stats.Odometer
 			};
 		}
-		// RefreshGame(); // There are "Library" usages in function RefreshGame.
 		if(localStorage.YamanoboRyou_Highscore != undefined) {
 			Highscore = JSON.parse(localStorage.getItem("YamanoboRyou_Highscore"));
 		}
-		RefreshHighscore();
 		if(localStorage.YamanoboRyou_Library != undefined) {
 			Library = JSON.parse(localStorage.getItem("YamanoboRyou_Library"));
 		}
 		ChangeValue("Textbox_LibraryFilter", "");
 		ChangeValue("Textbox_LibraryImport", "");
 		ChangeText("Ctnr_GameTerrain", "");
+		ChangeValue("Textbox_Game", "");
+		RefreshSystem();
+		RefreshSubsystem();
 		RefreshGame();
-		if(Game.Status.IsRunning == true) { // "RefreshGame" does not refresh the library when the game is running.
-			RefreshLibrary();
-		}
+		RefreshHighscore();
+		RefreshLibrary();
 		Focus("Textbox_Game");
 		setTimeout(HideToast, 0);
 	}
@@ -358,7 +356,9 @@
 		// Movement
 			// Player
 			RemoveClass("Textbox_Game", "HasTypo");
-			if(ReadValue("Textbox_Game") != "") {
+			if(ReadValue("Textbox_Game") != "" &&
+			!(Game.Status.IsRunning == true && Game.Stats.Progress >= 100) &&
+			!(Game.Status.IsRunning == true && Game.Stats.Odometer > 20 && Game.Stats.ChaserOdometer >= Game.Stats.Odometer)) {
 				// Start or continue game
 				if(Game.Status.IsRunning == false) {
 					Game.Status.IsRunning = true;
@@ -750,7 +750,6 @@
 		// Victory
 		if(Game.Status.IsRunning == true && Game.Stats.Progress >= 100) {
 			Game.Stats.Progress = 100;
-			ChangeDisabled("Textbox_Game", true);
 			ChangeDisabled("Cmdbtn_GamePauseOrReset", true);
 			if(Game.Status.IsPaused == false) {
 				Game.Status.IsPaused = true;
@@ -773,7 +772,6 @@
 		// Game over
 		if(Game.Status.IsRunning == true && Game.Stats.Odometer > 20 && Game.Stats.ChaserOdometer >= Game.Stats.Odometer) {
 			Game.Stats.ChaserOdometer = Game.Stats.Odometer;
-			ChangeDisabled("Textbox_Game", true);
 			ChangeDisabled("Cmdbtn_GamePauseOrReset", true);
 			if(Game.Status.IsPaused == false) {
 				Game.Status.IsPaused = true;
@@ -789,20 +787,13 @@
 		Game0.Stats.PreviousSpeedTapeDisplay = Game0.Stats.SpeedTapeDisplay;
 	}
 	function RefreshGame() {
-		// Update the text when the game is not running
-		if(Game.Status.IsRunning == false) {
-			RefreshLibrary(); // Section "Game" relies on section "Library".
-		}
-
 		// Call
+		RefreshLibrary(); // Section "Game" relies on section "Library".
 		ClockGame();
 
-		// Terrain
+		// Terrain & textbox
 		ChangeLanguage("Ctnr_GameTerrain", Library.Text[Library.Selection].Language);
-
-		// Textbox
 		ChangeLanguage("Textbox_Game", Library.Text[Library.Selection].Language);
-		ChangeDisabled("Textbox_Game", false);
 
 		// Ctrls
 		if(Game.Status.IsRunning == false) {
@@ -1072,6 +1063,7 @@
 				}
 			};
 			ChangeText("Ctnr_GameTerrain", "");
+			ChangeValue("Textbox_Game", "");
 			RefreshGame();
 		}
 
