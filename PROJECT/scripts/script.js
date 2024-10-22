@@ -1018,6 +1018,7 @@
 					ShowToast("游戏暂停");
 					RefreshGame();
 				} else {
+					HideToast();
 					ResetGame();
 				}
 			}
