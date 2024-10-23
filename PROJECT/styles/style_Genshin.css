@@ -17,7 +17,7 @@
 
 			/* Characters */
 			#GameChaserBalloon {
-				filter: drop-shadow(0 0 1px #EEE4D9);
+				filter: drop-shadow(0 0 1px #EEE4D9) drop-shadow(0 0 1px #EEE4D9);
 			}
 			#GameChaserBalloon .Ctrl {
 				background-color: #485267;
@@ -65,7 +65,7 @@
 
 				/* Balloon */
 				#Ctrl_GameSpeedBalloon {
-					filter: drop-shadow(0 0 1px #EEE4D9);
+					filter: drop-shadow(0 0 1px #EEE4D9) drop-shadow(0 0 1px #EEE4D9);
 				}
 				#Ctrl_GameSpeedBalloon > .CtrlGroup > .Ctrl {
 					background-color: #485267;
@@ -74,7 +74,7 @@
 			/* Altitude */
 				/* Balloon */
 				#Ctrl_GameAltitudeBalloon {
-					filter: drop-shadow(0 0 1px #EEE4D9);
+					filter: drop-shadow(0 0 1px #EEE4D9) drop-shadow(0 0 1px #EEE4D9);
 				}
 				#Ctrl_GameAltitudeBalloon > .CtrlGroup > .Ctrl {
 					background-color: #485267;
