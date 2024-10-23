@@ -363,12 +363,18 @@
 				if(Game.Status.IsRunning == false) {
 					Game.Status.IsRunning = true;
 					Game.Stats.StartTime = Date.now();
-					setTimeout(RefreshGame, 0);
+					setTimeout(function() {
+						ScrollIntoView("Game");
+						RefreshGame();
+					}, 0);
 				} else {
 					if(Game.Status.IsPaused == true) {
 						Game.Status.IsPaused = false;
 						Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
-						setTimeout(RefreshGame, 0);
+						setTimeout(function() {
+							ScrollIntoView("Game");
+							RefreshGame();
+						}, 0);
 					}
 				}
 
