@@ -281,9 +281,6 @@
 					top: calc(50% - 30000px);
 					height: 32000px;
 				}
-				#CtrlGroup_GameAltitudeTape .Ctrl {
-					flex-direction: row;
-				}
 				#CtrlGroup_GameAltitudeTape .TapeNumber {
 					margin: 0 0 0 20px;
 				}
@@ -410,7 +407,7 @@
 			overflow: hidden;
 		}
 		#Library .Cmdbtn.ShownAsLabel {
-			width: 24px; height: 24px; margin: 0;
+			width: 24px; height: 24px;
 			justify-content: center;
 		}
 		.ListItemDuplicate {
