@@ -8,11 +8,16 @@ Yamanobo-Ryou (lit. Yamada Ryou climbing mountain) is a *Bocchi the Rock!* Douji
 本游戏相比其他打字游戏具备以下特色：<br>
 This game has the following features when compared to other typing games:
 
-- 结合了「登山」与「横板卷轴游戏」的元素。文字显示在斜坡上，且坡度会变化。这降低了可读性，从而增强了挑战性。<br>Combined the elements of mountain climbing and side-scrolling games. Texts are displayed on a slope, and the gradient of the slope changes dynamically. This decreases readability and makes the game challenging.
-- 打错字时不允许忽略，必须更正。这进一步增强了挑战性。<br>Typos must be corrected, thus making the game more challenging.
-- 可调节您身后的追逐者的速度，与其展开紧张刺激的竞速。<br>You can adjust the speed of the chaser, and go on an exciting race against her.
-- 可自由更换打字内容与角色图像。<br>You can freely change the text you type, and the character images you see.
-- 实时、直观地显示打字速度。<br>Shows your real-time typing speed straightforwardly.
+- 结合了「登山」与「横板卷轴游戏」的元素。文字显示在斜坡上，且坡度会变化。这降低了可读性，从而增强了挑战性。<br>
+Combined the elements of mountain climbing and side-scrolling games. Texts are displayed on a slope, and the gradient of the slope changes dynamically. This decreases readability and makes the game challenging.
+- 打错字时不允许忽略，必须更正。这进一步增强了挑战性。<br>
+Typos must be corrected, thus making the game more challenging.
+- 可调节您身后的追逐者的速度，与其展开紧张刺激的竞速。<br>
+You can adjust the speed of the chaser, and go on an exciting race against her.
+- 可自由更换打字内容与角色图像。<br>
+You can freely change the text you type, and the character images you see.
+- 实时、直观地显示打字速度。<br>
+Shows your real-time typing speed straightforwardly.
 
 # 预览 Preview
 
