@@ -34,7 +34,7 @@
 			/* Speed */
 				/* Tape */
 				.Tape {
-					background-color: #00000080;
+					background-color: #20202080;
 				}
 				.TapeScale {
 					background-color: #FFFFFF80;
@@ -68,7 +68,7 @@
 					filter: drop-shadow(0 0 1px #FFFFFF) drop-shadow(0 0 1px #FFFFFF);
 				}
 				#Ctrl_GameSpeedBalloon > .CtrlGroup > .Ctrl {
-					background-color: #000000;
+					background-color: #202020;
 				}
 
 			/* Altitude */
@@ -77,5 +77,5 @@
 					filter: drop-shadow(0 0 1px #FFFFFF) drop-shadow(0 0 1px #FFFFFF);
 				}
 				#Ctrl_GameAltitudeBalloon > .CtrlGroup > .Ctrl {
-					background-color: #000000;
+					background-color: #202020;
 				}
