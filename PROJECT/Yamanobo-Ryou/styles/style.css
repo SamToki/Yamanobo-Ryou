@@ -108,7 +108,7 @@
 				justify-content: center;
 			}
 			#Ctnr_GameStats .Ctrl {
-				width: 160px; height: 70px; padding: 5px;
+				width: 150px; height: 60px; padding: 5px;
 				text-align: center;
 				display: flex; flex-direction: column; justify-content: center; align-items: center;
 			}
@@ -263,7 +263,7 @@
 				}
 				.ScrollingNumber span {
 					height: 30px; margin: 15px 0;
-					font-size: 2.00em;
+					font-size: 2.25em;
 				}
 				#ScrollingNumber_GameSpeed3 span {
 					margin: 0;
@@ -332,12 +332,12 @@
 				}
 				#ScrollingNumber_GameAltitude4 span {
 					height: 25px; margin: 0;
-					font-size: 1.60em;
+					font-size: 1.75em;
 				}
 
 			/* Prompts */
 			#Ctnr_GamePrompts {
-				position: absolute; bottom: 55px; left: 175px;
+				position: absolute; bottom: 50px; left: 175px;
 				width: calc(100% - 350px);
 			}
 			#Ctnr_GamePrompts .CtrlGroup {
@@ -351,7 +351,7 @@
 			/* Game ctrl */
 			#Ctnr_GameCtrl {
 				position: absolute; bottom: 0; left: calc(50% - 60px);
-				width: 120px; height: 40px;
+				width: 120px; height: 35px;
 			}
 			#Ctnr_GameCtrl .CtrlGroup {
 				width: 100%; height: 100%;
@@ -360,17 +360,17 @@
 				width: 100%;
 			}
 			#Ctnr_GameCtrl .HotkeyIndicator {
-				left: calc(50% - 20px);
-				width: 40px;
+				left: calc(50% - 17.5px);
+				width: 35px;
 			}
-		
+
 		/* Highscore */
 		#ItemGroup_Highscore {
 			margin: 0;
 			flex-direction: column; align-items: center;
 		}
 		#ItemGroup_Highscore .Item {
-			width: unset; height: 40px; margin: 5px 0;
+			width: unset; height: 35px; margin: 5px 0;
 			display: flex; justify-content: space-between;
 		}
 		#ItemGroup_Highscore .Item span {
@@ -401,34 +401,34 @@
 			position: absolute; top: unset; right: 5px;
 		}
 		.ListItemLabel {
-			width: calc(100% - 82px);
+			width: calc(100% - 76px);
 		}
 		.ListItemName {
-			max-width: 233px;
+			max-width: 271px;
 			overflow: hidden;
 		}
 		#Library .Cmdbtn.ShownAsLabel {
-			width: 24px; height: 24px;
+			width: 22px; height: 22px;
 			justify-content: center;
 		}
 		.ListItemDuplicate {
-			position: absolute; top: calc(50% - 12px); right: 53px;
+			position: absolute; top: calc(50% - 11px); right: 49px;
 		}
 		.ListItemExport {
-			position: absolute; top: calc(50% - 12px); right: 29px;
+			position: absolute; top: calc(50% - 11px); right: 27px;
 		}
 		.ListItemDelete {
-			position: absolute; top: calc(50% - 12px); right: 5px;
+			position: absolute; top: calc(50% - 11px); right: 5px;
 		}
 		#Ctrl_LibraryImport {
-			width: calc(100% - 90px); height: 90px;
+			width: calc(100% - 90px); height: 80px;
 		}
 		#Textbox_LibraryImport {
 			width: 100%;
 			white-space: pre;
 		}
 		#Ctrl_LibraryImport2 {
-			width: 80px; height: 90px;
+			width: 80px; height: 80px;
 		}
 
 /* Responsive web design */
@@ -436,19 +436,19 @@
 	/* Area specific */
 		/* Header */
 		#CtrlGroup_Nav {
-			height: 202px;
+			height: 177px;
 		}
 
 		/* Main */
 			/* Game */
 				/* Terrain */
 				#Ctnr_GameTerrain {
-					bottom: calc(85px + (100% - 260px) / 2 - 1980px); right: 50%;
+					bottom: calc(80px + (100% - 255px) / 2 - 1980px); right: 50%;
 				}
 
 				/* Characters */
 				.Character {
-					bottom: calc(85px + (100% - 260px) / 2 + 20px);
+					bottom: calc(80px + (100% - 255px) / 2 + 20px);
 					width: 50px;
 				}
 				#GameChaserBalloon {
@@ -468,7 +468,7 @@
 
 				/* Textbox */
 				#Ctnr_GameTextbox {
-					top: calc(175px + (100% - 260px) / 2 - 20px);
+					top: calc(175px + (100% - 255px) / 2 - 20px);
 					width: 50%;
 				}
 
@@ -548,7 +548,7 @@
 					}
 					.ScrollingNumber span {
 						height: 20px; margin: 10px 0;
-						font-size: 1.25em;
+						font-size: 1.40em;
 					}
 
 				/* Altitude */
@@ -586,7 +586,7 @@
 					}
 					#ScrollingNumber_GameAltitude4 span {
 						height: 16px;
-						font-size: 1.00em;
+						font-size: 1.10em;
 					}
 
 				/* Prompts */

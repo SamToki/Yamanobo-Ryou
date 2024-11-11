@@ -1,0 +1,27 @@
+{
+	"name": "山田凉上山",
+	"short_name": "山田凉上山",
+	"icons": [
+		{
+			"src": "../images/Title.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "../images/Title_512px.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+
+	"description": "「孤独摇滚！」同人打字训练游戏。屑凉被讨债的波奇酱追上山，开始无尽的逃亡。",
+	"screenshots": [
+		{
+			"src": "../images/Preview.jpg",
+			"type": "image/jpg",
+			"sizes": "1280x720"
+		}
+	],
+
+	"display": "standalone"
+}

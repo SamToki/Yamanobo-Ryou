@@ -261,9 +261,9 @@
 			}
 			ChangeChecked("Checkbox_SettingsBlurBgImage", System.Display.BlurBgImage);
 			if(System.Display.BlurBgImage == true) {
-				ChangeFilter("Ctnr_BgImage", "blur(10px)");
+				AddClass("Ctnr_BgImage", "Blur");
 			} else {
-				ChangeFilter("Ctnr_BgImage", "");
+				RemoveClass("Ctnr_BgImage", "Blur");
 			}
 			ChangeValue("Combobox_SettingsHotkeyIndicators", System.Display.HotkeyIndicators);
 			switch(System.Display.HotkeyIndicators) {
@@ -494,7 +494,7 @@
 			if(IsMobileLayout() == false) {
 				ChangeBottom("Ctnr_GameTerrain", "calc(50% - 1980px - " + Game.Terrain.Data[Game.Stats.Odometer + 1][2] + "px)");
 			} else {
-				ChangeBottom("Ctnr_GameTerrain", "calc(85px + (100% - 260px) / 2 - 1980px - " + Game.Terrain.Data[Game.Stats.Odometer + 1][2] + "px)");
+				ChangeBottom("Ctnr_GameTerrain", "calc(80px + (100% - 255px) / 2 - 1980px - " + Game.Terrain.Data[Game.Stats.Odometer + 1][2] + "px)");
 			}
 			ChangeRight("Ctnr_GameTerrain", "calc(50% + " + Game0.Terrain.WalkedWidth + "px)");
 
@@ -503,7 +503,7 @@
 			if(IsMobileLayout() == false) {
 				ChangeBottom("Character_GamePlayer", "calc(50% + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Game.Stats.Odometer][2]) + "px)");
 			} else {
-				ChangeBottom("Character_GamePlayer", "calc(85px + (100% - 260px) / 2 + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Game.Stats.Odometer][2]) + "px)");
+				ChangeBottom("Character_GamePlayer", "calc(80px + (100% - 255px) / 2 + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Game.Stats.Odometer][2]) + "px)");
 			}
 
 			// Chaser
@@ -511,7 +511,7 @@
 				if(IsMobileLayout() == false) {
 					ChangeBottom("Character_GameChaser", "calc(50% + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Math.floor(Game.Stats.ChaserOdometer)][2]) + "px)");
 				} else {
-					ChangeBottom("Character_GameChaser", "calc(85px + (100% - 260px) / 2 + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Math.floor(Game.Stats.ChaserOdometer)][2]) + "px)");
+					ChangeBottom("Character_GameChaser", "calc(80px + (100% - 255px) / 2 + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Math.floor(Game.Stats.ChaserOdometer)][2]) + "px)");
 				}
 
 				// Horizontal separation
