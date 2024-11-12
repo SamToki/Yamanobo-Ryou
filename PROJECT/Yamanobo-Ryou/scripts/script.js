@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 0.24;
+		const CurrentVersion = 1.00;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
