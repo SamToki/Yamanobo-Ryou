@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.01;
+		const CurrentVersion = 1.03;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -122,9 +122,10 @@
 			]
 		};
 
-	// Load user data
+	// Load
 	window.onload = Load();
 	function Load() {
+		// User data
 		if(localStorage.System != undefined) {
 			System = JSON.parse(localStorage.getItem("System"));
 		}
@@ -184,6 +185,8 @@
 		if(localStorage.YamanoboRyou_Library != undefined) {
 			Library = JSON.parse(localStorage.getItem("YamanoboRyou_Library"));
 		}
+
+		// Refresh
 		ChangeValue("Textbox_LibraryFilter", "");
 		ChangeValue("Textbox_LibraryImport", "");
 		ChangeText("Ctnr_GameTerrain", "");
@@ -193,13 +196,91 @@
 		RefreshGame();
 		RefreshHighscore();
 		RefreshLibrary();
+
+		// PWA
+		navigator.serviceWorker.register("script_ServiceWorker.js").then(function(ServiceWorkerRegistration) {
+			// Detect update (https://stackoverflow.com/a/41896649)
+			ServiceWorkerRegistration.addEventListener("updatefound", function() {
+				const ServiceWorkerInstallation = ServiceWorkerRegistration.installing;
+				ServiceWorkerInstallation.addEventListener("statechange", function() {
+					if(ServiceWorkerInstallation.state == "installed" && navigator.serviceWorker.controller != null) {
+						Show("Label_HelpPWAUpdateReady");
+						ShowDialog("System_PWAUpdateReady",
+							"Info",
+							"新版本已就绪。请重新打开本网页来应用更新 (不要使用刷新按钮)。",
+							"", "", "", "确定");
+					}
+				});
+			});
+
+			// Read service worker status (https://github.com/GoogleChrome/samples/blob/gh-pages/service-worker/registration-events/index.html)
+			switch(true) {
+				case ServiceWorkerRegistration.installing != null:
+					ChangeText("Label_SettingsPWAServiceWorkerRegistration", "等待生效");
+					break;
+				case ServiceWorkerRegistration.waiting != null:
+					ChangeText("Label_SettingsPWAServiceWorkerRegistration", "等待更新");
+					Show("Label_HelpPWAUpdateReady");
+					ShowDialog("System_PWAUpdateReady",
+						"Info",
+						"新版本已就绪。请重新打开本网页来应用更新 (不要使用刷新按钮)。",
+						"", "", "", "确定");
+					break;
+				case ServiceWorkerRegistration.active != null:
+					ChangeText("Label_SettingsPWAServiceWorkerRegistration", "已生效");
+					break;
+				default:
+					break;
+			}
+			if(navigator.serviceWorker.controller != null) {
+				ChangeText("Label_SettingsPWAServiceWorkerController", "已生效");
+			} else {
+				ChangeText("Label_SettingsPWAServiceWorkerController", "未生效");
+			}
+		});
+
+		// Ready
 		Focus("Textbox_Game");
 		setTimeout(HideToast, 0);
 	}
 
 // Refresh
+	// Webpage
+	function RefreshWebpage() {
+		ShowDialog("System_RefreshingWebpage",
+			"Info",
+			"正在刷新网页...",
+			"", "", "", "确定");
+		ChangeCursorOverall("wait");
+		window.location.reload();
+	}
+
 	// System
 	function RefreshSystem() {
+		// Topbar
+		if(IsMobileLayout() == false) {
+			HideHorizontally("Button_Nav");
+			ChangeInert("DropctrlGroup_Nav", false);
+		} else {
+			Show("Button_Nav");
+			ChangeInert("DropctrlGroup_Nav", true);
+		}
+
+		// Fullscreen
+		if(IsFullscreen() == false) {
+			Show("Topbar");
+			ChangeText("Button_GameToggleFullscreen",
+				"<svg class=\"Icon\" viewBox=\"0 0 16 16\">" +
+				"	<path d=\"M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707\"/>" +
+				"</svg>");
+		} else {
+			Hide("Topbar");
+			ChangeText("Button_GameToggleFullscreen",
+				"<svg class=\"Icon\" viewBox=\"0 0 16 16\">" +
+				"	<path d=\"M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5m5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5M0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5m10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0z\"/>" +
+				"</svg>");
+		}
+
 		// Settings
 			// Display
 			if(window.matchMedia("(prefers-contrast: more)").matches == false) {
@@ -288,6 +369,13 @@
 			}
 			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
 			ChangeAnimOverall(System.Display.Anim);
+
+			// PWA
+			if(window.matchMedia("(display-mode: standalone)").matches == true) {
+				ChangeText("Label_SettingsPWAMode", "是");
+			} else {
+				ChangeText("Label_SettingsPWAMode", "否");
+			}
 
 			// Dev
 			ChangeChecked("Checkbox_SettingsTryToOptimizePerformance", System.Dev.TryToOptimizePerformance);
@@ -751,7 +839,7 @@
 		// Victory
 		if(Game.Status.IsRunning == true && Game.Stats.Progress >= 100) {
 			Game.Stats.Progress = 100;
-			ChangeDisabled("Cmdbtn_GamePauseOrReset", true);
+			ChangeDisabled("Button_GamePauseOrReset", true);
 			if(Game.Status.IsPaused == false) {
 				Game.Status.IsPaused = true;
 				ChangeValue("Textbox_Game", "");
@@ -773,7 +861,7 @@
 		// Game over
 		if(Game.Status.IsRunning == true && Game.Stats.Odometer > 20 && Game.Stats.ChaserOdometer >= Game.Stats.Odometer) {
 			Game.Stats.ChaserOdometer = Game.Stats.Odometer;
-			ChangeDisabled("Cmdbtn_GamePauseOrReset", true);
+			ChangeDisabled("Button_GamePauseOrReset", true);
 			if(Game.Status.IsPaused == false) {
 				Game.Status.IsPaused = true;
 				ChangeValue("Textbox_Game", "");
@@ -798,8 +886,8 @@
 
 		// Ctrls
 		if(Game.Status.IsRunning == false) {
-			ChangeDisabled("Cmdbtn_GamePauseOrReset", true);
-			ChangeText("Cmdbtn_GamePauseOrReset", "暂停");
+			ChangeDisabled("Button_GamePauseOrReset", true);
+			ChangeText("Button_GamePauseOrReset", "暂停");
 			ChangeDisabled("Fieldset_Library", false);
 			ChangeDisabled("Fieldset_LibraryTextProperties", false);
 			ChangeDisabled("Fieldset_LibraryManagement", false);
@@ -807,11 +895,11 @@
 			ChangeDisabled("Fieldset_SettingsDifficulty", false);
 			ChangeDisabled("Combobox_SettingsGameFont", false);
 		} else {
-			ChangeDisabled("Cmdbtn_GamePauseOrReset", false);
+			ChangeDisabled("Button_GamePauseOrReset", false);
 			if(Game.Status.IsPaused == false) {
-				ChangeText("Cmdbtn_GamePauseOrReset", "暂停");
+				ChangeText("Button_GamePauseOrReset", "暂停");
 			} else {
-				ChangeText("Cmdbtn_GamePauseOrReset", "重置");
+				ChangeText("Button_GamePauseOrReset", "重置");
 			}
 			ChangeDisabled("Fieldset_Library", true);
 			ChangeDisabled("Fieldset_LibraryTextProperties", true);
@@ -850,17 +938,17 @@
 			// Difficulty
 			ChangeValue("Textbox_SettingsChaserSpeedInitial", Game.Difficulty.ChaserSpeed.Initial);
 			ChangeValue("Textbox_SettingsChaserSpeedFinal", Game.Difficulty.ChaserSpeed.Final);
-			RemoveClass("Cmdbtn_SettingsChaserSpeedWestern", "Active");
-			RemoveClass("Cmdbtn_SettingsChaserSpeedCJK", "Active");
-			RemoveClass("Cmdbtn_SettingsChaserSpeedZenMode", "Active");
+			RemoveClass("Button_SettingsChaserSpeedWestern", "Active");
+			RemoveClass("Button_SettingsChaserSpeedCJK", "Active");
+			RemoveClass("Button_SettingsChaserSpeedZenMode", "Active");
 			if(Game.Difficulty.ChaserSpeed.Initial == 180 && Game.Difficulty.ChaserSpeed.Final == 240) {
-				AddClass("Cmdbtn_SettingsChaserSpeedWestern", "Active");
+				AddClass("Button_SettingsChaserSpeedWestern", "Active");
 			}
 			if(Game.Difficulty.ChaserSpeed.Initial == 40 && Game.Difficulty.ChaserSpeed.Final == 60) {
-				AddClass("Cmdbtn_SettingsChaserSpeedCJK", "Active");
+				AddClass("Button_SettingsChaserSpeedCJK", "Active");
 			}
 			if(Game.Difficulty.ChaserSpeed.Initial == 10 && Game.Difficulty.ChaserSpeed.Final == 10) {
-				AddClass("Cmdbtn_SettingsChaserSpeedZenMode", "Active");
+				AddClass("Button_SettingsChaserSpeedZenMode", "Active");
 			}
 			ChangeValue("Textbox_SettingsMaxSeparation", Game.Difficulty.MaxSeparation);
 
@@ -938,18 +1026,18 @@
 				"		<input class=\"Radiobtn\" id=\"Radiobtn_LibraryText" + Looper + "\" type=\"radio\" checked=\"false\" onchange=\"SetText(" + Looper + ")\" />" +
 				"		<span class=\"ListItemName\">" + ConvertEmptyName(Library.Text[Looper].Name) + "</span>" +
 				"	</label>" +
-				"	<button class=\"Cmdbtn ShownAsLabel ListItemDuplicate\" id=\"Cmdbtn_LibraryText" + Looper + "Duplicate\" onclick=\"DuplicateText(" + Looper + ")\">" +
+				"	<button class=\"Button ShownAsLabel ListItemDuplicate\" id=\"Button_LibraryText" + Looper + "Duplicate\" onclick=\"DuplicateText(" + Looper + ")\">" +
 				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\">" +
 				"			<path d=\"M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z\"/>" +
 				"		</svg>" +
 				"	</button>" +
-				"	<button class=\"Cmdbtn ShownAsLabel ListItemExport\" id=\"Cmdbtn_LibraryText" + Looper + "Export\" onclick=\"ExportText(" + Looper + ")\">" +
+				"	<button class=\"Button ShownAsLabel ListItemExport\" id=\"Button_LibraryText" + Looper + "Export\" onclick=\"ExportText(" + Looper + ")\">" +
 				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\">" +
 				"			<path d=\"M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5\"/>" +
 				"			<path d=\"M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z\"/>" +
 				"		</svg>" +
 				"	</button>" +
-				"	<button class=\"Cmdbtn ShownAsLabel ListItemDelete\" id=\"Cmdbtn_LibraryText" + Looper + "Delete\" onclick=\"ConfirmDeleteText(" + Looper + ")\">" +
+				"	<button class=\"Button ShownAsLabel ListItemDelete\" id=\"Button_LibraryText" + Looper + "Delete\" onclick=\"ConfirmDeleteText(" + Looper + ")\">" +
 				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\">" +
 				"			<path d=\"M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5\"/>" +
 				"		</svg>" +
@@ -960,7 +1048,7 @@
 			AlertSystemError("The library is empty.");
 		}
 		if(Library.Text.length == 2) {
-			ChangeDisabled("Cmdbtn_LibraryText1Delete", true);
+			ChangeDisabled("Button_LibraryText1Delete", true);
 		}
 
 		// Selection
@@ -1384,8 +1472,7 @@
 					Object.keys(Objects).forEach(function(ObjectName) {
 						localStorage.setItem(ObjectName, JSON.stringify(Objects[ObjectName]));
 					});
-					ChangeCursorOverall("wait");
-					window.location.reload();
+					RefreshWebpage();
 				} else {
 					ShowDialog("System_JSONStringInvalid",
 						"Error",
@@ -1420,6 +1507,8 @@
 		switch(Interaction.DialogEvent) {
 			case "System_LanguageUnsupported":
 			case "System_MajorUpdateDetected":
+			case "System_PWAUpdateReady":
+			case "System_RefreshingWebpage":
 			case "System_JSONStringInvalid":
 			case "System_UserDataExported":
 			case "Game_DoNotPaste":
@@ -1441,8 +1530,7 @@
 				switch(Selector) {
 					case 2:
 						localStorage.clear();
-						ChangeCursorOverall("wait");
-						window.location.reload();
+						RefreshWebpage();
 						break;
 					case 3:
 						break;
@@ -1521,8 +1609,7 @@
 				switch(Selector) {
 					case 2:
 						localStorage.removeItem("YamanoboRyou_Library");
-						ChangeCursorOverall("wait");
-						window.location.reload();
+						RefreshWebpage();
 						break;
 					case 3:
 						break;
@@ -1563,7 +1650,7 @@
 			document.activeElement.id == "Textbox_Game") { // Except when typing in game.
 			switch(Hotkey.key.toUpperCase()) {
 				case "DELETE":
-					Click("Cmdbtn_GamePauseOrReset");
+					Click("Button_GamePauseOrReset");
 					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
 						ShowHotkeyIndicators();
 					}
