@@ -48,8 +48,8 @@
 				width: 100%;
 			}
 			#GameChaserBalloon {
-				position: absolute; bottom: 20%; left: 175px;
-				width: 160px; height: 60%; transform-origin: bottom left;
+				position: absolute; bottom: 20%; left: 175px; transform-origin: bottom left;
+				width: 160px; height: 60%;
 				filter: drop-shadow(0 0 1px #000000) drop-shadow(0 0 1px #000000);
 				overflow: hidden;
 			}
