@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.03;
+		const CurrentVersion = 1.04;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -775,9 +775,9 @@
 				ChangeTop("ScrollingNumber_GameSpeed3", 10 - 20 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
 			}
 			if(Game0.Stats.SpeedTapeDisplay < Game0.Stats.DangerousSpeedDisplay) {
-				AddClass("CtrlGroup_GameSpeedBalloon", "EmphasizedText");
+				AddClass("CtrlGroup_GameSpeedBalloon", "RedText");
 			} else {
-				RemoveClass("CtrlGroup_GameSpeedBalloon", "EmphasizedText");
+				RemoveClass("CtrlGroup_GameSpeedBalloon", "RedText");
 			}
 
 		// Altitude
@@ -997,9 +997,9 @@
 
 		// Refresh
 		for(let Looper = 1; Looper <= 6; Looper++) {
-			RemoveClass("Item_HighscoreRow" + Looper, "Active");
+			RemoveClass("Item_HighscoreRow" + Looper, "GreenText");
 			if(Highscore[Looper][1] == "最新") {
-				AddClass("Item_HighscoreRow" + Looper, "Active");
+				AddClass("Item_HighscoreRow" + Looper, "GreenText");
 			} else {
 				Highscore[Looper][1] = "#" + Looper;
 			}
