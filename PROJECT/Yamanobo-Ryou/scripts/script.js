@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.04;
+		const CurrentVersion = 1.05;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -270,15 +270,17 @@
 		if(IsFullscreen() == false) {
 			Show("Topbar");
 			ChangeText("Button_GameToggleFullscreen",
-				"<svg class=\"Icon\" viewBox=\"0 0 16 16\">" +
+				"<svg class=\"Icon\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
 				"	<path d=\"M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707\"/>" +
 				"</svg>");
+			ChangeAriaLabel("Button_GameToggleFullscreen", "全屏");
 		} else {
 			Hide("Topbar");
 			ChangeText("Button_GameToggleFullscreen",
-				"<svg class=\"Icon\" viewBox=\"0 0 16 16\">" +
+				"<svg class=\"Icon\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
 				"	<path d=\"M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5m5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5M0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5m10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0z\"/>" +
 				"</svg>");
+			ChangeAriaLabel("Button_GameToggleFullscreen", "退出全屏");
 		}
 
 		// Settings
@@ -1026,19 +1028,19 @@
 				"		<input class=\"Radiobtn\" id=\"Radiobtn_LibraryText" + Looper + "\" type=\"radio\" checked=\"false\" onchange=\"SetText(" + Looper + ")\" />" +
 				"		<span class=\"ListItemName\">" + ConvertEmptyName(Library.Text[Looper].Name) + "</span>" +
 				"	</label>" +
-				"	<button class=\"Button ShownAsLabel ListItemDuplicate\" id=\"Button_LibraryText" + Looper + "Duplicate\" onclick=\"DuplicateText(" + Looper + ")\">" +
-				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\">" +
+				"	<button class=\"Button ShownAsLabel ListItemDuplicate\" id=\"Button_LibraryText" + Looper + "Duplicate\" onclick=\"DuplicateText(" + Looper + ")\" aria-label=\"生成副本\">" +
+				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
 				"			<path d=\"M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z\"/>" +
 				"		</svg>" +
 				"	</button>" +
-				"	<button class=\"Button ShownAsLabel ListItemExport\" id=\"Button_LibraryText" + Looper + "Export\" onclick=\"ExportText(" + Looper + ")\">" +
-				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\">" +
+				"	<button class=\"Button ShownAsLabel ListItemExport\" id=\"Button_LibraryText" + Looper + "Export\" onclick=\"ExportText(" + Looper + ")\" aria-label=\"导出\">" +
+				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
 				"			<path d=\"M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5\"/>" +
 				"			<path d=\"M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z\"/>" +
 				"		</svg>" +
 				"	</button>" +
-				"	<button class=\"Button ShownAsLabel ListItemDelete\" id=\"Button_LibraryText" + Looper + "Delete\" onclick=\"ConfirmDeleteText(" + Looper + ")\">" +
-				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\">" +
+				"	<button class=\"Button ShownAsLabel ListItemDelete\" id=\"Button_LibraryText" + Looper + "Delete\" onclick=\"ConfirmDeleteText(" + Looper + ")\" aria-label=\"删除...\">" +
+				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
 				"			<path d=\"M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5\"/>" +
 				"		</svg>" +
 				"	</button>" +
