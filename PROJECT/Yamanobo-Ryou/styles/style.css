@@ -137,8 +137,8 @@
 					flex-direction: column;
 				}
 				#CtrlGroup_GameSpeedTape {
-					top: calc(50% - 2500px);
-					height: 2500px;
+					top: calc(50% - 5000px);
+					height: 5000px;
 				}
 				.Tape .Ctrl {
 					width: 100%; height: 0;
@@ -198,8 +198,8 @@
 
 					/* Other speeds */
 					#CtrlGroup_GameOtherSpeeds {
-						position: absolute; top: calc(50% - 2500px); left: 0;
-						width: 100%; height: 2500px;
+						position: absolute; top: calc(50% - 5000px); left: 0;
+						width: 100%; height: 5000px;
 					}
 					#CtrlGroup_GameOtherSpeeds .Ctrl {
 						position: absolute; top: unset; left: unset;
@@ -253,7 +253,7 @@
 					background-color: transparent;
 				}
 				#ScrollingNumber_GameSpeed1 {
-					top: calc(-45px * 5);
+					top: calc(-45px * 9);
 				}
 				#ScrollingNumber_GameSpeed2 {
 					top: calc(-45px * 10);
@@ -544,7 +544,7 @@
 						width: 12.5px;
 					}
 					#ScrollingNumber_GameSpeed1 {
-						top: calc(-30px * 5);
+						top: calc(-30px * 9);
 					}
 					#ScrollingNumber_GameSpeed2 {
 						top: calc(-30px * 10);

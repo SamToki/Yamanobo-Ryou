@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.05;
+		const CurrentVersion = 1.06;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -700,7 +700,7 @@
 				RemoveClass("CtrlGroup_GameSpeedBalloon", "Transparent");
 			}
 		}
-		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && System.Display.Anim > 0) {
+		if(Game.Status.IsRunning == true && System.Display.Anim > 0) {
 			ChangeAnim("CtrlGroup_GameSpeed", "100ms");
 			ChangeAnim("CtrlGroup_GameAltitude", "100ms");
 		} else {
@@ -709,10 +709,10 @@
 		}
 			// Tape
 			Game0.Stats.SpeedTapeDisplay += (Game.Stats.Speed - Game0.Stats.SpeedTapeDisplay) / 200;
-			if(Game0.Stats.SpeedTapeDisplay > 500) {
-				Game0.Stats.SpeedTapeDisplay = 500;
+			if(Game0.Stats.SpeedTapeDisplay > 999) {
+				Game0.Stats.SpeedTapeDisplay = 999;
 			}
-			ChangeTop("CtrlGroup_GameSpeedTape", "calc(50% - 2500px + " + Game0.Stats.SpeedTapeDisplay * 5 + "px)");
+			ChangeTop("CtrlGroup_GameSpeedTape", "calc(50% - 5000px + " + Game0.Stats.SpeedTapeDisplay * 5 + "px)");
 
 			// Additional indicators
 				// Speed trend
@@ -736,7 +736,7 @@
 				}
 
 				// Other speeds
-				ChangeTop("CtrlGroup_GameOtherSpeeds", "calc(50% - 2500px + " + Game0.Stats.SpeedTapeDisplay * 5 + "px)");
+				ChangeTop("CtrlGroup_GameOtherSpeeds", "calc(50% - 5000px + " + Game0.Stats.SpeedTapeDisplay * 5 + "px)");
 					// Chaser speed
 					Game0.Stats.ChaserSpeedDisplay += (Game.Stats.ChaserSpeed - Game0.Stats.ChaserSpeedDisplay) / 5;
 					ChangeHeight("Ctrl_GameChaserSpeed", Game0.Stats.ChaserSpeedDisplay * 5 + "px");
@@ -752,8 +752,8 @@
 
 					// Avg speed
 					Game0.Stats.AvgSpeedDisplay += (Game.Stats.AvgSpeed - Game0.Stats.AvgSpeedDisplay) / 5;
-					if(Game0.Stats.AvgSpeedDisplay > 500) {
-						Game0.Stats.AvgSpeedDisplay = 500;
+					if(Game0.Stats.AvgSpeedDisplay > 999) {
+						Game0.Stats.AvgSpeedDisplay = 999;
 					}
 					ChangeBottom("Ctrl_GameAvgSpeed", Game0.Stats.AvgSpeedDisplay * 5 - 35 + "px");
 
@@ -768,11 +768,11 @@
 				Game0.Stats.SpeedBalloonDisplay[3] = Math.floor(Game0.Stats.SpeedBalloonDisplay[3]);
 			}
 			if(IsMobileLayout() == false) {
-				ChangeTop("ScrollingNumber_GameSpeed1", -45 * (5 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
+				ChangeTop("ScrollingNumber_GameSpeed1", -45 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
 				ChangeTop("ScrollingNumber_GameSpeed2", -45 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
 				ChangeTop("ScrollingNumber_GameSpeed3", 15 - 30 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
 			} else {
-				ChangeTop("ScrollingNumber_GameSpeed1", -30 * (5 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
+				ChangeTop("ScrollingNumber_GameSpeed1", -30 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
 				ChangeTop("ScrollingNumber_GameSpeed2", -30 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
 				ChangeTop("ScrollingNumber_GameSpeed3", 10 - 20 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
 			}
@@ -1379,8 +1379,8 @@
 			if(Game.Difficulty.ChaserSpeed.Initial < 10) {
 				Game.Difficulty.ChaserSpeed.Initial = 10;
 			}
-			if(Game.Difficulty.ChaserSpeed.Initial > 500) {
-				Game.Difficulty.ChaserSpeed.Initial = 500;
+			if(Game.Difficulty.ChaserSpeed.Initial > 999) {
+				Game.Difficulty.ChaserSpeed.Initial = 999;
 			}
 			if(Game.Difficulty.ChaserSpeed.Initial > Game.Difficulty.ChaserSpeed.Final) {
 				Game.Difficulty.ChaserSpeed.Final = Game.Difficulty.ChaserSpeed.Initial;
@@ -1395,8 +1395,8 @@
 			if(Game.Difficulty.ChaserSpeed.Final < 10) {
 				Game.Difficulty.ChaserSpeed.Final = 10;
 			}
-			if(Game.Difficulty.ChaserSpeed.Final > 500) {
-				Game.Difficulty.ChaserSpeed.Final = 500;
+			if(Game.Difficulty.ChaserSpeed.Final > 999) {
+				Game.Difficulty.ChaserSpeed.Final = 999;
 			}
 			if(Game.Difficulty.ChaserSpeed.Final < Game.Difficulty.ChaserSpeed.Initial) {
 				Game.Difficulty.ChaserSpeed.Initial = Game.Difficulty.ChaserSpeed.Final;
@@ -1611,6 +1611,14 @@
 				switch(Selector) {
 					case 2:
 						localStorage.removeItem("YamanoboRyou_Library");
+						Game.Terrain = { // Also reset the terrain to prevent mismatch between terrain and library text.
+							Text: "",
+							Data: [
+								[0, "", 0]
+							],
+							Gradient: 5
+						};
+						localStorage.setItem("YamanoboRyou_Game", JSON.stringify(Game));
 						RefreshWebpage();
 						break;
 					case 3:
