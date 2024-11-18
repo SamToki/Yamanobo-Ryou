@@ -62,9 +62,6 @@
 					}
 
 					/* Other speeds */
-					#CtrlGroup_GameOtherSpeeds #Ctrl_GameChaserSpeed {
-						background-color: #FFC000;
-					}
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameDangerousSpeed {
 						background-color: #FF4040;
 					}
