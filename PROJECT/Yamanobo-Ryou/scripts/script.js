@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.06;
+		const CurrentVersion = 1.07;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -448,18 +448,16 @@
 				if(Game.Status.IsRunning == false) {
 					Game.Status.IsRunning = true;
 					Game.Stats.StartTime = Date.now();
-					setTimeout(function() {
-						ScrollIntoView("Game");
-						RefreshGame();
-					}, 0);
+					ScrollIntoView("Game");
+					RefreshGame();
+					return;
 				} else {
 					if(Game.Status.IsPaused == true) {
 						Game.Status.IsPaused = false;
 						Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
-						setTimeout(function() {
-							ScrollIntoView("Game");
-							RefreshGame();
-						}, 0);
+						ScrollIntoView("Game");
+						RefreshGame();
+						return;
 					}
 				}
 
@@ -1466,6 +1464,13 @@
 			ResetGame();
 		}
 
+		// Miscellaneous
+		function ResetAllDontShowAgainDialogs() {
+			System.DontShowAgain = [0];
+			RefreshSystem();
+			ShowToast("已重置");
+		}
+
 		// User data
 		function ImportUserData() {
 			if(ReadValue("Textbox_SettingsUserDataImport") != "") {
@@ -1506,7 +1511,10 @@
 
 	// Dialog
 	function AnswerDialog(Selector) {
-		switch(Interaction.Dialog[Interaction.Dialog.length - 1].Event) {
+		let DialogEvent = Interaction.Dialog[Interaction.Dialog.length - 1].Event;
+		Interaction.Dialog.splice(Interaction.Dialog.length - 1, 1);
+		ShowDialog("Previous");
+		switch(DialogEvent) {
 			case "System_LanguageUnsupported":
 			case "System_MajorUpdateDetected":
 			case "System_PWANewVersionReady":
@@ -1523,7 +1531,7 @@
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			case "System_ConfirmClearUserData":
@@ -1536,7 +1544,7 @@
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			case "System_Error":
@@ -1549,7 +1557,7 @@
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			case "Subsystem_ConfirmGoToTutorial":
@@ -1562,7 +1570,7 @@
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			case "Library_TextExported":
@@ -1570,12 +1578,12 @@
 					case 3:
 						if(IsChecked("Checkbox_DialogCheckboxOption") == true) {
 							System.DontShowAgain[System.DontShowAgain.length] = "YamanoboRyou_Library_TextExported";
-							setTimeout(RefreshSystem, 0);
+							RefreshSystem();
 						}
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			case "Library_ConfirmDeleteText":
@@ -1586,13 +1594,13 @@
 						}
 						Library.Text.splice(Interaction.Deletion, 1);
 						Interaction.Deletion = 0;
-						setTimeout(ResetGame, 0);
+						ResetGame();
 						break;
 					case 3:
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			case "Library_ConfirmResetLibrary":
@@ -1613,15 +1621,13 @@
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			default:
-				AlertSystemError("The value of Interaction.Dialog[Interaction.Dialog.length - 1].Event \"" + Interaction.Dialog[Interaction.Dialog.length - 1].Event + "\" in function AnswerDialog is invalid.");
-				return;
+				AlertSystemError("The value of DialogEvent \"" + DialogEvent + "\" in function AnswerDialog is invalid.");
+				break;
 		}
-		Interaction.Dialog.splice(Interaction.Dialog.length - 1, 1);
-		ShowDialog("Previous");
 	}
 
 // Listeners
