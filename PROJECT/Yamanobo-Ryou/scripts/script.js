@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.07;
+		const CurrentVersion = 1.08;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -1221,8 +1221,13 @@
 						Library.Text[0] = structuredClone(Library.Text[Looper2]);
 						Library.Text[Looper2] = structuredClone(Library.Text[Looper2 + 1]);
 						Library.Text[Looper2 + 1] = structuredClone(Library.Text[0]);
-						if(Library.Selection == Looper2) {
-							Library.Selection++;
+						switch(true) {
+							case Library.Selection == Looper2:
+								Library.Selection++;
+								break;
+							case Library.Selection == Looper2 + 1:
+								Library.Selection--;
+								break;
 						}
 					}
 				}
