@@ -3,7 +3,7 @@
 山田凉上山，「孤独摇滚！」同人打字训练游戏。屑凉被讨债的波奇酱追上山，开始无尽的逃亡。<br>
 Yamanobo-Ryou (lit. Yamada Ryou climbing mountain) is a *Bocchi the Rock!* Doujin typing game. Ryou, being run after by Bocchi-chan for her debt, starts an endless escape towards a mountain.
 
-![封面 Cover](/PREVIEW/Cover.png)
+![封面 Cover](/PREVIEW/封面%20Cover.png)
 
 本游戏相比其他打字游戏具备以下特色：<br>
 This game has the following features when compared to other typing games:
@@ -21,7 +21,7 @@ Shows your real-time typing speed straightforwardly.
 
 # 预览 ／ Preview
 
-![预览 Preview](/PREVIEW/Preview.png)
+![预览 Preview](/PREVIEW/预览%20Preview.png)
 (Illustration credits: Pixiv ID [112301934](https://pixiv.net/en/artworks/112301934), [113047912](https://pixiv.net/en/artworks/113047912) by [@Grace C](https://pixiv.net/en/users/33777297))
 
 # 立即游玩 ／ Play Now
@@ -31,7 +31,7 @@ https://SamToki.github.io/Yamanobo-Ryou
 可扫描二维码：<br>
 Scan the QR code to play on mobile devices:
 
-![二维码 QR code](/PREVIEW/QR%20code.png)
+![二维码 QR code](/PREVIEW/二维码%20QR%20code.png)
 
 # 教程 ／ Tutorial
 
