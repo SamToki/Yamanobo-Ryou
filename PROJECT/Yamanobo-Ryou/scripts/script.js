@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.09;
+		const CurrentVersion = 1.10;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -714,7 +714,7 @@
 
 			// Additional indicators
 				// Speed trend
-				Game.Stats.SpeedTrend = (Game0.Stats.SpeedTapeDisplay - Game0.Stats.PreviousSpeedTapeDisplay) * (5000 / (Date.now() - Game0.Stats.PreviousClockTime));
+				Game.Stats.SpeedTrend = (Game0.Stats.SpeedTapeDisplay - Game0.Stats.PreviousSpeedTapeDisplay) * (1000 / (Date.now() - Game0.Stats.PreviousClockTime));
 				Game0.Stats.SpeedTrendDisplay += (Game.Stats.SpeedTrend - Game0.Stats.SpeedTrendDisplay) / 5;
 				if(Game0.Stats.SpeedTrendDisplay >= 0) {
 					RemoveClass("Ctrl_GameSpeedTrend", "Decreasing");
