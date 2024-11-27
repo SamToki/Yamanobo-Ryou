@@ -252,20 +252,20 @@
 				.Balloon .Box {
 					background-color: transparent;
 				}
-				#ScrollingNumber_GameSpeed1 {
+				#RollingDigit_GameSpeed1 {
 					top: calc(-45px * 9);
 				}
-				#ScrollingNumber_GameSpeed2 {
+				#RollingDigit_GameSpeed2 {
 					top: calc(-45px * 10);
 				}
-				#ScrollingNumber_GameSpeed3 {
+				#RollingDigit_GameSpeed3 {
 					top: calc(15px - 30px * 11);
 				}
-				.ScrollingNumber span {
+				.RollingDigit span {
 					height: 30px; margin: 15px 0;
 					font-size: 2.25em;
 				}
-				#ScrollingNumber_GameSpeed3 span {
+				#RollingDigit_GameSpeed3 span {
 					margin: 0;
 				}
 
@@ -318,19 +318,19 @@
 				#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon #Ctrl_GameAltitude4 {
 					width: 35px;
 				}
-				#ScrollingNumber_GameAltitude1 {
+				#RollingDigit_GameAltitude1 {
 					top: calc(-45px * 3);
 				}
-				#ScrollingNumber_GameAltitude2 {
+				#RollingDigit_GameAltitude2 {
 					top: calc(-45px * 10);
 				}
-				#ScrollingNumber_GameAltitude3 {
+				#RollingDigit_GameAltitude3 {
 					top: calc(-45px * 10);
 				}
-				#ScrollingNumber_GameAltitude4 {
+				#RollingDigit_GameAltitude4 {
 					top: calc(17.5px - 25px * 6);
 				}
-				#ScrollingNumber_GameAltitude4 span {
+				#RollingDigit_GameAltitude4 span {
 					height: 25px; margin: 0;
 					font-size: 1.75em;
 				}
@@ -543,16 +543,16 @@
 					#Ctrl_GameSpeedBalloon .CtrlGroup .Balloon .Ctrl {
 						width: 12.5px;
 					}
-					#ScrollingNumber_GameSpeed1 {
+					#RollingDigit_GameSpeed1 {
 						top: calc(-30px * 9);
 					}
-					#ScrollingNumber_GameSpeed2 {
+					#RollingDigit_GameSpeed2 {
 						top: calc(-30px * 10);
 					}
-					#ScrollingNumber_GameSpeed3 {
+					#RollingDigit_GameSpeed3 {
 						top: calc(10px - 20px * 11);
 					}
-					.ScrollingNumber span {
+					.RollingDigit span {
 						height: 20px; margin: 10px 0;
 						font-size: 1.40em;
 					}
@@ -579,19 +579,19 @@
 					#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon #Ctrl_GameAltitude4 {
 						width: 22.5px;
 					}
-					#ScrollingNumber_GameAltitude1 {
+					#RollingDigit_GameAltitude1 {
 						top: calc(-30px * 3);
 					}
-					#ScrollingNumber_GameAltitude2 {
+					#RollingDigit_GameAltitude2 {
 						top: calc(-30px * 10);
 					}
-					#ScrollingNumber_GameAltitude3 {
+					#RollingDigit_GameAltitude3 {
 						top: calc(-30px * 10);
 					}
-					#ScrollingNumber_GameAltitude4 {
+					#RollingDigit_GameAltitude4 {
 						top: calc(12px - 16px * 6);
 					}
-					#ScrollingNumber_GameAltitude4 span {
+					#RollingDigit_GameAltitude4 span {
 						height: 16px;
 						font-size: 1.10em;
 					}

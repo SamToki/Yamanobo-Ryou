@@ -760,19 +760,19 @@
 			Game0.Stats.SpeedBalloonDisplay[2] = Math.floor(Game0.Stats.SpeedTapeDisplay % 100 / 10);
 			Game0.Stats.SpeedBalloonDisplay[3] = Game0.Stats.SpeedTapeDisplay % 10;
 			if(System.Display.Anim > 0) {
-				if(Game0.Stats.SpeedBalloonDisplay[3] > 9) {Game0.Stats.SpeedBalloonDisplay[2] += (Game0.Stats.SpeedBalloonDisplay[3] - 9);} // Imitating the cockpit PFD number scrolling effect.
+				if(Game0.Stats.SpeedBalloonDisplay[3] > 9) {Game0.Stats.SpeedBalloonDisplay[2] += (Game0.Stats.SpeedBalloonDisplay[3] - 9);} // Imitating the cockpit PFD rolling digits.
 				if(Game0.Stats.SpeedBalloonDisplay[2] > 9) {Game0.Stats.SpeedBalloonDisplay[1] += (Game0.Stats.SpeedBalloonDisplay[2] - 9);}
 			} else {
 				Game0.Stats.SpeedBalloonDisplay[3] = Math.floor(Game0.Stats.SpeedBalloonDisplay[3]);
 			}
 			if(IsMobileLayout() == false) {
-				ChangeTop("ScrollingNumber_GameSpeed1", -45 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
-				ChangeTop("ScrollingNumber_GameSpeed2", -45 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
-				ChangeTop("ScrollingNumber_GameSpeed3", 15 - 30 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+				ChangeTop("RollingDigit_GameSpeed1", -45 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
+				ChangeTop("RollingDigit_GameSpeed2", -45 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
+				ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
 			} else {
-				ChangeTop("ScrollingNumber_GameSpeed1", -30 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
-				ChangeTop("ScrollingNumber_GameSpeed2", -30 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
-				ChangeTop("ScrollingNumber_GameSpeed3", 10 - 20 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+				ChangeTop("RollingDigit_GameSpeed1", -30 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
+				ChangeTop("RollingDigit_GameSpeed2", -30 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
+				ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
 			}
 			if(Game0.Stats.SpeedTapeDisplay < Game0.Stats.DangerousSpeedDisplay) {
 				AddClass("CtrlGroup_GameSpeedBalloon", "RedText");
@@ -799,15 +799,15 @@
 				Game0.Stats.AltitudeBalloonDisplay[4] = Math.floor(Game0.Stats.AltitudeBalloonDisplay[4] / 20) * 20;
 			}
 			if(IsMobileLayout() == false) {
-				ChangeTop("ScrollingNumber_GameAltitude1", -45 * (3 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
-				ChangeTop("ScrollingNumber_GameAltitude2", -45 * (10 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
-				ChangeTop("ScrollingNumber_GameAltitude3", -45 * (10 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
-				ChangeTop("ScrollingNumber_GameAltitude4", 17.5 - 25 * (6 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+				ChangeTop("RollingDigit_GameAltitude1", -45 * (3 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
+				ChangeTop("RollingDigit_GameAltitude2", -45 * (10 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
+				ChangeTop("RollingDigit_GameAltitude3", -45 * (10 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
+				ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (6 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
 			} else {
-				ChangeTop("ScrollingNumber_GameAltitude1", -30 * (3 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
-				ChangeTop("ScrollingNumber_GameAltitude2", -30 * (10 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
-				ChangeTop("ScrollingNumber_GameAltitude3", -30 * (10 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
-				ChangeTop("ScrollingNumber_GameAltitude4", 12 - 16 * (6 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+				ChangeTop("RollingDigit_GameAltitude1", -30 * (3 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
+				ChangeTop("RollingDigit_GameAltitude2", -30 * (10 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
+				ChangeTop("RollingDigit_GameAltitude3", -30 * (10 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
+				ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (6 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
 			}
 
 		// Prompts
