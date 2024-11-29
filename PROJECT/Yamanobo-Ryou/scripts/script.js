@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.11;
+		const CurrentVersion = 1.12;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -936,20 +936,22 @@
 			ChangeValue("Textbox_SettingsAltitude", Game.Progressing.Altitude);
 
 			// Difficulty
+			switch(true) {
+				case Game.Difficulty.ChaserSpeed.Initial == 180 && Game.Difficulty.ChaserSpeed.Final == 240:
+					ChangeValue("Combobox_SettingsChaserSpeedPreset", "Western");
+					break;
+				case Game.Difficulty.ChaserSpeed.Initial == 40 && Game.Difficulty.ChaserSpeed.Final == 60:
+					ChangeValue("Combobox_SettingsChaserSpeedPreset", "CJK");
+					break;
+				case Game.Difficulty.ChaserSpeed.Initial == 10 && Game.Difficulty.ChaserSpeed.Final == 10:
+					ChangeValue("Combobox_SettingsChaserSpeedPreset", "ZenMode");
+					break;
+				default:
+					ChangeValue("Combobox_SettingsChaserSpeedPreset", "");
+					break;
+			}
 			ChangeValue("Textbox_SettingsChaserSpeedInitial", Game.Difficulty.ChaserSpeed.Initial);
 			ChangeValue("Textbox_SettingsChaserSpeedFinal", Game.Difficulty.ChaserSpeed.Final);
-			RemoveClass("Button_SettingsChaserSpeedWestern", "Active");
-			RemoveClass("Button_SettingsChaserSpeedCJK", "Active");
-			RemoveClass("Button_SettingsChaserSpeedZenMode", "Active");
-			if(Game.Difficulty.ChaserSpeed.Initial == 180 && Game.Difficulty.ChaserSpeed.Final == 240) {
-				AddClass("Button_SettingsChaserSpeedWestern", "Active");
-			}
-			if(Game.Difficulty.ChaserSpeed.Initial == 40 && Game.Difficulty.ChaserSpeed.Final == 60) {
-				AddClass("Button_SettingsChaserSpeedCJK", "Active");
-			}
-			if(Game.Difficulty.ChaserSpeed.Initial == 10 && Game.Difficulty.ChaserSpeed.Final == 10) {
-				AddClass("Button_SettingsChaserSpeedZenMode", "Active");
-			}
 			ChangeValue("Textbox_SettingsMaxSeparation", Game.Difficulty.MaxSeparation);
 
 			// Custom characters
@@ -1377,6 +1379,26 @@
 		}
 
 		// Difficulty
+		function SetChaserSpeedPreset() {
+			switch(ReadValue("Combobox_SettingsChaserSpeedPreset")) {
+				case "Western":
+					Game.Difficulty.ChaserSpeed.Initial = 180;
+					Game.Difficulty.ChaserSpeed.Final = 240;
+					break;
+				case "CJK":
+					Game.Difficulty.ChaserSpeed.Initial = 40;
+					Game.Difficulty.ChaserSpeed.Final = 60;
+					break;
+				case "ZenMode":
+					Game.Difficulty.ChaserSpeed.Initial = 10;
+					Game.Difficulty.ChaserSpeed.Final = 10;
+					break;
+				default:
+					AlertSystemError("The value of ReadValue(\"Combobox_SettingsChaserSpeedPreset\") \"" + ReadValue("Combobox_SettingsChaserSpeedPreset") + "\" in function SetChaserSpeedPreset is invalid.");
+					break;
+			}
+			RefreshGame();
+		}
 		function SetChaserSpeedInitial() {
 			Game.Difficulty.ChaserSpeed.Initial = parseInt(Number(ReadValue("Textbox_SettingsChaserSpeedInitial")));
 			if(Game.Difficulty.ChaserSpeed.Initial < 10) {
@@ -1407,21 +1429,6 @@
 			if(Game.Difficulty.ChaserSpeed.Final > Game.Difficulty.ChaserSpeed.Initial + 100) {
 				Game.Difficulty.ChaserSpeed.Initial = Game.Difficulty.ChaserSpeed.Final - 100;
 			}
-			RefreshGame();
-		}
-		function SetChaserSpeedWestern() {
-			Game.Difficulty.ChaserSpeed.Initial = 180;
-			Game.Difficulty.ChaserSpeed.Final = 240;
-			RefreshGame();
-		}
-		function SetChaserSpeedCJK() {
-			Game.Difficulty.ChaserSpeed.Initial = 40;
-			Game.Difficulty.ChaserSpeed.Final = 60;
-			RefreshGame();
-		}
-		function SetChaserSpeedZenMode() {
-			Game.Difficulty.ChaserSpeed.Initial = 10;
-			Game.Difficulty.ChaserSpeed.Final = 10;
 			RefreshGame();
 		}
 		function SetMaxSeparation() {
