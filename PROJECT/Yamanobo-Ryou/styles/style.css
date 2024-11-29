@@ -133,16 +133,16 @@
 				}
 				.Tape .CtrlGroup {
 					position: absolute; top: unset; left: 0;
-					width: 100%;
+					width: calc(100% - 13px);
 					flex-direction: column;
 				}
 				#CtrlGroup_GameSpeedTape {
-					top: calc(50% - 5000px);
+					top: calc(50% - 5000px); right: 0; left: unset;
 					height: 5000px;
 				}
 				.Tape .Ctrl {
 					width: 100%; height: 0;
-					display: flex; align-items: center;
+					display: flex; justify-content: space-between; align-items: center;
 				}
 				#CtrlGroup_GameSpeedTape .Ctrl {
 					flex-direction: row-reverse;
@@ -152,10 +152,8 @@
 					background-color: #00000080;
 				}
 				.TapeNumber {
-					color: #00000080; font-size: 1.50em;
-				}
-				#CtrlGroup_GameSpeedTape .TapeNumber {
-					margin: 0 20px 0 0;
+					width: calc(100% - 44px);
+					color: #00000080; font-size: 2.00em; text-align: end;
 				}
 
 				/* Additional indicators */
@@ -279,11 +277,8 @@
 			}
 				/* Tape */
 				#CtrlGroup_GameAltitudeTape {
-					top: calc(50% - 30000px);
-					height: 32000px;
-				}
-				#CtrlGroup_GameAltitudeTape .TapeNumber {
-					margin: 0 0 0 20px;
+					top: calc(50% - 29000px);
+					height: 29000px;
 				}
 
 				/* Balloon */
@@ -501,11 +496,15 @@
 					width: 100px; height: 150px;
 				}
 					/* Tape */
+					.Tape .CtrlGroup {
+						width: calc(100% - 11px);
+					}
 					.TapeScale {
 						width: 15px;
 					}
 					.TapeNumber {
-						font-size: 1.00em;
+						width: calc(100% - 35px);
+						font-size: 1.25em;
 					}
 
 					/* Additional indicators */

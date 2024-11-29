@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.12;
+		const CurrentVersion = 1.13;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -768,11 +768,31 @@
 			if(IsMobileLayout() == false) {
 				ChangeTop("RollingDigit_GameSpeed1", -45 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
 				ChangeTop("RollingDigit_GameSpeed2", -45 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
-				ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+				switch(true) {
+					case Game0.Stats.SpeedTapeDisplay < 1:
+						ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (18 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+						break;
+					case Game0.Stats.SpeedTapeDisplay > 998:
+						ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (9 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+						break;
+					default:
+						ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (14 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+						break;
+				}
 			} else {
 				ChangeTop("RollingDigit_GameSpeed1", -30 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
 				ChangeTop("RollingDigit_GameSpeed2", -30 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
-				ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (11 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+				switch(true) {
+					case Game0.Stats.SpeedTapeDisplay < 1:
+						ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (18 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+						break;
+					case Game0.Stats.SpeedTapeDisplay > 998:
+						ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (9 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+						break;
+					default:
+						ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (14 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+						break;
+				}
 			}
 			if(Game0.Stats.SpeedTapeDisplay < Game0.Stats.DangerousSpeedDisplay) {
 				AddClass("CtrlGroup_GameSpeedBalloon", "RedText");
@@ -784,7 +804,7 @@
 		Game.Stats.Altitude = Game.Terrain.Data[Game.Stats.Odometer][2];
 			// Tape
 			Game0.Stats.AltitudeTapeDisplay += (Game.Stats.Altitude - Game0.Stats.AltitudeTapeDisplay) / 5;
-			ChangeTop("CtrlGroup_GameAltitudeTape", "calc(50% - 30000px + " + Game0.Stats.AltitudeTapeDisplay + "px)");
+			ChangeTop("CtrlGroup_GameAltitudeTape", "calc(50% - 29000px + " + Game0.Stats.AltitudeTapeDisplay + "px)");
 
 			// Balloon
 			Game0.Stats.AltitudeBalloonDisplay[1] = Math.floor(Game0.Stats.AltitudeTapeDisplay / 10000);
@@ -799,15 +819,35 @@
 				Game0.Stats.AltitudeBalloonDisplay[4] = Math.floor(Game0.Stats.AltitudeBalloonDisplay[4] / 20) * 20;
 			}
 			if(IsMobileLayout() == false) {
-				ChangeTop("RollingDigit_GameAltitude1", -45 * (3 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
+				ChangeTop("RollingDigit_GameAltitude1", -45 * (2 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
 				ChangeTop("RollingDigit_GameAltitude2", -45 * (10 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
 				ChangeTop("RollingDigit_GameAltitude3", -45 * (10 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
-				ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (6 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+				switch(true) {
+					case Game0.Stats.AltitudeTapeDisplay < 20:
+						ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (13 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+						break;
+					case Game0.Stats.AltitudeTapeDisplay > 28980:
+						ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (5 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+						break;
+					default:
+						ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (9 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+						break;
+				}
 			} else {
-				ChangeTop("RollingDigit_GameAltitude1", -30 * (3 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
+				ChangeTop("RollingDigit_GameAltitude1", -30 * (2 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
 				ChangeTop("RollingDigit_GameAltitude2", -30 * (10 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
 				ChangeTop("RollingDigit_GameAltitude3", -30 * (10 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
-				ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (6 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+				switch(true) {
+					case Game0.Stats.AltitudeTapeDisplay < 20:
+						ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (13 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+						break;
+					case Game0.Stats.AltitudeTapeDisplay > 28980:
+						ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (5 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+						break;
+					default:
+						ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (9 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+						break;
+				}
 			}
 
 		// Prompts
