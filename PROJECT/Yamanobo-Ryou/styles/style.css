@@ -133,7 +133,7 @@
 				}
 				.Tape .CtrlGroup {
 					position: absolute; top: unset; left: 0;
-					width: calc(100% - 13px);
+					width: calc(100% - 20px);
 					flex-direction: column;
 				}
 				#CtrlGroup_GameSpeedTape {
@@ -152,8 +152,8 @@
 					background-color: #00000080;
 				}
 				.TapeNumber {
-					width: calc(100% - 44px);
-					color: #00000080; font-size: 2.00em; text-align: end;
+					width: calc(100% - 45px);
+					color: #00000080; font-size: 1.50em; text-align: end;
 				}
 
 				/* Additional indicators */
@@ -474,8 +474,8 @@
 
 				/* Stats */
 				#Ctnr_GameStats {
-					left: 120px;
-					width: calc(100% - 240px); height: 150px;
+					left: 115px;
+					width: calc(100% - 230px); height: 150px;
 				}
 				#Ctnr_GameStats .CtrlGroup {
 					height: 100%;
@@ -493,18 +493,18 @@
 				/* Speed */
 				#Ctnr_GameSpeed {
 					top: 25px;
-					width: 100px; height: 150px;
+					width: 95px; height: 150px;
 				}
 					/* Tape */
 					.Tape .CtrlGroup {
-						width: calc(100% - 11px);
+						width: calc(100% - 14px);
 					}
 					.TapeScale {
 						width: 15px;
 					}
 					.TapeNumber {
-						width: calc(100% - 35px);
-						font-size: 1.25em;
+						width: calc(100% - 30px);
+						font-size: 1.00em;
 					}
 
 					/* Additional indicators */
@@ -513,7 +513,7 @@
 					}
 						/* Speed trend */
 						#Ctrl_GameSpeedTrend {
-							right: 25px;
+							right: 22.5px;
 							width: 10px;
 						}
 						#GameSpeedTrendArrow {
@@ -559,7 +559,7 @@
 				/* Altitude */
 				#Ctnr_GameAltitude {
 					top: 25px;
-					width: 100px; height: 150px;
+					width: 95px; height: 150px;
 				}
 					/* Balloon */
 					#Ctrl_GameAltitudeBalloon {
