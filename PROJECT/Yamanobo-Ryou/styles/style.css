@@ -48,7 +48,7 @@
 				width: 100%;
 			}
 			#GameChaserBalloon {
-				position: absolute; bottom: 20%; left: 175px; transform-origin: bottom left;
+				position: absolute; bottom: 20%; left: 170px; transform-origin: bottom left;
 				width: 160px; height: 60%;
 				filter: drop-shadow(0 0 0.5px #000000) drop-shadow(0 0 0.5px #000000) drop-shadow(0 0 0.5px #000000) drop-shadow(0 0 0.5px #000000);
 				overflow: hidden;
@@ -81,7 +81,7 @@
 			/* Textbox */
 			#Ctnr_GameTextbox {
 				position: absolute; top: calc(50% - 20px); left: 50%;
-				width: calc(50% - 175px);
+				width: calc(50% - 170px);
 			}
 			#Textbox_Game {
 				border: none; border-radius: 0; padding: 0;
@@ -100,8 +100,8 @@
 
 			/* Stats */
 			#Ctnr_GameStats {
-				position: absolute; top: 25px; left: 175px;
-				width: calc(100% - 350px);
+				position: absolute; top: 25px; left: 170px;
+				width: calc(100% - 340px);
 			}
 			#Ctnr_GameStats .CtrlGroup {
 				width: 100%;
@@ -119,7 +119,7 @@
 			/* Speed */
 			#Ctnr_GameSpeed {
 				position: absolute; top: 50px; left: 0;
-				width: 145px; height: calc(100% - 100px);
+				width: 140px; height: calc(100% - 100px);
 			}
 			#CtrlGroup_GameSpeed {
 				width: 100%; height: 100%;
@@ -148,11 +148,11 @@
 					flex-direction: row-reverse;
 				}
 				.TapeScale {
-					width: 25px; height: 2px; border-radius: 1px;
+					width: 20px; height: 2px; border-radius: 1px;
 					background-color: #00000080;
 				}
 				.TapeNumber {
-					width: calc(100% - 45px);
+					width: calc(100% - 40px);
 					color: #00000080; font-size: 1.50em; text-align: end;
 				}
 
@@ -169,7 +169,7 @@
 						width: 100%; height: 100%;
 					}
 					#Ctrl_GameSpeedTrend {
-						position: absolute; bottom: 50%; right: 35px;
+						position: absolute; bottom: 50%; right: 30px;
 						width: 15px; height: 0;
 						display: flex; align-items: center;
 					}
@@ -270,7 +270,7 @@
 			/* Altitude */
 			#Ctnr_GameAltitude {
 				position: absolute; top: 50px; right: 0;
-				width: 145px; height: calc(100% - 100px);
+				width: 140px; height: calc(100% - 100px);
 			}
 			#CtrlGroup_GameAltitude {
 				width: 100%; height: 100%;
@@ -332,8 +332,8 @@
 
 			/* Prompts */
 			#Ctnr_GamePrompts {
-				position: absolute; bottom: 50px; left: 175px;
-				width: calc(100% - 350px);
+				position: absolute; bottom: 50px; left: 170px;
+				width: calc(100% - 340px);
 			}
 			#Ctnr_GamePrompts .CtrlGroup {
 				width: 100%;
