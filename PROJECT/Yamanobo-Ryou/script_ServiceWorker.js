@@ -1,6 +1,6 @@
 // For SamToki.github.io/Yamanobo-Ryou
 // Released under GNU GPL v3 open source license.
-// (C) 2024 SAM TOKI STUDIO
+// © 2024 SAM TOKI STUDIO
 
 // Initialization
 	// Declare variables
