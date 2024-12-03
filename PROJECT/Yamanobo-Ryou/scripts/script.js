@@ -661,11 +661,7 @@
 				RemoveClass("Label_GameKeystrokeSpeedValue", "Transparent");
 			}
 		}
-		if(System.Display.Anim > 0) {
-			Game0.Stats.KeystrokeSpeedDisplay += (Game.Stats.KeystrokeSpeed - Game0.Stats.KeystrokeSpeedDisplay) / 200;
-		} else {
-			Game0.Stats.KeystrokeSpeedDisplay = Game.Stats.KeystrokeSpeed;
-		}
+		Game0.Stats.KeystrokeSpeedDisplay += (Game.Stats.KeystrokeSpeed - Game0.Stats.KeystrokeSpeedDisplay) / 200;
 		ChangeText("Label_GameKeystrokeSpeedValue", Game0.Stats.KeystrokeSpeedDisplay.toFixed(0) + "<span class=\"SmallerText\">kpm</span>");
 		if(Game.Stats.Odometer > 0) {
 			Game.Stats.Accuracy = Game.Stats.Odometer / (Game.Stats.Odometer + Game.Stats.TypoCount) * 100;
