@@ -847,7 +847,7 @@
 									<label for="Radiobtn_SettingsTravelDistance">
 										<input class="Radiobtn" id="Radiobtn_SettingsTravelDistance" type="radio" checked="false" onchange="SetProgressing('TravelDistance')" />
 										<span>里程：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsTravelDistance" type="number" min="50" max="9999" step="50" value="500" placeholder="50~9999" onclick="SelectText('Textbox_SettingsTravelDistance')" onchange="SetTravelDistance()" />
+										<input class="Textbox Width120" id="Textbox_SettingsTravelDistance" type="number" title="" min="50" max="9999" step="50" value="500" placeholder="50~9999" onclick="SelectText('Textbox_SettingsTravelDistance')" onchange="SetTravelDistance()" />
 										<span>字符</span>
 									</label>
 								</li>
@@ -855,7 +855,7 @@
 									<label for="Radiobtn_SettingsAltitude">
 										<input class="Radiobtn" id="Radiobtn_SettingsAltitude" type="radio" checked="false" onchange="SetProgressing('Altitude')" />
 										<span>高度：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsAltitude" type="number" min="200" max="29000" step="200" value="1600" placeholder="200~29000" onclick="SelectText('Textbox_SettingsAltitude')" onchange="SetAltitude()" />
+										<input class="Textbox Width120" id="Textbox_SettingsAltitude" type="number" title="" min="200" max="29000" step="200" value="1600" placeholder="200~29000" onclick="SelectText('Textbox_SettingsAltitude')" onchange="SetAltitude()" />
 									</label>
 								</li>
 							</ul>
@@ -878,16 +878,16 @@
 								<li class="Ctrl">
 									<label for="Textbox_SettingsChaserSpeedInitial">
 										<span>追逐者速度：从</span>
-										<input class="Textbox Width80" id="Textbox_SettingsChaserSpeedInitial" type="number" min="10" max="999" step="5" value="180" placeholder="10~999" onclick="SelectText('Textbox_SettingsChaserSpeedInitial')" onchange="SetChaserSpeedInitial()" />
+										<input class="Textbox Width80" id="Textbox_SettingsChaserSpeedInitial" type="number" title="" min="10" max="999" step="5" value="180" placeholder="10~999" onclick="SelectText('Textbox_SettingsChaserSpeedInitial')" onchange="SetChaserSpeedInitial()" />
 										<span>至</span>
-										<input class="Textbox Width80" id="Textbox_SettingsChaserSpeedFinal" type="number" min="10" max="999" step="5" value="240" placeholder="初始速度~999" onclick="SelectText('Textbox_SettingsChaserSpeedFinal')" onchange="SetChaserSpeedFinal()" />
+										<input class="Textbox Width80" id="Textbox_SettingsChaserSpeedFinal" type="number" title="" min="10" max="999" step="5" value="240" placeholder="初始速度~999" onclick="SelectText('Textbox_SettingsChaserSpeedFinal')" onchange="SetChaserSpeedFinal()" />
 										<span>字符/分钟</span>
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Textbox_SettingsMaxSeparation">
 										<span>最大间距：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsMaxSeparation" type="number" min="10" max="100" step="10" value="50" placeholder="10~100" onclick="SelectText('Textbox_SettingsMaxSeparation')" onchange="SetMaxSeparation()" />
+										<input class="Textbox Width120" id="Textbox_SettingsMaxSeparation" type="number" title="" min="10" max="100" step="5" value="50" placeholder="10~100" onclick="SelectText('Textbox_SettingsMaxSeparation')" onchange="SetMaxSeparation()" />
 										<span>字符</span>
 									</label>
 								</li>
