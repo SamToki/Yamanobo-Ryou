@@ -641,9 +641,9 @@
 		ChangeProgbar("ProgbarFg_Game", "Horizontal", Game.Stats.Progress);
 
 		// Stats
-		ChangeText("Label_GameOdometerValue", Game.Stats.Odometer);
-		ChangeText("Label_GameTypoCountValue", Game.Stats.TypoCount);
-		ChangeText("Label_GameElapsedTimeValue", Math.floor(Game.Stats.ElapsedTime / 60000) + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
+		ChangeText("Label_GameOdometer", Game.Stats.Odometer);
+		ChangeText("Label_GameTypoCount", Game.Stats.TypoCount);
+		ChangeText("Label_GameElapsedTime", Math.floor(Game.Stats.ElapsedTime / 60000) + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
 		if(Game.Stats.KeystrokeCount > 20) {
 			if(Game.Stats.KeystrokeTimestamp[1] >= 0) {
 				Game.Stats.KeystrokeSpeed = 60000 / ((Game.Stats.ElapsedTime - Game.Stats.KeystrokeTimestamp[1]) / 20);
@@ -651,30 +651,30 @@
 			} else {
 				AlertSystemError("The array Game.Stats.KeystrokeTimestamp is not filled when Game.Stats.KeystrokeCount got greater than 20.");
 			}
-			RemoveClass("Label_GameKeystrokeSpeedValue", "Transparent");
+			RemoveClass("Label_GameKeystrokeSpeed", "Transparent");
 		} else {
 			Game.Stats.KeystrokeSpeed = 0;
 			Game.Stats.AvgKeystrokeSpeed = 0;
 			if(Game.Stats.KeystrokeCount > 0) {
-				AddClass("Label_GameKeystrokeSpeedValue", "Transparent");
+				AddClass("Label_GameKeystrokeSpeed", "Transparent");
 			} else {
-				RemoveClass("Label_GameKeystrokeSpeedValue", "Transparent");
+				RemoveClass("Label_GameKeystrokeSpeed", "Transparent");
 			}
 		}
 		Game0.Stats.KeystrokeSpeedDisplay += (Game.Stats.KeystrokeSpeed - Game0.Stats.KeystrokeSpeedDisplay) / 200;
-		ChangeText("Label_GameKeystrokeSpeedValue", Game0.Stats.KeystrokeSpeedDisplay.toFixed(0) + "<span class=\"SmallerText\">kpm</span>");
+		ChangeText("Label_GameKeystrokeSpeed", Game0.Stats.KeystrokeSpeedDisplay.toFixed(0) + "<span class=\"SmallerText\">kpm</span>");
 		if(Game.Stats.Odometer > 0) {
 			Game.Stats.Accuracy = Game.Stats.Odometer / (Game.Stats.Odometer + Game.Stats.TypoCount) * 100;
 		} else {
 			Game.Stats.Accuracy = 0;
 		}
-		ChangeText("Label_GameAccuracyValue", Game.Stats.Accuracy.toFixed(2) + "%");
+		ChangeText("Label_GameAccuracy", Game.Stats.Accuracy.toFixed(2) + "%");
 		if(System.Display.Anim > 0) {
 			Game0.Stats.ScoreDisplay += (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
 		} else {
 			Game0.Stats.ScoreDisplay = Game.Stats.Score;
 		}
-		ChangeText("Label_GameScoreValue", Game0.Stats.ScoreDisplay.toFixed(0).toString().padStart(8, "0"));
+		ChangeText("Label_GameScore", Game0.Stats.ScoreDisplay.toFixed(0).toString().padStart(8, "0"));
 
 		// Speed
 		if(Game.Stats.Odometer > 20) { // The speed is not calculated when travel distance is less than 20.
@@ -1007,6 +1007,16 @@
 			}
 			ChangeValue("Textbox_SettingsBgImage", Game.CustomCharacters.BgImage);
 			ChangeBgImage(Game.CustomCharacters.BgImage);
+			if(Game.CustomCharacters.PlayerImage != Game.CustomCharacters.ChaserImage) {
+				ChangeDisabled("Button_SettingsSwapCharacters", false);
+			} else {
+				ChangeDisabled("Button_SettingsSwapCharacters", true);
+			}
+			if(Game.CustomCharacters.PlayerImage != "" || Game.CustomCharacters.ChaserImage != "" || Game.CustomCharacters.BgImage != "") {
+				ChangeDisabled("Button_SettingsResetCustomCharacters", false);
+			} else {
+				ChangeDisabled("Button_SettingsResetCustomCharacters", true);
+			}
 
 		// Save user data (Only when the game is not running or when the game is paused)
 		if(Game.Status.IsRunning == false || Game.Status.IsPaused == true) {
@@ -1064,12 +1074,12 @@
 				"		<input class=\"Radiobtn\" id=\"Radiobtn_LibraryText" + Looper + "\" type=\"radio\" checked=\"false\" onchange=\"SetText(" + Looper + ")\" />" +
 				"		<span class=\"ListItemName\">" + ConvertEmptyName(Library.Text[Looper].Name) + "</span>" +
 				"	</label>" +
-				"	<button class=\"Button ShownAsLabel ListItemDuplicate\" id=\"Button_LibraryText" + Looper + "Duplicate\" onclick=\"DuplicateText(" + Looper + ")\" aria-label=\"生成副本\">" +
+				"	<button class=\"Button ShownAsLabel ListItemDuplicate\" onclick=\"DuplicateText(" + Looper + ")\" aria-label=\"生成副本\">" +
 				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
 				"			<path d=\"M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z\"/>" +
 				"		</svg>" +
 				"	</button>" +
-				"	<button class=\"Button ShownAsLabel ListItemExport\" id=\"Button_LibraryText" + Looper + "Export\" onclick=\"ExportText(" + Looper + ")\" aria-label=\"导出\">" +
+				"	<button class=\"Button ShownAsLabel ListItemExport\" onclick=\"ExportText(" + Looper + ")\" aria-label=\"导出\">" +
 				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
 				"			<path d=\"M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5\"/>" +
 				"			<path d=\"M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z\"/>" +
