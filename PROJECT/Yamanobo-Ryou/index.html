@@ -10,7 +10,7 @@
 		<link rel="icon" type="image/png" href="images/Favicon.png" />
 		<title>山田凉上山</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v1.14 (2024/12/06). Since 2024/10/13." />
+		<meta name="version" content="v1.15 (2024/12/06). Since 2024/10/13." />
 		<meta name="description" content="「孤独摇滚！」同人打字训练游戏。屑凉被讨债的波奇酱追上山，开始无尽的逃亡。" />
 		<meta name="copyright" content="© 2024 SAM TOKI STUDIO" />
 
@@ -31,7 +31,7 @@
 	</head>
 
 	<body>
-		<div class="Blur" id="Ctnr_BgImage"></div>
+		<div class="Blur" id="BgImage"></div>
 
 		<header id="Topbar">
 			<ul class="CtrlGroup">
@@ -113,10 +113,10 @@
 			<section id="Game" onclick="Focus('Textbox_Game')">
 				<h1 class="SectionTitle Hidden" inert="true">游戏</h1>
 				<div class="Viewport">
-					<div id="Ctnr_GameTerrain" lang="en-US">
+					<div class="Ctnr" id="Ctnr_GameTerrain" lang="en-US">
 						<!-- Content will be inserted using script. -->
 					</div>
-					<div id="Ctnr_GameCharacters">
+					<div class="Ctnr" id="Ctnr_GameCharacters">
 						<div class="Character" id="Character_GamePlayer">
 							<img id="Image_GamePlayer" src="images/YamadaRyou.png" alt="玩家图像" />
 						</div>
@@ -133,15 +133,15 @@
 							</ul>
 						</div>
 					</div>
-					<div id="Ctnr_GameTextbox">
+					<div class="Ctnr" id="Ctnr_GameTextbox">
 						<input class="Textbox" id="Textbox_Game" lang="en-US" type="text" onfocus="ClockGame()" onfocusout="ClockGame()" oninput="ClockGame()" onkeydown="setTimeout(Keypress, 20)" onpaste="setTimeout(WarnAboutPasting, 20)" aria-label="游戏文本框" />
 					</div>
-					<div id="Ctnr_GameProgbar">
+					<div class="Ctnr" id="Ctnr_GameProgbar">
 						<div class="Progbar">
 							<div class="ProgbarFg" id="ProgbarFg_Game"></div>
 						</div>
 					</div>
-					<div id="Ctnr_GameStats">
+					<div class="Ctnr" id="Ctnr_GameStats">
 						<ul class="CtrlGroup">
 							<li class="Ctrl">
 								<span class="GameStatsTitle">里程</span>
@@ -169,7 +169,7 @@
 							</li>
 						</ul>
 					</div>
-					<div id="Ctnr_GameSpeed">
+					<div class="Ctnr" id="Ctnr_GameSpeed">
 						<ul class="CtrlGroup" id="CtrlGroup_GameSpeed">
 							<li class="Ctrl Tape" id="Ctrl_GameSpeedTape">
 								<ul class="CtrlGroup" id="CtrlGroup_GameSpeedTape">
@@ -317,7 +317,7 @@
 							</li>
 						</ul>
 					</div>
-					<div id="Ctnr_GameAltitude">
+					<div class="Ctnr" id="Ctnr_GameAltitude">
 						<ul class="CtrlGroup" id="CtrlGroup_GameAltitude">
 							<li class="Ctrl Tape" id="Ctrl_GameAltitudeTape">
 								<ul class="CtrlGroup" id="CtrlGroup_GameAltitudeTape">
@@ -647,7 +647,7 @@
 							</li>
 						</ul>
 					</div>
-					<div id="Ctnr_GamePrompts">
+					<div class="Ctnr" id="Ctnr_GamePrompts">
 						<ul class="CtrlGroup">
 							<li class="Ctrl Box Glow" id="Ctrl_GameStartPrompt">
 								<span id="Label_GameStartPrompt">请点击画面</span>
@@ -657,7 +657,7 @@
 							</li>
 						</ul>
 					</div>
-					<div id="Ctnr_GameCtrl">
+					<div class="Ctnr" id="Ctnr_GameCtrl">
 						<ul class="CtrlGroup">
 							<li class="Ctrl" id="Ctrl_GamePauseOrReset">
 								<button class="Button" id="Button_GamePauseOrReset" disabled="true" onclick="PauseOrResetGame()">暂停</button>
@@ -1153,7 +1153,7 @@
 							<legend>关于</legend>
 							<p>山田凉上山</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v1.14 (<time datetime="2024-12-06" pubdate="pubdate">2024/12/06</time>)<br />
+							<p>版本 v1.15 (<time datetime="2024-12-06" pubdate="pubdate">2024/12/06</time>)<br />
 								始于 2024/10/13</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">

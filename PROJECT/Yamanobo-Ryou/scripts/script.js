@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.14;
+		const CurrentVersion = 1.15;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -344,9 +344,9 @@
 			}
 			ChangeChecked("Checkbox_SettingsBlurBgImage", System.Display.BlurBgImage);
 			if(System.Display.BlurBgImage == true) {
-				AddClass("Ctnr_BgImage", "Blur");
+				AddClass("BgImage", "Blur");
 			} else {
-				RemoveClass("Ctnr_BgImage", "Blur");
+				RemoveClass("BgImage", "Blur");
 			}
 			ChangeValue("Combobox_SettingsHotkeyIndicators", System.Display.HotkeyIndicators);
 			switch(System.Display.HotkeyIndicators) {
