@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.13;
+		const CurrentVersion = 1.14;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -14,6 +14,7 @@
 					Ahead: 1, Behind: 0
 				}
 			},
+			PreviousTextboxContent: "",
 			Stats: {
 				PreviousClockTime: 0, PreviousElapsedTime: 0,
 				KeystrokeSpeedDisplay: 0,
@@ -56,7 +57,6 @@
 				],
 				Gradient: 3 // Range: -3 to 6.
 			},
-			PreviousTextboxContent: "",
 			Stats: {
 				Progress: 0,
 				Odometer: 0, ChaserOdometer: 0, TypoCount: 0,
@@ -479,13 +479,13 @@
 						}
 						ChangeValue("Textbox_Game", ReadValue("Textbox_Game").substring(1));
 					} else {
-						if(Game.PreviousTextboxContent.startsWith(ReadValue("Textbox_Game")) == false) {
+						if(Game0.PreviousTextboxContent.startsWith(ReadValue("Textbox_Game")) == false) {
 							Game.Stats.TypoCount++;
 						}
 						AddClass("Textbox_Game", "HasTypo");
 					}
 				}
-				Game.PreviousTextboxContent = ReadValue("Textbox_Game");
+				Game0.PreviousTextboxContent = ReadValue("Textbox_Game");
 			}
 
 			// Chaser
@@ -1171,7 +1171,6 @@
 				],
 				Gradient: 5
 			};
-			Game.PreviousTextboxContent = "";
 			Game.Stats = {
 				Progress: 0,
 				Odometer: 0, ChaserOdometer: 0, TypoCount: 0,
@@ -1191,6 +1190,7 @@
 						Ahead: 1, Behind: 0
 					}
 				},
+				PreviousTextboxContent: "",
 				Stats: {
 					PreviousClockTime: 0, PreviousElapsedTime: 0,
 					KeystrokeSpeedDisplay: 0,
