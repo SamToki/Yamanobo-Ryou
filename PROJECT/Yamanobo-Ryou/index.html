@@ -10,12 +10,12 @@
 		<link rel="icon" type="image/png" href="images/Favicon.png" />
 		<title>山田凉上山</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v1.15 (2024/12/06). Since 2024/10/13." />
+		<meta name="version" content="v1.16 (2024/12/10). Since 2024/10/13." />
 		<meta name="description" content="「孤独摇滚！」同人打字训练游戏。屑凉被讨债的波奇酱追上山，开始无尽的逃亡。" />
 		<meta name="copyright" content="© 2024 SAM TOKI STUDIO" />
 
 		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
-		<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#303030">
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#303030">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../styles/common.css" />
 		<link id="ThemeVariant_Common" rel="stylesheet" href="../styles/common_Dark.css" media="(prefers-color-scheme: dark)" />
@@ -36,12 +36,12 @@
 		<header id="Topbar">
 			<ul class="CtrlGroup">
 				<li class="Ctrl" id="Ctrl_Title">
-					<a href="https://SamToki.github.io/Yamanobo-Ryou" aria-label="山田凉上山">
+					<a href="https://SamToki.github.io/Yamanobo-Ryou" title="山田凉上山" aria-label="山田凉上山">
 						<img src="images/Icon.png" alt="网页图标" />
 					</a>
 				</li>
 				<li class="Ctrl" id="Ctrl_Nav">
-					<button class="Button HiddenHorizontally" id="Button_Nav" inert="true" onclick="Show('DropctrlGroup_Nav')" aria-label="导航菜单">
+					<button class="Button HiddenHorizontally" id="Button_Nav" inert="true" onclick="Show('DropctrlGroup_Nav')" title="导航菜单" aria-label="导航菜单">
 						<svg class="Icon Larger" viewBox="0 0 16 16" aria-hidden="true">
 							<path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
 						</svg>
@@ -100,7 +100,7 @@
 					</nav>
 				</li>
 				<li class="Ctrl" id="Ctrl_HomePage">
-					<a class="Button" href=".." aria-label="主页">
+					<a class="Button" href=".." title="主页" aria-label="主页">
 						<svg class="Icon" viewBox="0 0 16 16" aria-hidden="true">
 							<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
 						</svg>
@@ -118,26 +118,26 @@
 					</div>
 					<div class="Ctnr" id="Ctnr_GameCharacters">
 						<div class="Character" id="Character_GamePlayer">
-							<img id="Image_GamePlayer" src="images/YamadaRyou.png" alt="玩家图像" />
+							<img id="Image_GamePlayer" src="images/YamadaRyou.png" alt="玩家图像" title="玩家" />
 						</div>
 						<div class="Character" id="Character_GameChaser">
-							<img id="Image_GameChaser" src="images/GotouHitori.png" alt="追逐者图像" />
+							<img id="Image_GameChaser" src="images/GotouHitori.png" alt="追逐者图像" title="追逐者" />
 						</div>
 						<div class="Faded" id="GameChaserBalloon" inert="true">
 							<ul class="CtrlGroup">
 								<li class="Ctrl Balloon">
-									<img id="Image_GameChaserBalloon" src="images/GotouHitori.png" alt="追逐者图像" />
-									<span id="Label_GameDistance">间距</span>
+									<img id="Image_GameChaserBalloon" src="images/GotouHitori.png" alt="追逐者图像" title="追逐者" />
+									<span id="Label_GameDistance" title="间距" aria-label="间距">间距</span>
 								</li>
 								<li class="Ctrl BalloonTail"></li>
 							</ul>
 						</div>
 					</div>
 					<div class="Ctnr" id="Ctnr_GameTextbox">
-						<input class="Textbox" id="Textbox_Game" lang="en-US" type="text" onfocus="ClockGame()" onfocusout="ClockGame()" oninput="ClockGame()" onkeydown="setTimeout(Keypress, 20)" onpaste="setTimeout(WarnAboutPasting, 20)" aria-label="游戏文本框" />
+						<input class="Textbox" id="Textbox_Game" lang="en-US" type="text" onfocus="ClockGame()" onfocusout="ClockGame()" oninput="ClockGame()" onkeydown="setTimeout(Keypress, 20)" onpaste="setTimeout(WarnAboutPasting, 20)" title="在此打字来进行游戏" aria-label="在此打字来进行游戏" />
 					</div>
 					<div class="Ctnr" id="Ctnr_GameProgbar">
-						<div class="Progbar">
+						<div class="Progbar" title="游戏进度" aria-label="游戏进度">
 							<div class="ProgbarFg" id="ProgbarFg_Game"></div>
 						</div>
 					</div>
@@ -169,7 +169,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="Ctnr" id="Ctnr_GameSpeed">
+					<div class="Ctnr" id="Ctnr_GameSpeed" title="速度表" aria-label="速度表">
 						<ul class="CtrlGroup" id="CtrlGroup_GameSpeed">
 							<li class="Ctrl Tape" id="Ctrl_GameSpeedTape">
 								<ul class="CtrlGroup" id="CtrlGroup_GameSpeedTape">
@@ -278,18 +278,18 @@
 							</li>
 							<li class="Ctrl" id="Ctrl_GameSpeedAdditionalIndicators">
 								<ul class="CtrlGroup" id="CtrlGroup_GameSpeedTrend">
-									<li class="Ctrl Increasing Faded" id="Ctrl_GameSpeedTrend" inert="true">
+									<li class="Ctrl Increasing Faded" id="Ctrl_GameSpeedTrend" inert="true" title="速度趋势" aria-label="速度趋势">
 										<div id="GameSpeedTrendLine"></div>
 										<div id="GameSpeedTrendArrow"></div>
 									</li>
 								</ul>
 								<ul class="CtrlGroup" id="CtrlGroup_GameOtherSpeeds">
-									<li class="Ctrl" id="Ctrl_GameChaserSpeed"></li>
-									<li class="Ctrl" id="Ctrl_GameDangerousSpeed"></li>
-									<li class="Ctrl" id="Ctrl_GameAvgSpeed"></li>
+									<li class="Ctrl" id="Ctrl_GameChaserSpeed" title="追逐者速度" aria-label="追逐者速度"></li>
+									<li class="Ctrl" id="Ctrl_GameDangerousSpeed" title="危险速度" aria-label="危险速度"></li>
+									<li class="Ctrl" id="Ctrl_GameAvgSpeed" title="平均速度" aria-label="平均速度"></li>
 								</ul>
 							</li>
-							<li class="Ctrl" id="Ctrl_GameSpeedBalloon">
+							<li class="Ctrl" id="Ctrl_GameSpeedBalloon" title="当前打字速度" aria-label="当前打字速度">
 								<ul class="CtrlGroup">
 									<li class="Ctrl Balloon">
 										<ul class="CtrlGroup" id="CtrlGroup_GameSpeedBalloon">
@@ -317,7 +317,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="Ctnr" id="Ctnr_GameAltitude">
+					<div class="Ctnr" id="Ctnr_GameAltitude" title="高度表" aria-label="高度表">
 						<ul class="CtrlGroup" id="CtrlGroup_GameAltitude">
 							<li class="Ctrl Tape" id="Ctrl_GameAltitudeTape">
 								<ul class="CtrlGroup" id="CtrlGroup_GameAltitudeTape">
@@ -614,7 +614,7 @@
 									<li class="Ctrl"><div class="TapeScale"></div><span class="TapeNumber">0<span class="SmallerText">00</span></span></li>
 								</ul>
 							</li>
-							<li class="Ctrl" id="Ctrl_GameAltitudeBalloon">
+							<li class="Ctrl" id="Ctrl_GameAltitudeBalloon" title="当前高度 (在高度模式下有用)" aria-label="当前高度 (在高度模式下有用)">
 								<ul class="CtrlGroup">
 									<li class="Ctrl Balloon">
 										<ul class="CtrlGroup">
@@ -664,7 +664,7 @@
 								<span class="HotkeyIndicator Faded" inert="true">Del</span>
 							</li>
 							<li class="Ctrl" id="Ctrl_GameToggleFullscreen">
-								<button class="Button" id="Button_GameToggleFullscreen" onclick="ToggleFullscreen()" aria-label="全屏">
+								<button class="Button" id="Button_GameToggleFullscreen" onclick="ToggleFullscreen()" title="全屏" aria-label="全屏">
 									<svg class="Icon" viewBox="0 0 16 16" aria-hidden="true">
 										<path d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
 									</svg>
@@ -847,7 +847,7 @@
 									<label for="Radiobtn_SettingsTravelDistance">
 										<input class="Radiobtn" id="Radiobtn_SettingsTravelDistance" type="radio" checked="false" onchange="SetProgressing('TravelDistance')" />
 										<span>里程：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsTravelDistance" type="number" title="" min="50" max="9999" step="50" value="500" placeholder="50~9999" onclick="SelectText('Textbox_SettingsTravelDistance')" onchange="SetTravelDistance()" />
+										<input class="Textbox Width120" id="Textbox_SettingsTravelDistance" type="number" min="50" max="9999" step="50" value="500" title="" placeholder="50~9999" onclick="SelectText('Textbox_SettingsTravelDistance')" onchange="SetTravelDistance()" />
 										<span>字符</span>
 									</label>
 								</li>
@@ -855,7 +855,7 @@
 									<label for="Radiobtn_SettingsAltitude">
 										<input class="Radiobtn" id="Radiobtn_SettingsAltitude" type="radio" checked="false" onchange="SetProgressing('Altitude')" />
 										<span>高度：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsAltitude" type="number" title="" min="200" max="29000" step="200" value="1600" placeholder="200~29000" onclick="SelectText('Textbox_SettingsAltitude')" onchange="SetAltitude()" />
+										<input class="Textbox Width120" id="Textbox_SettingsAltitude" type="number" min="200" max="29000" step="200" value="1600" title="" placeholder="200~29000" onclick="SelectText('Textbox_SettingsAltitude')" onchange="SetAltitude()" />
 									</label>
 								</li>
 							</ul>
@@ -878,16 +878,16 @@
 								<li class="Ctrl">
 									<label for="Textbox_SettingsChaserSpeedInitial">
 										<span>追逐者速度：从</span>
-										<input class="Textbox Width80" id="Textbox_SettingsChaserSpeedInitial" type="number" title="" min="10" max="999" step="5" value="180" placeholder="10~999" onclick="SelectText('Textbox_SettingsChaserSpeedInitial')" onchange="SetChaserSpeedInitial()" />
+										<input class="Textbox Width80" id="Textbox_SettingsChaserSpeedInitial" type="number" min="10" max="999" step="5" value="180" title="" placeholder="10~999" onclick="SelectText('Textbox_SettingsChaserSpeedInitial')" onchange="SetChaserSpeedInitial()" />
 										<span>至</span>
-										<input class="Textbox Width80" id="Textbox_SettingsChaserSpeedFinal" type="number" title="" min="10" max="999" step="5" value="240" placeholder="初始速度~999" onclick="SelectText('Textbox_SettingsChaserSpeedFinal')" onchange="SetChaserSpeedFinal()" />
+										<input class="Textbox Width80" id="Textbox_SettingsChaserSpeedFinal" type="number" min="10" max="999" step="5" value="240" title="" placeholder="初始速度~999" onclick="SelectText('Textbox_SettingsChaserSpeedFinal')" onchange="SetChaserSpeedFinal()" />
 										<span>字符/分钟</span>
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Textbox_SettingsMaxSeparation">
 										<span>最大间距：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsMaxSeparation" type="number" title="" min="10" max="100" step="5" value="50" placeholder="10~100" onclick="SelectText('Textbox_SettingsMaxSeparation')" onchange="SetMaxSeparation()" />
+										<input class="Textbox Width120" id="Textbox_SettingsMaxSeparation" type="number" min="10" max="100" step="5" value="50" title="" placeholder="10~100" onclick="SelectText('Textbox_SettingsMaxSeparation')" onchange="SetMaxSeparation()" />
 										<span>字符</span>
 									</label>
 								</li>
@@ -1153,7 +1153,7 @@
 							<legend>关于</legend>
 							<p>山田凉上山</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v1.15 (<time datetime="2024-12-06" pubdate="pubdate">2024/12/06</time>)<br />
+							<p>版本 v1.16 (<time datetime="2024-12-10" pubdate="pubdate">2024/12/10</time>)<br />
 								始于 2024/10/13</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">
@@ -1179,25 +1179,25 @@
 		<div class="Window Hidden" id="Window_Dialog" inert="true">
 			<ul class="CtrlGroup" id="CtrlGroup_DialogPrompt">
 				<li class="Ctrl" id="Ctrl_DialogIconInfo">
-					<svg class="DialogIcon" id="DialogIcon_Info" viewBox="0 0 16 16">
+					<svg class="DialogIcon" id="DialogIcon_Info" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
 						<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
 					</svg>
 				</li>
 				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconQuestion" inert="true">
-					<svg class="DialogIcon" id="DialogIcon_Question" viewBox="0 0 16 16">
+					<svg class="DialogIcon" id="DialogIcon_Question" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
 					</svg>
 				</li>
 				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconCaution" inert="true">
-					<svg class="DialogIcon" id="DialogIcon_Caution" viewBox="0 0 16 16">
+					<svg class="DialogIcon" id="DialogIcon_Caution" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
 					</svg>
 				</li>
 				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconError" inert="true">
-					<svg class="DialogIcon" id="DialogIcon_Error" viewBox="0 0 16 16">
+					<svg class="DialogIcon" id="DialogIcon_Error" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 					</svg>
