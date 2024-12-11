@@ -161,7 +161,6 @@
 					position: absolute; top: 0; left: 0;
 					width: calc(100% + 20px); height: 100%;
 					overflow: hidden;
-					pointer-events: none;
 				}
 					/* Speed trend */
 					#CtrlGroup_GameSpeedTrend {
