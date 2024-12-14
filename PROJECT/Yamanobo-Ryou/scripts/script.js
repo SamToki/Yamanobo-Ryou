@@ -792,7 +792,7 @@
 						break;
 				}
 			}
-			if(Game0.Stats.SpeedTapeDisplay <= Game0.Stats.DangerousSpeedDisplay) {
+			if(Game.Status.IsRunning == true && Game.Stats.Odometer > 20 && Game0.Stats.SpeedTapeDisplay <= Game0.Stats.DangerousSpeedDisplay) {
 				AddClass("CtrlGroup_GameSpeedBalloon", "RedText");
 			} else {
 				RemoveClass("CtrlGroup_GameSpeedBalloon", "RedText");
