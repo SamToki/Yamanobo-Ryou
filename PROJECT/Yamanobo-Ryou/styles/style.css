@@ -161,6 +161,7 @@
 					position: absolute; top: 0; left: 0;
 					width: calc(100% + 20px); height: 100%;
 					overflow: hidden;
+					pointer-events: none;
 				}
 					/* Speed trend */
 					#CtrlGroup_GameSpeedTrend {
@@ -171,6 +172,7 @@
 						position: absolute; bottom: 50%; right: 30px;
 						width: 15px; height: 0;
 						display: flex; align-items: center;
+						pointer-events: auto;
 					}
 					#Ctrl_GameSpeedTrend.Increasing {
 						flex-direction: column-reverse;
@@ -200,6 +202,7 @@
 					}
 					#CtrlGroup_GameOtherSpeeds .Ctrl {
 						position: absolute; top: unset; left: unset;
+						pointer-events: auto;
 					}
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameChaserSpeed {
 						bottom: 0; right: 10px;
