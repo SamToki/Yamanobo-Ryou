@@ -165,12 +165,12 @@
 				}
 					/* Speed trend */
 					#CtrlGroup_GameSpeedTrend {
-						position: absolute; top: 0; left: 0;
-						width: 100%; height: 100%;
+						position: absolute; top: 0; right: 30px;
+						width: 15px; height: 100%;
 					}
 					#Ctrl_GameSpeedTrend {
-						position: absolute; bottom: 50%; right: 30px;
-						width: 15px; height: 0;
+						position: absolute; bottom: 50%; left: 0;
+						width: 100%; height: 0;
 						display: flex; align-items: center;
 						pointer-events: auto;
 					}
@@ -197,25 +197,25 @@
 
 					/* Other speeds */
 					#CtrlGroup_GameOtherSpeeds {
-						position: absolute; top: calc(50% - 5000px); left: 0;
-						width: 100%; height: 5000px;
+						position: absolute; top: calc(50% - 5000px); right: 0;
+						width: 20px; height: 5000px;
 					}
 					#CtrlGroup_GameOtherSpeeds .Ctrl {
 						position: absolute; top: unset; left: unset;
 						pointer-events: auto;
 					}
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameChaserSpeed {
-						bottom: 0; right: 10px;
+						bottom: 0; left: 0;
 						width: 10px; height: 0;
 						background-color: #FFC000;
 					}
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameDangerousSpeed {
-						bottom: 0; right: 10px;
+						bottom: 0; left: 0;
 						width: 10px; height: 0;
 						background-color: #FF0000;
 					}
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameAvgSpeed {
-						bottom: -35px; right: 0;
+						bottom: -35px; left: 0;
 						width: 20px; height: 70px; clip-path: polygon(100% 30%, 100% 70%, 0 50%);
 						background-color: #0090D0C0;
 					}
@@ -514,7 +514,7 @@
 						width: calc(100% + 15px);
 					}
 						/* Speed trend */
-						#Ctrl_GameSpeedTrend {
+						#CtrlGroup_GameSpeedTrend {
 							right: 22.5px;
 							width: 10px;
 						}
@@ -523,6 +523,9 @@
 						}
 
 						/* Other speeds */
+						#CtrlGroup_GameOtherSpeeds {
+							width: 15px;
+						}
 						#CtrlGroup_GameOtherSpeeds #Ctrl_GameChaserSpeed, #CtrlGroup_GameOtherSpeeds #Ctrl_GameDangerousSpeed {
 							width: 5px;
 						}
