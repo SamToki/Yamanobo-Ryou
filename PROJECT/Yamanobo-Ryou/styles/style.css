@@ -38,11 +38,8 @@
 			/* Characters */
 			.Character {
 				position: absolute; bottom: calc(50% + 20px); left: unset;
-				width: 100px;
+				width: 100px; right: 50%;
 				display: flex;
-			}
-			#Character_GamePlayer, #Character_GameChaser {
-				right: 50%;
 			}
 			#Ctnr_GameCharacters img {
 				width: 100%;
