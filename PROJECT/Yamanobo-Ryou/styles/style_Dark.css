@@ -44,14 +44,6 @@
 				}
 
 				/* Additional indicators */
-					/* Speed trend */
-					#GameSpeedTrendLine {
-						background-color: #FFFFFF;
-					}
-					#GameSpeedTrendArrow {
-						background-color: #FFFFFF;
-					}
-
 					/* Other speeds */
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameDangerousSpeed {
 						background-color: #FF4040;

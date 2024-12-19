@@ -54,10 +54,7 @@
 
 				/* Additional indicators */
 					/* Speed trend */
-					#GameSpeedTrendLine {
-						background-color: #00FF00;
-					}
-					#GameSpeedTrendArrow {
+					#Needle_GameSpeedTrend .NeedleFg, #Needle_GameSpeedTrend .NeedleArrow {
 						background-color: #00FF00;
 					}
 

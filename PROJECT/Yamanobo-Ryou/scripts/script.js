@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.17;
+		const CurrentVersion = 1.18;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -714,21 +714,17 @@
 				// Speed trend
 				Game.Stats.SpeedTrend = (Game0.Stats.SpeedTapeDisplay - Game0.Stats.PreviousSpeedTapeDisplay) * (1000 / (Date.now() - Game0.Stats.PreviousClockTime));
 				Game0.Stats.SpeedTrendDisplay += (Game.Stats.SpeedTrend - Game0.Stats.SpeedTrendDisplay) / 5;
-				if(Game0.Stats.SpeedTrendDisplay >= 0) {
-					RemoveClass("Ctrl_GameSpeedTrend", "Decreasing");
-					AddClass("Ctrl_GameSpeedTrend", "Increasing");
-					ChangeBottom("Ctrl_GameSpeedTrend", "50%");
-					ChangeHeight("Ctrl_GameSpeedTrend", Game0.Stats.SpeedTrendDisplay * 5 + "px");
-				} else {
-					RemoveClass("Ctrl_GameSpeedTrend", "Increasing");
-					AddClass("Ctrl_GameSpeedTrend", "Decreasing");
-					ChangeBottom("Ctrl_GameSpeedTrend", "calc(50% - " + (-Game0.Stats.SpeedTrendDisplay * 5) + "px)");
-					ChangeHeight("Ctrl_GameSpeedTrend", -Game0.Stats.SpeedTrendDisplay * 5 + "px");
-				}
 				if(Math.abs(Game0.Stats.SpeedTrendDisplay) >= 5) {
-					Show("Ctrl_GameSpeedTrend");
+					Show("Needle_GameSpeedTrend");
 				} else {
-					Fade("Ctrl_GameSpeedTrend");
+					Fade("Needle_GameSpeedTrend");
+				}
+				ChangeTop("Needle_GameSpeedTrend", "calc(50% - " + (Math.abs(Game0.Stats.SpeedTrendDisplay) * 5) + "px)");
+				ChangeHeight("Needle_GameSpeedTrend", Math.abs(Game0.Stats.SpeedTrendDisplay) * 10 + "px");
+				if(Game0.Stats.SpeedTrendDisplay >= 0) {
+					RemoveClass("Needle_GameSpeedTrend", "Decreasing");
+				} else {
+					AddClass("Needle_GameSpeedTrend", "Decreasing");
 				}
 
 				// Other speeds

@@ -161,35 +161,21 @@
 					pointer-events: none;
 				}
 					/* Speed trend */
-					#CtrlGroup_GameSpeedTrend {
-						position: absolute; top: 0; right: 30px;
-						width: 15px; height: 100%;
+					#Needle_GameSpeedTrend {
+						position: absolute; top: unset; right: 30px;
+						width: 15px; height: 0;
 					}
-					#Ctrl_GameSpeedTrend {
-						position: absolute; bottom: 50%; left: 0;
-						width: 100%; height: 0;
-						display: flex; align-items: center;
+					#Needle_GameSpeedTrend.Decreasing {
+						transform: scaleY(-1);
+					}
+					#Needle_GameSpeedTrend .NeedleFg {
+						position: absolute; top: 5px; left: calc(50% - 1px);
+						width: 2px; height: calc(50% - 5px); border-radius: 1px;
 						pointer-events: auto;
 					}
-					#Ctrl_GameSpeedTrend.Increasing {
-						flex-direction: column-reverse;
-					}
-					#Ctrl_GameSpeedTrend.Decreasing {
-						flex-direction: column;
-					}
-					#GameSpeedTrendLine {
-						width: 2px; height: calc(100% - 10px); border-radius: 1px;
-						background-color: #000000;
-					}
-					#GameSpeedTrendArrow {
-						width: 15px; height: 15px; margin: -5px 0;
-						background-color: #000000;
-					}
-					#Ctrl_GameSpeedTrend.Increasing #GameSpeedTrendArrow {
-						clip-path: polygon(50% 0, 100% 100%, 0 100%);
-					}
-					#Ctrl_GameSpeedTrend.Decreasing #GameSpeedTrendArrow {
-						clip-path: polygon(0 0, 100% 0, 50% 100%);
+					#Needle_GameSpeedTrend .NeedleArrow {
+						height: 15px;
+						pointer-events: auto;
 					}
 
 					/* Other speeds */
@@ -511,12 +497,12 @@
 						width: calc(100% + 15px);
 					}
 						/* Speed trend */
-						#CtrlGroup_GameSpeedTrend {
+						#Needle_GameSpeedTrend {
 							right: 22.5px;
 							width: 10px;
 						}
-						#GameSpeedTrendArrow {
-							width: 10px; height: 10px;
+						#Needle_GameSpeedTrend .NeedleArrow {
+							height: 10px;
 						}
 
 						/* Other speeds */
