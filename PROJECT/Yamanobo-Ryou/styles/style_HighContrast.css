@@ -35,7 +35,7 @@
 			}
 
 			/* Stats */
-			#Ctnr_GameStats .CtrlGroup {
+			#Ctnr_GameStats {
 				border-radius: 5px;
 				background-color: #404040;
 			}

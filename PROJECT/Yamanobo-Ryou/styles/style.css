@@ -184,21 +184,21 @@
 						width: 20px; height: 5000px;
 					}
 					#CtrlGroup_GameOtherSpeeds .Ctrl {
-						position: absolute; top: unset; left: unset;
+						position: absolute; top: unset; left: 0;
 						pointer-events: auto;
 					}
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameChaserSpeed {
-						bottom: 0; left: 0;
+						bottom: 0;
 						width: 10px; height: 0;
 						background-color: #FFC000;
 					}
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameDangerousSpeed {
-						bottom: 0; left: 0;
+						bottom: 0;
 						width: 10px; height: 0;
 						background-color: #FF0000;
 					}
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameAvgSpeed {
-						bottom: -35px; left: 0;
+						bottom: -35px;
 						width: 20px; height: 70px; clip-path: polygon(100% 30%, 100% 70%, 0 50%);
 						background-color: #0090D0C0;
 					}
@@ -242,7 +242,7 @@
 					top: calc(-45px * 10);
 				}
 				#RollingDigit_GameSpeed3 {
-					top: calc(15px - 30px * 11);
+					top: calc(15px - 30px * 18);
 				}
 				.RollingDigit span {
 					height: 30px; margin: 15px 0;
@@ -299,7 +299,7 @@
 					width: 35px;
 				}
 				#RollingDigit_GameAltitude1 {
-					top: calc(-45px * 3);
+					top: calc(-45px * 2);
 				}
 				#RollingDigit_GameAltitude2 {
 					top: calc(-45px * 10);
@@ -308,7 +308,7 @@
 					top: calc(-45px * 10);
 				}
 				#RollingDigit_GameAltitude4 {
-					top: calc(17.5px - 25px * 6);
+					top: calc(17.5px - 25px * 13);
 				}
 				#RollingDigit_GameAltitude4 span {
 					height: 25px; margin: 0;
@@ -537,7 +537,7 @@
 						top: calc(-30px * 10);
 					}
 					#RollingDigit_GameSpeed3 {
-						top: calc(10px - 20px * 11);
+						top: calc(10px - 20px * 18);
 					}
 					.RollingDigit span {
 						height: 20px; margin: 10px 0;
@@ -567,7 +567,7 @@
 						width: 22.5px;
 					}
 					#RollingDigit_GameAltitude1 {
-						top: calc(-30px * 3);
+						top: calc(-30px * 2);
 					}
 					#RollingDigit_GameAltitude2 {
 						top: calc(-30px * 10);
@@ -576,7 +576,7 @@
 						top: calc(-30px * 10);
 					}
 					#RollingDigit_GameAltitude4 {
-						top: calc(12px - 16px * 6);
+						top: calc(12px - 16px * 13);
 					}
 					#RollingDigit_GameAltitude4 span {
 						height: 16px;
