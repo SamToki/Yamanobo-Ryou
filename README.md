@@ -35,8 +35,7 @@ Scan the QR code to play on mobile devices:
 
 # 教程 Tutorial
 
-[快速入门](/PROJECT/docs/山田凉上山%20快速入门.pdf)<br>
-[完整说明文档](/PROJECT/docs/山田凉上山%20说明文档.pdf)
+[快速入门](/PROJECT/docs/山田凉上山%20快速入门.pdf)　|　[说明文档](/PROJECT/docs/山田凉上山%20说明文档.pdf)
 
 # 版权说明 Copyright Info
 
