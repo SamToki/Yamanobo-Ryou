@@ -919,10 +919,6 @@
 		RefreshLibrary(); // Section "Game" relies on section "Library".
 		ClockGame();
 
-		// Terrain & textbox
-		ChangeLanguage("Ctnr_GameTerrain", Library.Text[Library.Selection].Language);
-		ChangeLanguage("Textbox_Game", Library.Text[Library.Selection].Language);
-
 		// Ctrls
 		if(Game.Status.IsRunning == false) {
 			ChangeDisabled("Button_GamePauseOrReset", true);
@@ -1120,6 +1116,8 @@
 		ChangeValue("Textbox_LibraryName", Library.Text[Library.Selection].Name);
 		ChangeValue("Textbox_LibraryContent", Library.Text[Library.Selection].Content);
 		ChangeLanguage("Textbox_LibraryContent", Library.Text[Library.Selection].Language);
+		ChangeLanguage("Ctnr_GameTerrain", Library.Text[Library.Selection].Language);
+		ChangeLanguage("Textbox_Game", Library.Text[Library.Selection].Language);
 		ChangeValue("Textbox_LibraryLanguage", Library.Text[Library.Selection].Language);
 		ChangeValue("Textbox_LibrarySource", Library.Text[Library.Selection].Source);
 
