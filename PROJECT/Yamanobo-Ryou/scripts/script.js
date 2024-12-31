@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.19;
+		const CurrentVersion = 1.20;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -923,7 +923,7 @@
 		if(Game.Status.IsRunning == false) {
 			ChangeDisabled("Button_GamePauseOrReset", true);
 			ChangeText("Button_GamePauseOrReset", "暂停");
-			ChangeDisabled("Fieldset_Library", false);
+			ChangeDisabled("Fieldset_LibraryLibrary", false);
 			ChangeDisabled("Fieldset_LibraryTextProperties", false);
 			ChangeDisabled("Fieldset_LibraryManagement", false);
 			ChangeDisabled("Fieldset_SettingsProgressing", false);
@@ -936,7 +936,7 @@
 			} else {
 				ChangeText("Button_GamePauseOrReset", "重置");
 			}
-			ChangeDisabled("Fieldset_Library", true);
+			ChangeDisabled("Fieldset_LibraryLibrary", true);
 			ChangeDisabled("Fieldset_LibraryTextProperties", true);
 			ChangeDisabled("Fieldset_LibraryManagement", true);
 			ChangeDisabled("Fieldset_SettingsProgressing", true);
@@ -1064,53 +1064,61 @@
 
 	// Library
 	function RefreshLibrary() {
-		// Generate list
-		ChangeText("CtrlGroup_LibraryList", "");
-		for(let Looper = 1; Looper < Library.Text.length; Looper++) {
-			AddText("CtrlGroup_LibraryList",
-				"<li class=\"Ctrl\" id=\"Ctrl_LibraryText" + Looper + "\">" +
-				"	<label class=\"ListItemLabel\" id=\"Label_LibraryText" + Looper + "\" for=\"Radiobtn_LibraryText" + Looper + "\">" +
-				"		<input class=\"Radiobtn\" id=\"Radiobtn_LibraryText" + Looper + "\" type=\"radio\" checked=\"false\" onchange=\"SetText(" + Looper + ")\" />" +
-				"		<span class=\"ListItemName\">" + ConvertEmptyName(Library.Text[Looper].Name) + "</span>" +
-				"	</label>" +
-				"	<button class=\"Button ShownAsLabel ListItemDuplicate\" onclick=\"DuplicateText(" + Looper + ")\" title=\"生成副本\" aria-label=\"生成副本\">" +
-				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
-				"			<path d=\"M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z\"/>" +
-				"		</svg>" +
-				"	</button>" +
-				"	<button class=\"Button ShownAsLabel ListItemExport\" onclick=\"ExportText(" + Looper + ")\" title=\"导出\" aria-label=\"导出\">" +
-				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
-				"			<path d=\"M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5\"/>" +
-				"			<path d=\"M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z\"/>" +
-				"		</svg>" +
-				"	</button>" +
-				"	<button class=\"Button ShownAsLabel ListItemDelete\" id=\"Button_LibraryText" + Looper + "Delete\" onclick=\"ConfirmDeleteText(" + Looper + ")\" title=\"删除...\" aria-label=\"删除...\">" +
-				"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
-				"			<path d=\"M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5\"/>" +
-				"		</svg>" +
-				"	</button>" +
-				"</li>");
-		}
-		if(Library.Text.length <= 1) {
-			AlertSystemError("The library is empty.");
-		}
-		if(Library.Text.length == 2) {
-			ChangeDisabled("Button_LibraryText1Delete", true);
-		}
-
-		// Selection
-		for(let Looper = 1; Looper < Library.Text.length; Looper++) {
-			if(Library.Selection == Looper) {
-				ChangeChecked("Radiobtn_LibraryText" + Looper, true);
-				AddClass("Label_LibraryText" + Looper, "Active");
-			} else {
-				ChangeChecked("Radiobtn_LibraryText" + Looper, false);
-				RemoveClass("Label_LibraryText" + Looper, "Active");
+		// Library
+			// Generate list
+			ChangeText("CtrlGroup_LibraryList", "");
+			for(let Looper = 1; Looper < Library.Text.length; Looper++) {
+				AddText("CtrlGroup_LibraryList",
+					"<li class=\"Ctrl\" id=\"Ctrl_LibraryText" + Looper + "\">" +
+					"	<label class=\"ListItemLabel\" id=\"Label_LibraryText" + Looper + "\" for=\"Radiobtn_LibraryText" + Looper + "\">" +
+					"		<input class=\"Radiobtn\" id=\"Radiobtn_LibraryText" + Looper + "\" type=\"radio\" checked=\"false\" onchange=\"SetText(" + Looper + ")\" />" +
+					"		<span class=\"ListItemName\">" + ConvertEmptyName(Library.Text[Looper].Name) + "</span>" +
+					"	</label>" +
+					"	<button class=\"Button ShownAsLabel ListItemDuplicate\" onclick=\"DuplicateText(" + Looper + ")\" title=\"生成副本\" aria-label=\"生成副本\">" +
+					"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
+					"			<path d=\"M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z\"/>" +
+					"		</svg>" +
+					"	</button>" +
+					"	<button class=\"Button ShownAsLabel ListItemExport\" onclick=\"ExportText(" + Looper + ")\" title=\"导出\" aria-label=\"导出\">" +
+					"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
+					"			<path d=\"M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5\"/>" +
+					"			<path d=\"M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z\"/>" +
+					"		</svg>" +
+					"	</button>" +
+					"	<button class=\"Button ShownAsLabel ListItemDelete\" id=\"Button_LibraryText" + Looper + "Delete\" onclick=\"ConfirmDeleteText(" + Looper + ")\" title=\"删除...\" aria-label=\"删除...\">" +
+					"		<svg class=\"Icon Smaller\" viewBox=\"0 0 16 16\" aria-hidden=\"true\">" +
+					"			<path d=\"M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5\"/>" +
+					"		</svg>" +
+					"	</button>" +
+					"</li>");
 			}
-		}
+			if(Library.Text.length <= 1) {
+				AlertSystemError("The library is empty.");
+			}
+			if(Library.Text.length == 2) {
+				ChangeDisabled("Button_LibraryText1Delete", true);
+			}
 
-		// Filter
-		FilterLibrary();
+			// Selection
+			for(let Looper = 1; Looper < Library.Text.length; Looper++) {
+				if(Library.Selection == Looper) {
+					ChangeChecked("Radiobtn_LibraryText" + Looper, true);
+					AddClass("Label_LibraryText" + Looper, "Active");
+				} else {
+					ChangeChecked("Radiobtn_LibraryText" + Looper, false);
+					RemoveClass("Label_LibraryText" + Looper, "Active");
+				}
+			}
+
+			// Filter
+			FilterLibrary();
+
+			// Randomly select
+			if(Library.Text.length > 2) {
+				ChangeDisabled("Button_LibraryRandomlySelect", false);
+			} else {
+				ChangeDisabled("Button_LibraryRandomlySelect", true);
+			}
 
 		// Text properties
 		ChangeValue("Textbox_LibraryName", Library.Text[Library.Selection].Name);
@@ -1252,6 +1260,17 @@
 				"Caution",
 				"您确认要删除文本「" + ConvertEmptyName(Library.Text[Number].Name) + "」？",
 				"", "", "删除", "取消");
+		}
+		function RandomlySelect() {
+			if(Library.Text.length > 2) {
+				let LotteryNumber = 0;
+				do {
+					LotteryNumber = Randomize(1, Library.Text.length - 1);
+				} while(LotteryNumber == Library.Selection);
+				SetText(LotteryNumber);
+			} else {
+				AlertSystemError("Function RandomlySelect was called when the value of Library.Text.length is not greater than 2. There must be at least 2 texts in the library when randomly selecting a text.");
+			}
 		}
 		function NewText() {
 			Library.Text[Library.Text.length] = {
@@ -1647,7 +1666,7 @@
 			case "Library_ConfirmDeleteText":
 				switch(Selector) {
 					case 2:
-						if(Library.Selection >= Interaction.Deletion) {
+						if(Library.Selection >= Interaction.Deletion && Library.Selection > 1) {
 							Library.Selection--;
 						}
 						Library.Text.splice(Interaction.Deletion, 1);

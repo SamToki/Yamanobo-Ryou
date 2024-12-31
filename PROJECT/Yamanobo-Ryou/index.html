@@ -10,7 +10,7 @@
 		<link rel="icon" type="image/png" href="images/Icon.png" />
 		<title>山田凉上山</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v1.19 (2024/12/30). Since 2024/10/13." />
+		<meta name="version" content="v1.20 (2024/12/31). Since 2024/10/13." />
 		<meta name="description" content="「孤独摇滚！」同人打字训练游戏。屑凉被讨债的波奇酱追上山，开始无尽的逃亡。" />
 		<meta name="copyright" content="© 2024 SAM TOKI STUDIO" />
 
@@ -837,7 +837,7 @@
 				<h1 class="SectionTitle">文库</h1>
 				<ul class="ItemGroup">
 					<li class="Item">
-						<fieldset id="Fieldset_Library">
+						<fieldset id="Fieldset_LibraryLibrary">
 							<legend>文库</legend>
 							<ul class="CtrlGroup">
 								<li class="Ctrl">
@@ -853,7 +853,7 @@
 									</ul>
 								</li>
 								<li class="Ctrl WidthDividedBy3">
-									<button class="Button" onclick="SetText(Randomize(1, Library.Text.length - 1))">随机选择</button>
+									<button class="Button" id="Button_LibraryRandomlySelect" onclick="RandomlySelect()">随机选择</button>
 								</li>
 								<li class="Ctrl WidthDividedBy3">
 									<button class="Button" onclick="NewText()">新建</button>
@@ -1249,7 +1249,7 @@
 							<legend>关于</legend>
 							<p>山田凉上山</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v1.19 (<time datetime="2024-12-30" pubdate="pubdate">2024/12/30</time>)<br />
+							<p>版本 v1.20 (<time datetime="2024-12-31" pubdate="pubdate">2024/12/31</time>)<br />
 								始于 2024/10/13</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">
