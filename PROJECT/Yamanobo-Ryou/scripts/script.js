@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.20;
+		const CurrentVersion = 1.21;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -56,7 +56,7 @@
 				Data: [
 					[0, "", 0]
 				],
-				Gradient: 3 // Range: -3 to 6.
+				Gradient: 3 // Range: -3 to 9.
 			},
 			Stats: {
 				Progress: 0,
@@ -161,7 +161,7 @@
 				break;
 		}
 		if(System.Version.YamanoboRyou != undefined) {
-			if(Math.floor(CurrentVersion) - Math.floor(System.Version.YamanoboRyou) >= 1) {
+			if(Math.trunc(CurrentVersion) - Math.trunc(System.Version.YamanoboRyou) >= 1) {
 				ShowDialog("System_MajorUpdateDetected",
 					"Info",
 					"检测到大版本更新。若您继续使用旧版本的用户数据，则有可能发生兼容性问题。敬请留意。",
@@ -477,7 +477,7 @@
 						}
 						Game.Stats.TypeTimestamp.splice(1, 1);
 						Game.Stats.TypeTimestamp[21] = Game.Stats.ElapsedTime;
-						Game.Stats.Score += Math.floor(Math.pow(2, (Game.Stats.TypeTimestamp[20] - Game.Stats.TypeTimestamp[21]) / 100) * 100);
+						Game.Stats.Score += Math.trunc(Math.pow(2, (Game.Stats.TypeTimestamp[20] - Game.Stats.TypeTimestamp[21]) / 100) * 100);
 						if(Game.Stats.Score > 99999999) {
 							Game.Stats.Score = 99999999;
 						}
@@ -531,7 +531,7 @@
 				if(Game.Terrain.Data[Game.Terrain.Data.length - 1][2] > 29000) {
 					Game.Terrain.Data[Game.Terrain.Data.length - 1][2] = 29000;
 				}
-				Game.Terrain.Gradient += Randomize(-36 - Math.floor((Game.Terrain.Gradient - 3) * 6), 36 - Math.floor((Game.Terrain.Gradient - 3) * 6)) / 24;
+				Game.Terrain.Gradient += Randomize(-60 - Math.trunc((Game.Terrain.Gradient - 3) * 10), 60 - Math.trunc((Game.Terrain.Gradient - 3) * 10)) / 40;
 					// This algorithm makes the gradient variation balanced.
 					// For example, if gradient is -3, the variation is randomized between 0 and +3. So the descent cannot be steeper any more.
 			}
@@ -604,14 +604,14 @@
 			// Chaser
 				// Vertical separation
 				if(IsMobileLayout() == false) {
-					ChangeBottom("Character_GameChaser", "calc(50% + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Math.floor(Game.Stats.ChaserOdometer)][2]) + "px)");
+					ChangeBottom("Character_GameChaser", "calc(50% + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Math.trunc(Game.Stats.ChaserOdometer)][2]) + "px)");
 				} else {
-					ChangeBottom("Character_GameChaser", "calc(80px + (100% - 255px) / 2 + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Math.floor(Game.Stats.ChaserOdometer)][2]) + "px)");
+					ChangeBottom("Character_GameChaser", "calc(80px + (100% - 255px) / 2 + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Math.trunc(Game.Stats.ChaserOdometer)][2]) + "px)");
 				}
 
 				// Horizontal separation
 				let HorizontalSeparation = 0;
-				for(let Looper = Math.floor(Game.Stats.ChaserOdometer) + 1; Looper <= Game.Stats.Odometer; Looper++) {
+				for(let Looper = Math.trunc(Game.Stats.ChaserOdometer) + 1; Looper <= Game.Stats.Odometer; Looper++) {
 					if(IsElementExisting("Terrain_Game" + Looper) == true) {
 						HorizontalSeparation += ReadWidth("Terrain_Game" + Looper);
 					}
@@ -628,7 +628,7 @@
 			} else {
 				Fade("GameChaserBalloon");
 			}
-			ChangeText("Label_GameDistance", Game.Stats.Odometer - Math.floor(Game.Stats.ChaserOdometer));
+			ChangeText("Label_GameDistance", Game.Stats.Odometer - Math.trunc(Game.Stats.ChaserOdometer));
 
 		// Progbar
 		switch(Game.Progressing.Progressing) {
@@ -650,7 +650,7 @@
 		// Stats
 		ChangeText("Label_GameOdometer", Game.Stats.Odometer);
 		ChangeText("Label_GameTypoCount", Game.Stats.TypoCount);
-		ChangeText("Label_GameElapsedTime", Math.floor(Game.Stats.ElapsedTime / 60000) + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
+		ChangeText("Label_GameElapsedTime", Math.trunc(Game.Stats.ElapsedTime / 60000) + ":" + Math.trunc(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
 		if(Game.Stats.KeystrokeCount > 20) {
 			if(Game.Stats.KeystrokeTimestamp[1] >= 0) {
 				Game.Stats.KeystrokeSpeed = 60000 / ((Game.Stats.ElapsedTime - Game.Stats.KeystrokeTimestamp[1]) / 20);
@@ -755,14 +755,14 @@
 					ChangeBottom("Ctrl_GameAvgSpeed", Game0.Stats.AvgSpeedDisplay * 5 - 35 + "px");
 
 			// Balloon
-			Game0.Stats.SpeedBalloonDisplay[1] = Math.floor(Game0.Stats.SpeedTapeDisplay / 100);
-			Game0.Stats.SpeedBalloonDisplay[2] = Math.floor(Game0.Stats.SpeedTapeDisplay % 100 / 10);
+			Game0.Stats.SpeedBalloonDisplay[1] = Math.trunc(Game0.Stats.SpeedTapeDisplay / 100);
+			Game0.Stats.SpeedBalloonDisplay[2] = Math.trunc(Game0.Stats.SpeedTapeDisplay % 100 / 10);
 			Game0.Stats.SpeedBalloonDisplay[3] = Game0.Stats.SpeedTapeDisplay % 10;
 			if(System.Display.Anim > 0) {
 				if(Game0.Stats.SpeedBalloonDisplay[3] > 9) {Game0.Stats.SpeedBalloonDisplay[2] += (Game0.Stats.SpeedBalloonDisplay[3] - 9);} // Imitating the cockpit PFD rolling digits.
 				if(Game0.Stats.SpeedBalloonDisplay[2] > 9) {Game0.Stats.SpeedBalloonDisplay[1] += (Game0.Stats.SpeedBalloonDisplay[2] - 9);}
 			} else {
-				Game0.Stats.SpeedBalloonDisplay[3] = Math.floor(Game0.Stats.SpeedBalloonDisplay[3]);
+				Game0.Stats.SpeedBalloonDisplay[3] = Math.trunc(Game0.Stats.SpeedBalloonDisplay[3]);
 			}
 			if(IsMobileLayout() == false) {
 				ChangeTop("RollingDigit_GameSpeed1", -45 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
@@ -806,16 +806,16 @@
 			ChangeTop("CtrlGroup_GameAltitudeTape", "calc(50% - 29000px + " + Game0.Stats.AltitudeTapeDisplay + "px)");
 
 			// Balloon
-			Game0.Stats.AltitudeBalloonDisplay[1] = Math.floor(Game0.Stats.AltitudeTapeDisplay / 10000);
-			Game0.Stats.AltitudeBalloonDisplay[2] = Math.floor(Game0.Stats.AltitudeTapeDisplay % 10000 / 1000);
-			Game0.Stats.AltitudeBalloonDisplay[3] = Math.floor(Game0.Stats.AltitudeTapeDisplay % 1000 / 100);
+			Game0.Stats.AltitudeBalloonDisplay[1] = Math.trunc(Game0.Stats.AltitudeTapeDisplay / 10000);
+			Game0.Stats.AltitudeBalloonDisplay[2] = Math.trunc(Game0.Stats.AltitudeTapeDisplay % 10000 / 1000);
+			Game0.Stats.AltitudeBalloonDisplay[3] = Math.trunc(Game0.Stats.AltitudeTapeDisplay % 1000 / 100);
 			Game0.Stats.AltitudeBalloonDisplay[4] = Game0.Stats.AltitudeTapeDisplay % 100;
 			if(System.Display.Anim > 0) {
 				if(Game0.Stats.AltitudeBalloonDisplay[4] > 80) {Game0.Stats.AltitudeBalloonDisplay[3] += ((Game0.Stats.AltitudeBalloonDisplay[4] - 80) / 20);}
 				if(Game0.Stats.AltitudeBalloonDisplay[3] > 9) {Game0.Stats.AltitudeBalloonDisplay[2] += (Game0.Stats.AltitudeBalloonDisplay[3] - 9);}
 				if(Game0.Stats.AltitudeBalloonDisplay[2] > 9) {Game0.Stats.AltitudeBalloonDisplay[1] += (Game0.Stats.AltitudeBalloonDisplay[2] - 9);}
 			} else {
-				Game0.Stats.AltitudeBalloonDisplay[4] = Math.floor(Game0.Stats.AltitudeBalloonDisplay[4] / 20) * 20;
+				Game0.Stats.AltitudeBalloonDisplay[4] = Math.trunc(Game0.Stats.AltitudeBalloonDisplay[4] / 20) * 20;
 			}
 			if(IsMobileLayout() == false) {
 				ChangeTop("RollingDigit_GameAltitude1", -45 * (2 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
@@ -1033,7 +1033,7 @@
 		// Sort (bubble sort)
 		for(let Looper = 1; Looper <= 5; Looper++) {
 			for(let Looper2 = 5; Looper2 >= 1; Looper2--) {
-				if(parseInt(Number(Highscore[Looper2 + 1][3])) > parseInt(Number(Highscore[Looper2][3]))) {
+				if(Number(Highscore[Looper2 + 1][3]) > Number(Highscore[Looper2][3])) {
 					Highscore[0] = Highscore[Looper2];
 					Highscore[Looper2] = Highscore[Looper2 + 1];
 					Highscore[Looper2 + 1] = Highscore[0];
@@ -1178,7 +1178,7 @@
 				Data: [
 					[0, "", 0]
 				],
-				Gradient: 5
+				Gradient: 3
 			};
 			Game.Stats = {
 				Progress: 0,
@@ -1414,7 +1414,7 @@
 			}
 		}
 		function SetDuration() {
-			Game.Progressing.Duration = parseInt(Number(ReadValue("Textbox_SettingsDuration"))); // Use parseInt(Number()) to force convert value to integer.
+			Game.Progressing.Duration = Math.trunc(ReadValue("Textbox_SettingsDuration"));
 			if(Game.Progressing.Duration < 1) {
 				Game.Progressing.Duration = 1;
 			}
@@ -1424,7 +1424,7 @@
 			RefreshGame();
 		}
 		function SetTravelDistance() {
-			Game.Progressing.TravelDistance = parseInt(Number(ReadValue("Textbox_SettingsTravelDistance")));
+			Game.Progressing.TravelDistance = Math.trunc(ReadValue("Textbox_SettingsTravelDistance"));
 			if(Game.Progressing.TravelDistance < 50) {
 				Game.Progressing.TravelDistance = 50;
 			}
@@ -1434,7 +1434,7 @@
 			RefreshGame();
 		}
 		function SetAltitude() {
-			Game.Progressing.Altitude = parseInt(Number(ReadValue("Textbox_SettingsAltitude")));
+			Game.Progressing.Altitude = Math.trunc(ReadValue("Textbox_SettingsAltitude"));
 			if(Game.Progressing.Altitude < 200) {
 				Game.Progressing.Altitude = 200;
 			}
@@ -1466,7 +1466,7 @@
 			RefreshGame();
 		}
 		function SetChaserSpeedInitial() {
-			Game.Difficulty.ChaserSpeed.Initial = parseInt(Number(ReadValue("Textbox_SettingsChaserSpeedInitial")));
+			Game.Difficulty.ChaserSpeed.Initial = Math.trunc(ReadValue("Textbox_SettingsChaserSpeedInitial"));
 			if(Game.Difficulty.ChaserSpeed.Initial < 10) {
 				Game.Difficulty.ChaserSpeed.Initial = 10;
 			}
@@ -1482,7 +1482,7 @@
 			RefreshGame();
 		}
 		function SetChaserSpeedFinal() {
-			Game.Difficulty.ChaserSpeed.Final = parseInt(Number(ReadValue("Textbox_SettingsChaserSpeedFinal")));
+			Game.Difficulty.ChaserSpeed.Final = Math.trunc(ReadValue("Textbox_SettingsChaserSpeedFinal"));
 			if(Game.Difficulty.ChaserSpeed.Final < 10) {
 				Game.Difficulty.ChaserSpeed.Final = 10;
 			}
@@ -1498,7 +1498,7 @@
 			RefreshGame();
 		}
 		function SetMaxSeparation() {
-			Game.Difficulty.MaxSeparation = parseInt(Number(ReadValue("Textbox_SettingsMaxSeparation")));
+			Game.Difficulty.MaxSeparation = Math.trunc(ReadValue("Textbox_SettingsMaxSeparation"));
 			if(Game.Difficulty.MaxSeparation < 10) {
 				Game.Difficulty.MaxSeparation = 10;
 			}
@@ -1689,7 +1689,7 @@
 							Data: [
 								[0, "", 0]
 							],
-							Gradient: 5
+							Gradient: 3
 						};
 						localStorage.setItem("YamanoboRyou_Game", JSON.stringify(Game));
 						RefreshWebpage();
