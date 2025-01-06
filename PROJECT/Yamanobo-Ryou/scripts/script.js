@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.21;
+		const CurrentVersion = 1.22;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -24,7 +24,6 @@
 				AltitudeTapeDisplay: 0, AltitudeBalloonDisplay: [0, 0, 0, 0, 0]
 			}
 		};
-		Interaction.IsInIMEComposition = false;
 		Interaction.Deletion = 0;
 		Automation.ClockGame = null;
 
@@ -1742,14 +1741,6 @@
 			}
 		}
 	});
-
-	// On IME composition
-	document.addEventListener("compositionstart", function() {
-		Interaction.IsInIMEComposition = true;
-	})
-	document.addEventListener("compositionend", function() {
-		Interaction.IsInIMEComposition = false;
-	})
 
 	// On resizing window
 	window.addEventListener("resize", ClockGame);
