@@ -621,8 +621,8 @@
 				ChangeRight("Character_GameChaser", "calc(50% + " + HorizontalSeparation + "px)");
 
 			// Chaser balloon
-			if((IsMobileLayout() == false && ReadLeft("Character_GameChaser") < -130) ||
-				(IsMobileLayout() == true && ReadLeft("Character_GameChaser") < -65)) {
+			if((IsMobileLayout() == false && ReadLeft("Character_GameChaser") < -115) ||
+			(IsMobileLayout() == true && ReadLeft("Character_GameChaser") < -65)) {
 				Show("GameChaserBalloon");
 			} else {
 				Fade("GameChaserBalloon");
