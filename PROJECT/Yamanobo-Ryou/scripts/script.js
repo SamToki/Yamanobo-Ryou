@@ -1033,13 +1033,12 @@
 		for(let Looper = 1; Looper <= 5; Looper++) {
 			for(let Looper2 = 5; Looper2 >= 1; Looper2--) {
 				if(Number(Highscore[Looper2 + 1][3]) > Number(Highscore[Looper2][3])) {
-					Highscore[0] = Highscore[Looper2];
+					let Swapper = Highscore[Looper2];
 					Highscore[Looper2] = Highscore[Looper2 + 1];
-					Highscore[Looper2 + 1] = Highscore[0];
+					Highscore[Looper2 + 1] = Swapper;
 				}
 			}
 		}
-		Highscore[0] = 0;
 
 		// Refresh
 		for(let Looper = 1; Looper <= 6; Looper++) {
@@ -1285,9 +1284,9 @@
 			for(let Looper = 1; Looper < Library.Text.length - 1; Looper++) {
 				for(let Looper2 = 1; Looper2 < Library.Text.length - 1; Looper2++) {
 					if(Library.Text[Looper2].Name > Library.Text[Looper2 + 1].Name) {
-						Library.Text[0] = structuredClone(Library.Text[Looper2]);
+						let Swapper = structuredClone(Library.Text[Looper2]);
 						Library.Text[Looper2] = structuredClone(Library.Text[Looper2 + 1]);
-						Library.Text[Looper2 + 1] = structuredClone(Library.Text[0]);
+						Library.Text[Looper2 + 1] = structuredClone(Swapper);
 						switch(true) {
 							case Library.Selection == Looper2:
 								Library.Selection++;
@@ -1299,7 +1298,6 @@
 					}
 				}
 			}
-			Library.Text[0] = 0;
 			ResetGame();
 		}
 
@@ -1447,16 +1445,19 @@
 		function SetChaserSpeedPreset() {
 			switch(ReadValue("Combobox_SettingsChaserSpeedPreset")) {
 				case "Western":
-					Game.Difficulty.ChaserSpeed.Initial = 180;
-					Game.Difficulty.ChaserSpeed.Final = 240;
+					Game.Difficulty.ChaserSpeed = {
+						Initial: 180, Final: 240
+					};
 					break;
 				case "CJK":
-					Game.Difficulty.ChaserSpeed.Initial = 40;
-					Game.Difficulty.ChaserSpeed.Final = 60;
+					Game.Difficulty.ChaserSpeed = {
+						Initial: 40, Final: 60
+					};
 					break;
 				case "ZenMode":
-					Game.Difficulty.ChaserSpeed.Initial = 10;
-					Game.Difficulty.ChaserSpeed.Final = 10;
+					Game.Difficulty.ChaserSpeed = {
+						Initial: 10, Final: 10
+					};
 					break;
 				default:
 					AlertSystemError("The value of ReadValue(\"Combobox_SettingsChaserSpeedPreset\") \"" + ReadValue("Combobox_SettingsChaserSpeedPreset") + "\" in function SetChaserSpeedPreset is invalid.");
@@ -1472,11 +1473,11 @@
 			if(Game.Difficulty.ChaserSpeed.Initial > 999) {
 				Game.Difficulty.ChaserSpeed.Initial = 999;
 			}
-			if(Game.Difficulty.ChaserSpeed.Initial > Game.Difficulty.ChaserSpeed.Final) {
-				Game.Difficulty.ChaserSpeed.Final = Game.Difficulty.ChaserSpeed.Initial;
-			}
 			if(Game.Difficulty.ChaserSpeed.Initial < Game.Difficulty.ChaserSpeed.Final - 100) {
 				Game.Difficulty.ChaserSpeed.Final = Game.Difficulty.ChaserSpeed.Initial + 100;
+			}
+			if(Game.Difficulty.ChaserSpeed.Initial > Game.Difficulty.ChaserSpeed.Final) {
+				Game.Difficulty.ChaserSpeed.Final = Game.Difficulty.ChaserSpeed.Initial;
 			}
 			RefreshGame();
 		}
