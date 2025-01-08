@@ -1541,7 +1541,7 @@
 			ResetGame();
 		}
 
-		// Miscellaneous
+		// Misc
 		function ResetAllDontShowAgainDialogs() {
 			System.DontShowAgain = [0];
 			RefreshSystem();
