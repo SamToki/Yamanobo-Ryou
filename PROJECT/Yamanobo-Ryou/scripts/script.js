@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.22;
+		const CurrentVersion = 2.00;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -53,7 +53,7 @@
 			Terrain: {
 				Text: "",
 				Data: [
-					[0, "", 0]
+					{C: "", A: 0} // Character & Altitude. Abbreviated because this array can be very large.
 				],
 				Gradient: 3 // Range: -3 to 9.
 			},
@@ -72,12 +72,12 @@
 		},
 		Highscore = [
 			0,
-			[0, "#1", "", "", "", "", ""],
-			[0, "#2", "", "", "", "", ""],
-			[0, "#3", "", "", "", "", ""],
-			[0, "#4", "", "", "", "", ""],
-			[0, "#5", "", "", "", "", ""],
-			[0, "#6", "", "", "", "", ""]
+			{Sequence: "#1", Date: "", Score: "", AvgSpeed: "", AvgKeystrokeSpeed: "", Accuracy: ""},
+			{Sequence: "#2", Date: "", Score: "", AvgSpeed: "", AvgKeystrokeSpeed: "", Accuracy: ""},
+			{Sequence: "#3", Date: "", Score: "", AvgSpeed: "", AvgKeystrokeSpeed: "", Accuracy: ""},
+			{Sequence: "#4", Date: "", Score: "", AvgSpeed: "", AvgKeystrokeSpeed: "", Accuracy: ""},
+			{Sequence: "#5", Date: "", Score: "", AvgSpeed: "", AvgKeystrokeSpeed: "", Accuracy: ""},
+			{Sequence: "#6", Date: "", Score: "", AvgSpeed: "", AvgKeystrokeSpeed: "", Accuracy: ""}
 		],
 		Library = {
 			Selection: 1,
@@ -519,16 +519,15 @@
 
 			// Generate terrain data
 			while((Game.Terrain.Data.length - 1) < Game.Terrain.Text.length) {
-				Game.Terrain.Data[Game.Terrain.Data.length] = [
-					0,
-					Game.Terrain.Text.charAt(Game.Terrain.Data.length - 1),
-					Game.Terrain.Data[Game.Terrain.Data.length - 1][2] + Game.Terrain.Gradient
-				];
-				if(Game.Terrain.Data[Game.Terrain.Data.length - 1][2] < 0) {
-					Game.Terrain.Data[Game.Terrain.Data.length - 1][2] = 0;
+				Game.Terrain.Data[Game.Terrain.Data.length] = {
+					C: Game.Terrain.Text.charAt(Game.Terrain.Data.length - 1),
+					A: Math.round(Game.Terrain.Data[Game.Terrain.Data.length - 1].A + Game.Terrain.Gradient)
+				};
+				if(Game.Terrain.Data[Game.Terrain.Data.length - 1].A < 0) {
+					Game.Terrain.Data[Game.Terrain.Data.length - 1].A = 0;
 				}
-				if(Game.Terrain.Data[Game.Terrain.Data.length - 1][2] > 29000) {
-					Game.Terrain.Data[Game.Terrain.Data.length - 1][2] = 29000;
+				if(Game.Terrain.Data[Game.Terrain.Data.length - 1].A > 29000) {
+					Game.Terrain.Data[Game.Terrain.Data.length - 1].A = 29000;
 				}
 				Game.Terrain.Gradient += Randomize(-60 - Math.trunc((Game.Terrain.Gradient - 3) * 10), 60 - Math.trunc((Game.Terrain.Gradient - 3) * 10)) / 40;
 					// This algorithm makes the gradient variation balanced.
@@ -537,17 +536,17 @@
 
 			// Generate and remove terrain elements
 				// Ahead
-				if(Game.Terrain.Data[Game0.Terrain.Generation.Ahead][1] == "") {
+				if(Game.Terrain.Data[Game0.Terrain.Generation.Ahead].C == "") {
 					AlertSystemError("Terrain #" + Game0.Terrain.Generation.Ahead + " has empty text.");
 				}
 				if(IsElementExisting("Terrain_Game" + Game0.Terrain.Generation.Ahead) == false) {
-					AddText("Ctnr_GameTerrain", "<div class=\"Terrain Ahead\" id=\"Terrain_Game" + Game0.Terrain.Generation.Ahead + "\">" + Game.Terrain.Data[Game0.Terrain.Generation.Ahead][1] + "</div>");
+					AddText("Ctnr_GameTerrain", "<div class=\"Terrain Ahead\" id=\"Terrain_Game" + Game0.Terrain.Generation.Ahead + "\">" + Game.Terrain.Data[Game0.Terrain.Generation.Ahead].C + "</div>");
 					let CumulativeWidth = 0;
 					for(let Looper = Game.Stats.Odometer + 1; Looper < Game0.Terrain.Generation.Ahead; Looper++) {
 						CumulativeWidth += ReadWidth("Terrain_Game" + Looper);
 					}
 					ChangeLeft("Terrain_Game" + Game0.Terrain.Generation.Ahead, Game0.Terrain.WalkedWidth + CumulativeWidth + "px");
-					ChangeHeight("Terrain_Game" + Game0.Terrain.Generation.Ahead, 2000 + Game.Terrain.Data[Game0.Terrain.Generation.Ahead][2] + "px");
+					ChangeHeight("Terrain_Game" + Game0.Terrain.Generation.Ahead, 2000 + Game.Terrain.Data[Game0.Terrain.Generation.Ahead].A + "px");
 				}
 				if(Game0.Terrain.Generation.Ahead - Game.Stats.Odometer < 100) {
 					Game0.Terrain.Generation.Ahead++;
@@ -556,17 +555,17 @@
 				}
 
 				// Behind
-				if(Game.Terrain.Data[Game0.Terrain.Generation.Behind][1] == "" && Game0.Terrain.Generation.Behind > 0) {
+				if(Game.Terrain.Data[Game0.Terrain.Generation.Behind].C == "" && Game0.Terrain.Generation.Behind > 0) {
 					AlertSystemError("Terrain #" + Game0.Terrain.Generation.Behind + " has empty text.");
 				}
 				if(IsElementExisting("Terrain_Game" + Game0.Terrain.Generation.Behind) == false) {
-					AddText("Ctnr_GameTerrain", "<div class=\"Terrain\" id=\"Terrain_Game" + Game0.Terrain.Generation.Behind + "\">" + Game.Terrain.Data[Game0.Terrain.Generation.Behind][1] + "</div>");
+					AddText("Ctnr_GameTerrain", "<div class=\"Terrain\" id=\"Terrain_Game" + Game0.Terrain.Generation.Behind + "\">" + Game.Terrain.Data[Game0.Terrain.Generation.Behind].C + "</div>");
 					let CumulativeWidth = 0;
 					for(let Looper = Game.Stats.Odometer; Looper >= Game0.Terrain.Generation.Behind; Looper--) {
 						CumulativeWidth += ReadWidth("Terrain_Game" + Looper);
 					}
 					ChangeLeft("Terrain_Game" + Game0.Terrain.Generation.Behind, Game0.Terrain.WalkedWidth - CumulativeWidth + "px");
-					ChangeHeight("Terrain_Game" + Game0.Terrain.Generation.Behind, 2000 + Game.Terrain.Data[Game0.Terrain.Generation.Behind][2] + "px");
+					ChangeHeight("Terrain_Game" + Game0.Terrain.Generation.Behind, 2000 + Game.Terrain.Data[Game0.Terrain.Generation.Behind].A + "px");
 				}
 				if(Game.Stats.Odometer - Game0.Terrain.Generation.Behind < 100) {
 					Game0.Terrain.Generation.Behind--;
@@ -586,26 +585,26 @@
 
 			// Align terrain to player
 			if(IsMobileLayout() == false) {
-				ChangeBottom("Ctnr_GameTerrain", "calc(50% - 1980px - " + Game.Terrain.Data[Game.Stats.Odometer + 1][2] + "px)");
+				ChangeBottom("Ctnr_GameTerrain", "calc(50% - 1980px - " + Game.Terrain.Data[Game.Stats.Odometer + 1].A + "px)");
 			} else {
-				ChangeBottom("Ctnr_GameTerrain", "calc(80px + (100% - 255px) / 2 - 1980px - " + Game.Terrain.Data[Game.Stats.Odometer + 1][2] + "px)");
+				ChangeBottom("Ctnr_GameTerrain", "calc(80px + (100% - 255px) / 2 - 1980px - " + Game.Terrain.Data[Game.Stats.Odometer + 1].A + "px)");
 			}
 			ChangeRight("Ctnr_GameTerrain", "calc(50% + " + Game0.Terrain.WalkedWidth + "px)");
 
 		// Characters
 			// Player
 			if(IsMobileLayout() == false) {
-				ChangeBottom("Character_GamePlayer", "calc(50% + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Game.Stats.Odometer][2]) + "px)");
+				ChangeBottom("Character_GamePlayer", "calc(50% + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1].A - Game.Terrain.Data[Game.Stats.Odometer].A) + "px)");
 			} else {
-				ChangeBottom("Character_GamePlayer", "calc(80px + (100% - 255px) / 2 + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Game.Stats.Odometer][2]) + "px)");
+				ChangeBottom("Character_GamePlayer", "calc(80px + (100% - 255px) / 2 + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1].A - Game.Terrain.Data[Game.Stats.Odometer].A) + "px)");
 			}
 
 			// Chaser
 				// Vertical separation
 				if(IsMobileLayout() == false) {
-					ChangeBottom("Character_GameChaser", "calc(50% + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Math.trunc(Game.Stats.ChaserOdometer)][2]) + "px)");
+					ChangeBottom("Character_GameChaser", "calc(50% + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1].A - Game.Terrain.Data[Math.trunc(Game.Stats.ChaserOdometer)].A) + "px)");
 				} else {
-					ChangeBottom("Character_GameChaser", "calc(80px + (100% - 255px) / 2 + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1][2] - Game.Terrain.Data[Math.trunc(Game.Stats.ChaserOdometer)][2]) + "px)");
+					ChangeBottom("Character_GameChaser", "calc(80px + (100% - 255px) / 2 + 20px - " + (Game.Terrain.Data[Game.Stats.Odometer + 1].A - Game.Terrain.Data[Math.trunc(Game.Stats.ChaserOdometer)].A) + "px)");
 				}
 
 				// Horizontal separation
@@ -799,7 +798,7 @@
 			}
 
 		// Altitude
-		Game.Stats.Altitude = Game.Terrain.Data[Game.Stats.Odometer][2];
+		Game.Stats.Altitude = Game.Terrain.Data[Game.Stats.Odometer].A;
 			// Tape
 			Game0.Stats.AltitudeTapeDisplay += (Game.Stats.Altitude - Game0.Stats.AltitudeTapeDisplay) / 5;
 			ChangeTop("CtrlGroup_GameAltitudeTape", "calc(50% - 29000px + " + Game0.Stats.AltitudeTapeDisplay + "px)");
@@ -882,12 +881,12 @@
 				Game.Status.IsPaused = true;
 				ChangeValue("Textbox_Game", "");
 				ShowToast("胜利!");
-				Highscore[6][1] = "最新";
-				Highscore[6][2] = new Date(Date.now()).toLocaleDateString(ReadLanguage("Html"));
-				Highscore[6][3] = Game.Stats.Score.toString().padStart(8, "0");
-				Highscore[6][4] = Game.Stats.AvgSpeed.toFixed(0) + "cpm";
-				Highscore[6][5] = Game.Stats.AvgKeystrokeSpeed.toFixed(0) + "kpm";
-				Highscore[6][6] = Game.Stats.Accuracy.toFixed(2) + "%";
+				Highscore[6].Sequence = "最新";
+				Highscore[6].Date = new Date(Date.now()).toLocaleDateString(ReadLanguage("Html"));
+				Highscore[6].Score = Game.Stats.Score.toString().padStart(8, "0");
+				Highscore[6].AvgSpeed = Game.Stats.AvgSpeed.toFixed(0) + "cpm";
+				Highscore[6].AvgKeystrokeSpeed = Game.Stats.AvgKeystrokeSpeed.toFixed(0) + "kpm";
+				Highscore[6].Accuracy = Game.Stats.Accuracy.toFixed(2) + "%";
 				RefreshHighscore();
 				setTimeout(function() {
 					ResetGame();
@@ -1026,34 +1025,34 @@
 	function RefreshHighscore() {
 		// Remove "Latest" from original highscore table
 		for(let Looper = 1; Looper <= 5; Looper++) {
-			Highscore[Looper][1] = "名次";
+			Highscore[Looper].Sequence = "名次";
 		}
 
 		// Sort (bubble sort)
 		for(let Looper = 1; Looper <= 5; Looper++) {
 			for(let Looper2 = 5; Looper2 >= 1; Looper2--) {
-				if(Number(Highscore[Looper2 + 1][3]) > Number(Highscore[Looper2][3])) {
-					let Swapper = Highscore[Looper2];
-					Highscore[Looper2] = Highscore[Looper2 + 1];
-					Highscore[Looper2 + 1] = Swapper;
+				if(Number(Highscore[Looper2 + 1].Score) > Number(Highscore[Looper2].Score)) {
+					let Swapper = structuredClone(Highscore[Looper2]);
+					Highscore[Looper2] = structuredClone(Highscore[Looper2 + 1]);
+					Highscore[Looper2 + 1] = structuredClone(Swapper);
 				}
 			}
 		}
 
 		// Refresh
 		for(let Looper = 1; Looper <= 6; Looper++) {
-			if(Highscore[Looper][1] == "最新") {
+			if(Highscore[Looper].Sequence == "最新") {
 				AddClass("Item_HighscoreRow" + Looper, "GreenText");
 			} else {
-				Highscore[Looper][1] = "#" + Looper;
+				Highscore[Looper].Sequence = "#" + Looper;
 				RemoveClass("Item_HighscoreRow" + Looper, "GreenText");
 			}
-			ChangeText("Label_HighscoreRow" + Looper + "Sequence", Highscore[Looper][1]);
-			ChangeText("Label_HighscoreRow" + Looper + "Date", Highscore[Looper][2]);
-			ChangeText("Label_HighscoreRow" + Looper + "Score", Highscore[Looper][3]);
-			ChangeText("Label_HighscoreRow" + Looper + "AvgSpeed", Highscore[Looper][4]);
-			ChangeText("Label_HighscoreRow" + Looper + "AvgKeystrokeSpeed", Highscore[Looper][5]);
-			ChangeText("Label_HighscoreRow" + Looper + "Accuracy", Highscore[Looper][6]);
+			ChangeText("Label_HighscoreRow" + Looper + "Sequence", Highscore[Looper].Sequence);
+			ChangeText("Label_HighscoreRow" + Looper + "Date", Highscore[Looper].Date);
+			ChangeText("Label_HighscoreRow" + Looper + "Score", Highscore[Looper].Score);
+			ChangeText("Label_HighscoreRow" + Looper + "AvgSpeed", Highscore[Looper].AvgSpeed);
+			ChangeText("Label_HighscoreRow" + Looper + "AvgKeystrokeSpeed", Highscore[Looper].AvgKeystrokeSpeed);
+			ChangeText("Label_HighscoreRow" + Looper + "Accuracy", Highscore[Looper].Accuracy);
 		}
 
 		// Save user data
@@ -1174,7 +1173,7 @@
 			Game.Terrain = {
 				Text: "",
 				Data: [
-					[0, "", 0]
+					{C: "", A: 0}
 				],
 				Gradient: 3
 			};
@@ -1687,7 +1686,7 @@
 						Game.Terrain = { // Also reset the terrain to prevent mismatch between terrain and library text.
 							Text: "",
 							Data: [
-								[0, "", 0]
+								{C: "", A: 0}
 							],
 							Gradient: 3
 						};
@@ -1725,7 +1724,7 @@
 			}
 		}
 		if((document.activeElement.tagName.toLowerCase() != "input" && document.activeElement.tagName.toLowerCase() != "textarea") || // Prevent hotkey activation when inputing text etc.
-			document.activeElement.id == "Textbox_Game") { // Except when typing in game.
+		document.activeElement.id == "Textbox_Game") { // Except when typing in game.
 			switch(Hotkey.key.toUpperCase()) {
 				case "DELETE":
 					Click("Button_GamePauseOrReset");
