@@ -1281,6 +1281,8 @@
 							case Library.Selection == Looper2 + 1:
 								Library.Selection--;
 								break;
+							default:
+								break;
 						}
 					}
 				}
