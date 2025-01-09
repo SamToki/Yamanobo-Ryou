@@ -16,7 +16,7 @@
 			},
 			PreviousTextboxContent: "",
 			Stats: {
-				PreviousClockTime: 0, PreviousElapsedTime: 0,
+				ClockTime: 0, PreviousClockTime: 0,
 				Progress: 0,
 				StartTime: 0, KeystrokeSpeed: 0, KeystrokeSpeedDisplay: 0, AvgKeystrokeSpeed: 0, Accuracy: 0, ScoreDisplay: 0,
 				Speed: 0, SpeedTapeDisplay: 0, PreviousSpeedTapeDisplay: 0, SpeedBalloonDisplay: [0, 0, 0, 0],
@@ -429,16 +429,15 @@
 
 	// Game
 	function ClockGame() {
-		// Update times
+		// Update essentials
+		Game0.Stats.ClockTime = Date.now();
 		if(Game.Status.IsRunning == true) {
 			if(Game.Status.IsPaused == false) {
-				Game.Stats.ElapsedTime = Date.now() - Game.Stats.StartTime;
+				Game.Stats.ElapsedTime = Game0.Stats.ClockTime - Game.Stats.StartTime;
 			} else {
-				Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
+				Game.Stats.StartTime = Game0.Stats.ClockTime - Game.Stats.ElapsedTime;
 			}
 		}
-
-		// Update progress
 		Game0.Stats.Altitude = Game.Terrain.Data[Game.Stats.Odometer].A;
 		switch(Game.Progressing.Progressing) {
 			case "Duration":
@@ -464,14 +463,14 @@
 				// Start or continue game
 				if(Game.Status.IsRunning == false) {
 					Game.Status.IsRunning = true;
-					Game.Stats.StartTime = Date.now();
+					Game.Stats.StartTime = Game0.Stats.ClockTime;
 					ScrollIntoView("Game");
 					RefreshGame();
 					return;
 				} else {
 					if(Game.Status.IsPaused == true) {
 						Game.Status.IsPaused = false;
-						Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
+						Game.Stats.StartTime = Game0.Stats.ClockTime - Game.Stats.ElapsedTime;
 						ScrollIntoView("Game");
 						RefreshGame();
 						return;
@@ -512,7 +511,7 @@
 				Game0.Stats.ChaserSpeed = 0;
 			}
 			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
-				Game.Stats.ChaserOdometer += Game0.Stats.ChaserSpeed / 60000 * (Game.Stats.ElapsedTime - Game0.Stats.PreviousElapsedTime);
+				Game.Stats.ChaserOdometer += Game0.Stats.ChaserSpeed / 60000 * (Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime);
 				if(Game.Stats.Odometer - Game.Stats.ChaserOdometer > Game.Difficulty.MaxSeparation) {
 					Game.Stats.ChaserOdometer = Game.Stats.Odometer - Game.Difficulty.MaxSeparation;
 				}
@@ -712,7 +711,7 @@
 
 			// Additional indicators
 				// Speed trend
-				Game0.Stats.SpeedTrend = (Game0.Stats.SpeedTapeDisplay - Game0.Stats.PreviousSpeedTapeDisplay) * (1000 / (Date.now() - Game0.Stats.PreviousClockTime));
+				Game0.Stats.SpeedTrend = (Game0.Stats.SpeedTapeDisplay - Game0.Stats.PreviousSpeedTapeDisplay) * (1000 / (Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime));
 				Game0.Stats.SpeedTrendDisplay += (Game0.Stats.SpeedTrend - Game0.Stats.SpeedTrendDisplay) / 5;
 				if(Math.abs(Game0.Stats.SpeedTrendDisplay) >= 5) {
 					Show("Needle_GameSpeedTrend");
@@ -878,7 +877,7 @@
 				ChangeValue("Textbox_Game", "");
 				ShowToast("胜利!");
 				Highscore[6].Sequence = "最新";
-				Highscore[6].Date = new Date(Date.now()).toLocaleDateString(ReadLanguage("Html"));
+				Highscore[6].Date = new Date(Game0.Stats.ClockTime).toLocaleDateString(ReadLanguage("Html"));
 				Highscore[6].Score = Game.Stats.Score.toString().padStart(8, "0");
 				Highscore[6].AvgSpeed = Game0.Stats.AvgSpeed.toFixed(0) + "cpm";
 				Highscore[6].AvgKeystrokeSpeed = Game0.Stats.AvgKeystrokeSpeed.toFixed(0) + "kpm";
@@ -904,8 +903,7 @@
 		}
 
 		// Update previous variables
-		Game0.Stats.PreviousClockTime = Date.now();
-		Game0.Stats.PreviousElapsedTime = Game.Stats.ElapsedTime;
+		Game0.Stats.PreviousClockTime = Game0.Stats.ClockTime;
 		Game0.Stats.PreviousSpeedTapeDisplay = Game0.Stats.SpeedTapeDisplay;
 	}
 	function RefreshGame() {
@@ -1187,7 +1185,7 @@
 				},
 				PreviousTextboxContent: "",
 				Stats: {
-					PreviousClockTime: 0, PreviousElapsedTime: 0,
+					ClockTime: 0, PreviousClockTime: 0,
 					Progress: 0,
 					StartTime: 0, KeystrokeSpeed: 0, KeystrokeSpeedDisplay: 0, AvgKeystrokeSpeed: 0, Accuracy: 0, ScoreDisplay: 0,
 					Speed: 0, SpeedTapeDisplay: 0, PreviousSpeedTapeDisplay: 0, SpeedBalloonDisplay: [0, 0, 0, 0],
