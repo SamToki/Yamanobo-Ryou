@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.01;
+		const CurrentVersion = 2.02;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -18,11 +18,19 @@
 			Stats: {
 				ClockTime: 0, PreviousClockTime: 0,
 				Progress: 0,
-				StartTime: 0, KeystrokeSpeed: 0, KeystrokeSpeedDisplay: 0, AvgKeystrokeSpeed: 0, Accuracy: 0, ScoreDisplay: 0,
-				Speed: 0, SpeedTapeDisplay: 0, PreviousSpeedTapeDisplay: 0, SpeedBalloonDisplay: [0, 0, 0, 0],
-				SpeedTrend: 0, SpeedTrendDisplay: 0,
-				AvgSpeed: 0, AvgSpeedDisplay: 0, ChaserSpeed: 0, ChaserSpeedDisplay: 0, DangerousSpeed: 0, DangerousSpeedDisplay: 0,
-				Altitude: 0, AltitudeTapeDisplay: 0, AltitudeBalloonDisplay: [0, 0, 0, 0, 0]
+				StartTime: 0,
+				Keystroke: {
+					Speed: 0, Display: 0, AvgSpeed: 0
+				},
+				Accuracy: 0, ScoreDisplay: 0,
+				Speed: {
+					Speed: 0, TapeDisplay: 0, PreviousTapeDisplay: 0, BalloonDisplay: [0, 0, 0, 0],
+					Trend: 0, TrendDisplay: 0,
+					Avg: 0, AvgDisplay: 0, Chaser: 0, ChaserDisplay: 0, Dangerous: 0, DangerousDisplay: 0,
+				},
+				Altitude: {
+					Altitude: 0, TapeDisplay: 0, BalloonDisplay: [0, 0, 0, 0, 0]
+				}
 			}
 		};
 		Interaction.Deletion = 0;
@@ -59,8 +67,12 @@
 				Gradient: 3 // Range: -3 to 9.
 			},
 			Stats: {
-				Odometer: 0, ChaserOdometer: 0, TypoCount: 0, ElapsedTime: 0, KeystrokeCount: 0, Score: 0,
-				KeystrokeTimestamp: [0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+				Odometer: 0, ChaserOdometer: 0, TypoCount: 0, ElapsedTime: 0,
+				Keystroke: {
+					Count: 0,
+					Timestamp: [0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+				},
+				Score: 0,
 				TypeTimestamp: [0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
 			}
 		},
@@ -438,7 +450,7 @@
 				Game.Stats.StartTime = Game0.Stats.ClockTime - Game.Stats.ElapsedTime;
 			}
 		}
-		Game0.Stats.Altitude = Game.Terrain.Data[Game.Stats.Odometer].A;
+		Game0.Stats.Altitude.Altitude = Game.Terrain.Data[Game.Stats.Odometer].A;
 		switch(Game.Progressing.Progressing) {
 			case "Duration":
 				Game0.Stats.Progress = Game.Stats.ElapsedTime / (Game.Progressing.Duration * 60000) * 100;
@@ -447,7 +459,7 @@
 				Game0.Stats.Progress = Game.Stats.Odometer / Game.Progressing.TravelDistance * 100;
 				break;
 			case "Altitude":
-				Game0.Stats.Progress = Game0.Stats.Altitude / Game.Progressing.Altitude * 100;
+				Game0.Stats.Progress = Game0.Stats.Altitude.Altitude / Game.Progressing.Altitude * 100;
 				break;
 			default:
 				AlertSystemError("The value of Game.Progressing.Progressing \"" + Game.Progressing.Progressing + "\" in function ClockGame is invalid.");
@@ -506,12 +518,12 @@
 
 			// Chaser
 			if(Game.Stats.Odometer > 20) {
-				Game0.Stats.ChaserSpeed = Game.Difficulty.ChaserSpeed.Initial + (Game.Difficulty.ChaserSpeed.Final - Game.Difficulty.ChaserSpeed.Initial) * (Game0.Stats.Progress / 100);
+				Game0.Stats.Speed.Chaser = Game.Difficulty.ChaserSpeed.Initial + (Game.Difficulty.ChaserSpeed.Final - Game.Difficulty.ChaserSpeed.Initial) * (Game0.Stats.Progress / 100);
 			} else {
-				Game0.Stats.ChaserSpeed = 0;
+				Game0.Stats.Speed.Chaser = 0;
 			}
 			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
-				Game.Stats.ChaserOdometer += Game0.Stats.ChaserSpeed / 60000 * (Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime);
+				Game.Stats.ChaserOdometer += Game0.Stats.Speed.Chaser / 60000 * (Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime);
 				if(Game.Stats.Odometer - Game.Stats.ChaserOdometer > Game.Difficulty.MaxSeparation) {
 					Game.Stats.ChaserOdometer = Game.Stats.Odometer - Game.Difficulty.MaxSeparation;
 				}
@@ -645,25 +657,25 @@
 		ChangeText("Label_GameOdometer", Game.Stats.Odometer);
 		ChangeText("Label_GameTypoCount", Game.Stats.TypoCount);
 		ChangeText("Label_GameElapsedTime", Math.trunc(Game.Stats.ElapsedTime / 60000) + ":" + Math.trunc(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
-		if(Game.Stats.KeystrokeCount > 20) {
-			if(Game.Stats.KeystrokeTimestamp[1] >= 0) {
-				Game0.Stats.KeystrokeSpeed = 60000 / ((Game.Stats.ElapsedTime - Game.Stats.KeystrokeTimestamp[1]) / 20);
-				Game0.Stats.AvgKeystrokeSpeed = Game.Stats.KeystrokeCount / (Game.Stats.ElapsedTime / 60000);
+		if(Game.Stats.Keystroke.Count > 20) {
+			if(Game.Stats.Keystroke.Timestamp[1] >= 0) {
+				Game0.Stats.Keystroke.Speed = 60000 / ((Game.Stats.ElapsedTime - Game.Stats.Keystroke.Timestamp[1]) / 20);
+				Game0.Stats.Keystroke.AvgSpeed = Game.Stats.Keystroke.Count / (Game.Stats.ElapsedTime / 60000);
 			} else {
-				AlertSystemError("The array Game.Stats.KeystrokeTimestamp is not filled when Game.Stats.KeystrokeCount got greater than 20.");
+				AlertSystemError("The array Game.Stats.Keystroke.Timestamp is not filled when Game.Stats.Keystroke.Count got greater than 20.");
 			}
 			RemoveClass("Label_GameKeystrokeSpeed", "Transparent");
 		} else {
-			Game0.Stats.KeystrokeSpeed = 0;
-			Game0.Stats.AvgKeystrokeSpeed = 0;
-			if(Game.Stats.KeystrokeCount > 0) {
+			Game0.Stats.Keystroke.Speed = 0;
+			Game0.Stats.Keystroke.AvgSpeed = 0;
+			if(Game.Stats.Keystroke.Count > 0) {
 				AddClass("Label_GameKeystrokeSpeed", "Transparent");
 			} else {
 				RemoveClass("Label_GameKeystrokeSpeed", "Transparent");
 			}
 		}
-		Game0.Stats.KeystrokeSpeedDisplay += (Game0.Stats.KeystrokeSpeed - Game0.Stats.KeystrokeSpeedDisplay) / 200;
-		ChangeText("Label_GameKeystrokeSpeed", Game0.Stats.KeystrokeSpeedDisplay.toFixed(0) + "<span class=\"SmallerText\">kpm</span>");
+		Game0.Stats.Keystroke.Display += (Game0.Stats.Keystroke.Speed - Game0.Stats.Keystroke.Display) / 200;
+		ChangeText("Label_GameKeystrokeSpeed", Game0.Stats.Keystroke.Display.toFixed(0) + "<span class=\"SmallerText\">kpm</span>");
 		if(Game.Stats.Odometer > 0) {
 			Game0.Stats.Accuracy = Game.Stats.Odometer / (Game.Stats.Odometer + Game.Stats.TypoCount) * 100;
 		} else {
@@ -680,15 +692,15 @@
 		// Speed
 		if(Game.Stats.Odometer > 20) { // The speed is not calculated when travel distance is less than 20.
 			if(Game.Stats.TypeTimestamp[1] >= 0) {
-				Game0.Stats.Speed = 60000 / ((Game.Stats.ElapsedTime - Game.Stats.TypeTimestamp[1]) / 20);
-				Game0.Stats.AvgSpeed = Game.Stats.Odometer / (Game.Stats.ElapsedTime / 60000);
+				Game0.Stats.Speed.Speed = 60000 / ((Game.Stats.ElapsedTime - Game.Stats.TypeTimestamp[1]) / 20);
+				Game0.Stats.Speed.Avg = Game.Stats.Odometer / (Game.Stats.ElapsedTime / 60000);
 			} else {
 				AlertSystemError("The array Game.Stats.TypeTimestamp is not filled when Game.Stats.Odometer got greater than 20.");
 			}
 			RemoveClass("CtrlGroup_GameSpeedBalloon", "Transparent");
 		} else {
-			Game0.Stats.Speed = 0;
-			Game0.Stats.AvgSpeed = 0;
+			Game0.Stats.Speed.Speed = 0;
+			Game0.Stats.Speed.Avg = 0;
 			if(Game.Stats.Odometer > 0) {
 				AddClass("CtrlGroup_GameSpeedBalloon", "Transparent");
 			} else {
@@ -703,91 +715,91 @@
 			ChangeAnim("CtrlGroup_GameAltitude", "");
 		}
 			// Tape
-			Game0.Stats.SpeedTapeDisplay += (Game0.Stats.Speed - Game0.Stats.SpeedTapeDisplay) / 200;
-			if(Game0.Stats.SpeedTapeDisplay > 999) {
-				Game0.Stats.SpeedTapeDisplay = 999;
+			Game0.Stats.Speed.TapeDisplay += (Game0.Stats.Speed.Speed - Game0.Stats.Speed.TapeDisplay) / 200;
+			if(Game0.Stats.Speed.TapeDisplay > 999) {
+				Game0.Stats.Speed.TapeDisplay = 999;
 			}
-			ChangeTop("CtrlGroup_GameSpeedTape", "calc(50% - 5000px + " + Game0.Stats.SpeedTapeDisplay * 5 + "px)");
+			ChangeTop("CtrlGroup_GameSpeedTape", "calc(50% - 5000px + " + Game0.Stats.Speed.TapeDisplay * 5 + "px)");
 
 			// Additional indicators
 				// Speed trend
-				Game0.Stats.SpeedTrend = (Game0.Stats.SpeedTapeDisplay - Game0.Stats.PreviousSpeedTapeDisplay) * (1000 / (Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime));
-				Game0.Stats.SpeedTrendDisplay += (Game0.Stats.SpeedTrend - Game0.Stats.SpeedTrendDisplay) / 5;
-				if(Math.abs(Game0.Stats.SpeedTrendDisplay) >= 5) {
+				Game0.Stats.Speed.Trend = (Game0.Stats.Speed.TapeDisplay - Game0.Stats.Speed.PreviousTapeDisplay) * (1000 / (Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime));
+				Game0.Stats.Speed.TrendDisplay += (Game0.Stats.Speed.Trend - Game0.Stats.Speed.TrendDisplay) / 5;
+				if(Math.abs(Game0.Stats.Speed.TrendDisplay) >= 5) {
 					Show("Needle_GameSpeedTrend");
 				} else {
 					Fade("Needle_GameSpeedTrend");
 				}
-				ChangeTop("Needle_GameSpeedTrend", "calc(50% - " + (Math.abs(Game0.Stats.SpeedTrendDisplay) * 5) + "px)");
-				ChangeHeight("Needle_GameSpeedTrend", Math.abs(Game0.Stats.SpeedTrendDisplay) * 10 + "px");
-				if(Game0.Stats.SpeedTrendDisplay >= 0) {
+				ChangeTop("Needle_GameSpeedTrend", "calc(50% - " + (Math.abs(Game0.Stats.Speed.TrendDisplay) * 5) + "px)");
+				ChangeHeight("Needle_GameSpeedTrend", Math.abs(Game0.Stats.Speed.TrendDisplay) * 10 + "px");
+				if(Game0.Stats.Speed.TrendDisplay >= 0) {
 					RemoveClass("Needle_GameSpeedTrend", "Decreasing");
 				} else {
 					AddClass("Needle_GameSpeedTrend", "Decreasing");
 				}
 
 				// Other speeds
-				ChangeTop("CtrlGroup_GameOtherSpeeds", "calc(50% - 5000px + " + Game0.Stats.SpeedTapeDisplay * 5 + "px)");
+				ChangeTop("CtrlGroup_GameOtherSpeeds", "calc(50% - 5000px + " + Game0.Stats.Speed.TapeDisplay * 5 + "px)");
 					// Chaser speed
-					Game0.Stats.ChaserSpeedDisplay += (Game0.Stats.ChaserSpeed - Game0.Stats.ChaserSpeedDisplay) / 5;
-					ChangeHeight("Ctrl_GameChaserSpeed", Game0.Stats.ChaserSpeedDisplay * 5 + "px");
+					Game0.Stats.Speed.ChaserDisplay += (Game0.Stats.Speed.Chaser - Game0.Stats.Speed.ChaserDisplay) / 5;
+					ChangeHeight("Ctrl_GameChaserSpeed", Game0.Stats.Speed.ChaserDisplay * 5 + "px");
 
 					// Dangerous speed
 					if(Game.Stats.Odometer > 20) {
-						Game0.Stats.DangerousSpeed = Game0.Stats.ChaserSpeed - (Game.Stats.Odometer - Game.Stats.ChaserOdometer) * 6; // 10 seconds is 1/6 minutes.
+						Game0.Stats.Speed.Dangerous = Game0.Stats.Speed.Chaser - (Game.Stats.Odometer - Game.Stats.ChaserOdometer) * 6; // 10 seconds is 1/6 minutes.
 					} else {
-						Game0.Stats.DangerousSpeed = 0;
+						Game0.Stats.Speed.Dangerous = 0;
 					}
-					Game0.Stats.DangerousSpeedDisplay += (Game0.Stats.DangerousSpeed - Game0.Stats.DangerousSpeedDisplay) / 5;
-					ChangeHeight("Ctrl_GameDangerousSpeed", Game0.Stats.DangerousSpeedDisplay * 5 + "px");
+					Game0.Stats.Speed.DangerousDisplay += (Game0.Stats.Speed.Dangerous - Game0.Stats.Speed.DangerousDisplay) / 5;
+					ChangeHeight("Ctrl_GameDangerousSpeed", Game0.Stats.Speed.DangerousDisplay * 5 + "px");
 
 					// Avg speed
-					Game0.Stats.AvgSpeedDisplay += (Game0.Stats.AvgSpeed - Game0.Stats.AvgSpeedDisplay) / 5;
-					if(Game0.Stats.AvgSpeedDisplay > 999) {
-						Game0.Stats.AvgSpeedDisplay = 999;
+					Game0.Stats.Speed.AvgDisplay += (Game0.Stats.Speed.Avg - Game0.Stats.Speed.AvgDisplay) / 5;
+					if(Game0.Stats.Speed.AvgDisplay > 999) {
+						Game0.Stats.Speed.AvgDisplay = 999;
 					}
-					ChangeBottom("Ctrl_GameAvgSpeed", Game0.Stats.AvgSpeedDisplay * 5 - 35 + "px");
+					ChangeBottom("Ctrl_GameAvgSpeed", Game0.Stats.Speed.AvgDisplay * 5 - 35 + "px");
 
 			// Balloon
-			Game0.Stats.SpeedBalloonDisplay[1] = Math.trunc(Game0.Stats.SpeedTapeDisplay / 100);
-			Game0.Stats.SpeedBalloonDisplay[2] = Math.trunc(Game0.Stats.SpeedTapeDisplay % 100 / 10);
-			Game0.Stats.SpeedBalloonDisplay[3] = Game0.Stats.SpeedTapeDisplay % 10;
+			Game0.Stats.Speed.BalloonDisplay[1] = Math.trunc(Game0.Stats.Speed.TapeDisplay / 100);
+			Game0.Stats.Speed.BalloonDisplay[2] = Math.trunc(Game0.Stats.Speed.TapeDisplay % 100 / 10);
+			Game0.Stats.Speed.BalloonDisplay[3] = Game0.Stats.Speed.TapeDisplay % 10;
 			if(System.Display.Anim > 0) {
-				if(Game0.Stats.SpeedBalloonDisplay[3] > 9) {Game0.Stats.SpeedBalloonDisplay[2] += (Game0.Stats.SpeedBalloonDisplay[3] - 9);} // Imitating the cockpit PFD rolling digits.
-				if(Game0.Stats.SpeedBalloonDisplay[2] > 9) {Game0.Stats.SpeedBalloonDisplay[1] += (Game0.Stats.SpeedBalloonDisplay[2] - 9);}
+				if(Game0.Stats.Speed.BalloonDisplay[3] > 9) {Game0.Stats.Speed.BalloonDisplay[2] += (Game0.Stats.Speed.BalloonDisplay[3] - 9);} // Imitating the cockpit PFD rolling digits.
+				if(Game0.Stats.Speed.BalloonDisplay[2] > 9) {Game0.Stats.Speed.BalloonDisplay[1] += (Game0.Stats.Speed.BalloonDisplay[2] - 9);}
 			} else {
-				Game0.Stats.SpeedBalloonDisplay[3] = Math.trunc(Game0.Stats.SpeedBalloonDisplay[3]);
+				Game0.Stats.Speed.BalloonDisplay[3] = Math.trunc(Game0.Stats.Speed.BalloonDisplay[3]);
 			}
 			if(IsMobileLayout() == false) {
-				ChangeTop("RollingDigit_GameSpeed1", -45 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
-				ChangeTop("RollingDigit_GameSpeed2", -45 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
+				ChangeTop("RollingDigit_GameSpeed1", -45 * (9 - Game0.Stats.Speed.BalloonDisplay[1]) + "px");
+				ChangeTop("RollingDigit_GameSpeed2", -45 * (10 - Game0.Stats.Speed.BalloonDisplay[2]) + "px");
 				switch(true) {
-					case Game0.Stats.SpeedTapeDisplay < 1:
-						ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (18 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+					case Game0.Stats.Speed.TapeDisplay < 1:
+						ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (18 - Game0.Stats.Speed.BalloonDisplay[3]) + "px");
 						break;
-					case Game0.Stats.SpeedTapeDisplay > 998:
-						ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (9 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+					case Game0.Stats.Speed.TapeDisplay > 998:
+						ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (9 - Game0.Stats.Speed.BalloonDisplay[3]) + "px");
 						break;
 					default:
-						ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (14 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+						ChangeTop("RollingDigit_GameSpeed3", 15 - 30 * (14 - Game0.Stats.Speed.BalloonDisplay[3]) + "px");
 						break;
 				}
 			} else {
-				ChangeTop("RollingDigit_GameSpeed1", -30 * (9 - Game0.Stats.SpeedBalloonDisplay[1]) + "px");
-				ChangeTop("RollingDigit_GameSpeed2", -30 * (10 - Game0.Stats.SpeedBalloonDisplay[2]) + "px");
+				ChangeTop("RollingDigit_GameSpeed1", -30 * (9 - Game0.Stats.Speed.BalloonDisplay[1]) + "px");
+				ChangeTop("RollingDigit_GameSpeed2", -30 * (10 - Game0.Stats.Speed.BalloonDisplay[2]) + "px");
 				switch(true) {
-					case Game0.Stats.SpeedTapeDisplay < 1:
-						ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (18 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+					case Game0.Stats.Speed.TapeDisplay < 1:
+						ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (18 - Game0.Stats.Speed.BalloonDisplay[3]) + "px");
 						break;
-					case Game0.Stats.SpeedTapeDisplay > 998:
-						ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (9 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+					case Game0.Stats.Speed.TapeDisplay > 998:
+						ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (9 - Game0.Stats.Speed.BalloonDisplay[3]) + "px");
 						break;
 					default:
-						ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (14 - Game0.Stats.SpeedBalloonDisplay[3]) + "px");
+						ChangeTop("RollingDigit_GameSpeed3", 10 - 20 * (14 - Game0.Stats.Speed.BalloonDisplay[3]) + "px");
 						break;
 				}
 			}
-			if(Game.Status.IsRunning == true && Game.Stats.Odometer > 20 && Game0.Stats.SpeedTapeDisplay <= Game0.Stats.DangerousSpeedDisplay) {
+			if(Game.Status.IsRunning == true && Game.Stats.Odometer > 20 && Game0.Stats.Speed.TapeDisplay <= Game0.Stats.Speed.DangerousDisplay) {
 				AddClass("CtrlGroup_GameSpeedBalloon", "RedText");
 			} else {
 				RemoveClass("CtrlGroup_GameSpeedBalloon", "RedText");
@@ -795,49 +807,49 @@
 
 		// Altitude (Value is updated above)
 			// Tape
-			Game0.Stats.AltitudeTapeDisplay += (Game0.Stats.Altitude - Game0.Stats.AltitudeTapeDisplay) / 5;
-			ChangeTop("CtrlGroup_GameAltitudeTape", "calc(50% - 29000px + " + Game0.Stats.AltitudeTapeDisplay + "px)");
+			Game0.Stats.Altitude.TapeDisplay += (Game0.Stats.Altitude.Altitude - Game0.Stats.Altitude.TapeDisplay) / 5;
+			ChangeTop("CtrlGroup_GameAltitudeTape", "calc(50% - 29000px + " + Game0.Stats.Altitude.TapeDisplay + "px)");
 
 			// Balloon
-			Game0.Stats.AltitudeBalloonDisplay[1] = Math.trunc(Game0.Stats.AltitudeTapeDisplay / 10000);
-			Game0.Stats.AltitudeBalloonDisplay[2] = Math.trunc(Game0.Stats.AltitudeTapeDisplay % 10000 / 1000);
-			Game0.Stats.AltitudeBalloonDisplay[3] = Math.trunc(Game0.Stats.AltitudeTapeDisplay % 1000 / 100);
-			Game0.Stats.AltitudeBalloonDisplay[4] = Game0.Stats.AltitudeTapeDisplay % 100;
+			Game0.Stats.Altitude.BalloonDisplay[1] = Math.trunc(Game0.Stats.Altitude.TapeDisplay / 10000);
+			Game0.Stats.Altitude.BalloonDisplay[2] = Math.trunc(Game0.Stats.Altitude.TapeDisplay % 10000 / 1000);
+			Game0.Stats.Altitude.BalloonDisplay[3] = Math.trunc(Game0.Stats.Altitude.TapeDisplay % 1000 / 100);
+			Game0.Stats.Altitude.BalloonDisplay[4] = Game0.Stats.Altitude.TapeDisplay % 100;
 			if(System.Display.Anim > 0) {
-				if(Game0.Stats.AltitudeBalloonDisplay[4] > 80) {Game0.Stats.AltitudeBalloonDisplay[3] += ((Game0.Stats.AltitudeBalloonDisplay[4] - 80) / 20);}
-				if(Game0.Stats.AltitudeBalloonDisplay[3] > 9) {Game0.Stats.AltitudeBalloonDisplay[2] += (Game0.Stats.AltitudeBalloonDisplay[3] - 9);}
-				if(Game0.Stats.AltitudeBalloonDisplay[2] > 9) {Game0.Stats.AltitudeBalloonDisplay[1] += (Game0.Stats.AltitudeBalloonDisplay[2] - 9);}
+				if(Game0.Stats.Altitude.BalloonDisplay[4] > 80) {Game0.Stats.Altitude.BalloonDisplay[3] += ((Game0.Stats.Altitude.BalloonDisplay[4] - 80) / 20);}
+				if(Game0.Stats.Altitude.BalloonDisplay[3] > 9) {Game0.Stats.Altitude.BalloonDisplay[2] += (Game0.Stats.Altitude.BalloonDisplay[3] - 9);}
+				if(Game0.Stats.Altitude.BalloonDisplay[2] > 9) {Game0.Stats.Altitude.BalloonDisplay[1] += (Game0.Stats.Altitude.BalloonDisplay[2] - 9);}
 			} else {
-				Game0.Stats.AltitudeBalloonDisplay[4] = Math.trunc(Game0.Stats.AltitudeBalloonDisplay[4] / 20) * 20;
+				Game0.Stats.Altitude.BalloonDisplay[4] = Math.trunc(Game0.Stats.Altitude.BalloonDisplay[4] / 20) * 20;
 			}
 			if(IsMobileLayout() == false) {
-				ChangeTop("RollingDigit_GameAltitude1", -45 * (2 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
-				ChangeTop("RollingDigit_GameAltitude2", -45 * (10 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
-				ChangeTop("RollingDigit_GameAltitude3", -45 * (10 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
+				ChangeTop("RollingDigit_GameAltitude1", -45 * (2 - Game0.Stats.Altitude.BalloonDisplay[1]) + "px");
+				ChangeTop("RollingDigit_GameAltitude2", -45 * (10 - Game0.Stats.Altitude.BalloonDisplay[2]) + "px");
+				ChangeTop("RollingDigit_GameAltitude3", -45 * (10 - Game0.Stats.Altitude.BalloonDisplay[3]) + "px");
 				switch(true) {
-					case Game0.Stats.AltitudeTapeDisplay < 20:
-						ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (13 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+					case Game0.Stats.Altitude.TapeDisplay < 20:
+						ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (13 - Game0.Stats.Altitude.BalloonDisplay[4] / 20) + "px");
 						break;
-					case Game0.Stats.AltitudeTapeDisplay > 28980:
-						ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (5 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+					case Game0.Stats.Altitude.TapeDisplay > 28980:
+						ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (5 - Game0.Stats.Altitude.BalloonDisplay[4] / 20) + "px");
 						break;
 					default:
-						ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (9 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+						ChangeTop("RollingDigit_GameAltitude4", 17.5 - 25 * (9 - Game0.Stats.Altitude.BalloonDisplay[4] / 20) + "px");
 						break;
 				}
 			} else {
-				ChangeTop("RollingDigit_GameAltitude1", -30 * (2 - Game0.Stats.AltitudeBalloonDisplay[1]) + "px");
-				ChangeTop("RollingDigit_GameAltitude2", -30 * (10 - Game0.Stats.AltitudeBalloonDisplay[2]) + "px");
-				ChangeTop("RollingDigit_GameAltitude3", -30 * (10 - Game0.Stats.AltitudeBalloonDisplay[3]) + "px");
+				ChangeTop("RollingDigit_GameAltitude1", -30 * (2 - Game0.Stats.Altitude.BalloonDisplay[1]) + "px");
+				ChangeTop("RollingDigit_GameAltitude2", -30 * (10 - Game0.Stats.Altitude.BalloonDisplay[2]) + "px");
+				ChangeTop("RollingDigit_GameAltitude3", -30 * (10 - Game0.Stats.Altitude.BalloonDisplay[3]) + "px");
 				switch(true) {
-					case Game0.Stats.AltitudeTapeDisplay < 20:
-						ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (13 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+					case Game0.Stats.Altitude.TapeDisplay < 20:
+						ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (13 - Game0.Stats.Altitude.BalloonDisplay[4] / 20) + "px");
 						break;
-					case Game0.Stats.AltitudeTapeDisplay > 28980:
-						ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (5 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+					case Game0.Stats.Altitude.TapeDisplay > 28980:
+						ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (5 - Game0.Stats.Altitude.BalloonDisplay[4] / 20) + "px");
 						break;
 					default:
-						ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (9 - Game0.Stats.AltitudeBalloonDisplay[4] / 20) + "px");
+						ChangeTop("RollingDigit_GameAltitude4", 12 - 16 * (9 - Game0.Stats.Altitude.BalloonDisplay[4] / 20) + "px");
 						break;
 				}
 			}
@@ -879,8 +891,8 @@
 				Highscore[6].Sequence = "最新";
 				Highscore[6].Date = new Date(Game0.Stats.ClockTime).toLocaleDateString(ReadLanguage("Html"));
 				Highscore[6].Score = Game.Stats.Score.toString().padStart(8, "0");
-				Highscore[6].AvgSpeed = Game0.Stats.AvgSpeed.toFixed(0) + "cpm";
-				Highscore[6].AvgKeystrokeSpeed = Game0.Stats.AvgKeystrokeSpeed.toFixed(0) + "kpm";
+				Highscore[6].AvgSpeed = Game0.Stats.Speed.Avg.toFixed(0) + "cpm";
+				Highscore[6].AvgKeystrokeSpeed = Game0.Stats.Keystroke.AvgSpeed.toFixed(0) + "kpm";
 				Highscore[6].Accuracy = Game0.Stats.Accuracy.toFixed(2) + "%";
 				RefreshHighscore();
 				setTimeout(function() {
@@ -904,7 +916,7 @@
 
 		// Update previous variables
 		Game0.Stats.PreviousClockTime = Game0.Stats.ClockTime;
-		Game0.Stats.PreviousSpeedTapeDisplay = Game0.Stats.SpeedTapeDisplay;
+		Game0.Stats.Speed.PreviousTapeDisplay = Game0.Stats.Speed.TapeDisplay;
 	}
 	function RefreshGame() {
 		// Call
@@ -1129,9 +1141,9 @@
 		// Textbox
 		function Keypress() {
 			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
-				Game.Stats.KeystrokeCount++;
-				Game.Stats.KeystrokeTimestamp.splice(1, 1);
-				Game.Stats.KeystrokeTimestamp[21] = Game.Stats.ElapsedTime;
+				Game.Stats.Keystroke.Count++;
+				Game.Stats.Keystroke.Timestamp.splice(1, 1);
+				Game.Stats.Keystroke.Timestamp[21] = Game.Stats.ElapsedTime;
 			}
 		}
 		function WarnAboutPasting() {
@@ -1172,8 +1184,12 @@
 				Gradient: 3
 			};
 			Game.Stats = {
-				Odometer: 0, ChaserOdometer: 0, TypoCount: 0, ElapsedTime: 0, KeystrokeCount: 0, Score: 0,
-				KeystrokeTimestamp: [0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+				Odometer: 0, ChaserOdometer: 0, TypoCount: 0, ElapsedTime: 0,
+				Keystroke: {
+					Count: 0,
+					Timestamp: [0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+				},
+				Score: 0,
 				TypeTimestamp: [0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
 			};
 			Game0 = {
@@ -1187,11 +1203,19 @@
 				Stats: {
 					ClockTime: 0, PreviousClockTime: 0,
 					Progress: 0,
-					StartTime: 0, KeystrokeSpeed: 0, KeystrokeSpeedDisplay: 0, AvgKeystrokeSpeed: 0, Accuracy: 0, ScoreDisplay: 0,
-					Speed: 0, SpeedTapeDisplay: 0, PreviousSpeedTapeDisplay: 0, SpeedBalloonDisplay: [0, 0, 0, 0],
-					SpeedTrend: 0, SpeedTrendDisplay: 0,
-					AvgSpeed: 0, AvgSpeedDisplay: 0, ChaserSpeed: 0, ChaserSpeedDisplay: 0, DangerousSpeed: 0, DangerousSpeedDisplay: 0,
-					Altitude: 0, AltitudeTapeDisplay: 0, AltitudeBalloonDisplay: [0, 0, 0, 0, 0]
+					StartTime: 0,
+					Keystroke: {
+						Speed: 0, Display: 0, AvgSpeed: 0
+					},
+					Accuracy: 0, ScoreDisplay: 0,
+					Speed: {
+						Speed: 0, TapeDisplay: 0, PreviousTapeDisplay: 0, BalloonDisplay: [0, 0, 0, 0],
+						Trend: 0, TrendDisplay: 0,
+						Avg: 0, AvgDisplay: 0, Chaser: 0, ChaserDisplay: 0, Dangerous: 0, DangerousDisplay: 0,
+					},
+					Altitude: {
+						Altitude: 0, TapeDisplay: 0, BalloonDisplay: [0, 0, 0, 0, 0]
+					}
 				}
 			};
 			ChangeText("Ctnr_GameTerrain", "");
