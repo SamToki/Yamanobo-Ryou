@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.02;
+		const CurrentVersion = 2.03;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -723,7 +723,7 @@
 
 			// Additional indicators
 				// Speed trend
-				Game0.Stats.Speed.Trend = (Game0.Stats.Speed.TapeDisplay - Game0.Stats.Speed.PreviousTapeDisplay) * (1000 / (Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime));
+				Game0.Stats.Speed.Trend = (Game0.Stats.Speed.TapeDisplay - Game0.Stats.Speed.PreviousTapeDisplay) * (1000 / Math.max(Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime, 1)); // If refreshed too frequently, the divisor may become zero. So "Math.max" is applied here.
 				Game0.Stats.Speed.TrendDisplay += (Game0.Stats.Speed.Trend - Game0.Stats.Speed.TrendDisplay) / 5;
 				if(Math.abs(Game0.Stats.Speed.TrendDisplay) >= 5) {
 					Show("Needle_GameSpeedTrend");
