@@ -523,7 +523,7 @@
 				Game0.Stats.Speed.Chaser = 0;
 			}
 			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
-				Game.Stats.ChaserOdometer += Game0.Stats.Speed.Chaser / 60000 * (Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime);
+				Game.Stats.ChaserOdometer += (Game0.Stats.Speed.Chaser / 60000) * (Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime);
 				if(Game.Stats.Odometer - Game.Stats.ChaserOdometer > Game.Difficulty.MaxSeparation) {
 					Game.Stats.ChaserOdometer = Game.Stats.Odometer - Game.Difficulty.MaxSeparation;
 				}
@@ -551,7 +551,7 @@
 				if(Game.Terrain.Data[Game.Terrain.Data.length - 1].A > 29000) {
 					Game.Terrain.Data[Game.Terrain.Data.length - 1].A = 29000;
 				}
-				Game.Terrain.Gradient += Randomize(-60 - Math.trunc((Game.Terrain.Gradient - 3) * 10), 60 - Math.trunc((Game.Terrain.Gradient - 3) * 10)) / 40;
+				Game.Terrain.Gradient += Randomize(-Math.trunc((Game.Terrain.Gradient - 3) * 10) - 60, -Math.trunc((Game.Terrain.Gradient - 3) * 10) + 60) / 40;
 					// This algorithm makes the gradient variation balanced.
 					// For example, if gradient is -3, the variation is randomized between 0 and +3. So the descent cannot be steeper any more.
 			}
@@ -637,7 +637,7 @@
 					}
 				}
 				if(Game.Stats.Odometer < 20) {
-					HorizontalSeparation += (20 - Game.Stats.Odometer) * 10;
+					HorizontalSeparation += 10 * (20 - Game.Stats.Odometer);
 				}
 				ChangeRight("Character_GameChaser", "calc(50% + " + HorizontalSeparation + "px)");
 
@@ -719,7 +719,7 @@
 			if(Game0.Stats.Speed.TapeDisplay > 999) {
 				Game0.Stats.Speed.TapeDisplay = 999;
 			}
-			ChangeTop("CtrlGroup_GameSpeedTape", "calc(50% - 5000px + " + Game0.Stats.Speed.TapeDisplay * 5 + "px)");
+			ChangeTop("CtrlGroup_GameSpeedTape", "calc(50% - 5000px + " + 5 * Game0.Stats.Speed.TapeDisplay + "px)");
 
 			// Additional indicators
 				// Speed trend
@@ -730,8 +730,8 @@
 				} else {
 					Fade("Needle_GameSpeedTrend");
 				}
-				ChangeTop("Needle_GameSpeedTrend", "calc(50% - " + (Math.abs(Game0.Stats.Speed.TrendDisplay) * 5) + "px)");
-				ChangeHeight("Needle_GameSpeedTrend", Math.abs(Game0.Stats.Speed.TrendDisplay) * 10 + "px");
+				ChangeTop("Needle_GameSpeedTrend", "calc(50% - " + 5 * Math.abs(Game0.Stats.Speed.TrendDisplay) + "px)");
+				ChangeHeight("Needle_GameSpeedTrend", 10 * Math.abs(Game0.Stats.Speed.TrendDisplay) + "px");
 				if(Game0.Stats.Speed.TrendDisplay >= 0) {
 					RemoveClass("Needle_GameSpeedTrend", "Decreasing");
 				} else {
@@ -739,10 +739,10 @@
 				}
 
 				// Other speeds
-				ChangeTop("CtrlGroup_GameOtherSpeeds", "calc(50% - 5000px + " + Game0.Stats.Speed.TapeDisplay * 5 + "px)");
+				ChangeTop("CtrlGroup_GameOtherSpeeds", "calc(50% - 5000px + " + 5 * Game0.Stats.Speed.TapeDisplay + "px)");
 					// Chaser speed
 					Game0.Stats.Speed.ChaserDisplay += (Game0.Stats.Speed.Chaser - Game0.Stats.Speed.ChaserDisplay) / 5;
-					ChangeHeight("Ctrl_GameChaserSpeed", Game0.Stats.Speed.ChaserDisplay * 5 + "px");
+					ChangeHeight("Ctrl_GameChaserSpeed", 5 * Game0.Stats.Speed.ChaserDisplay + "px");
 
 					// Dangerous speed
 					if(Game.Stats.Odometer > 20) {
@@ -751,14 +751,14 @@
 						Game0.Stats.Speed.Dangerous = 0;
 					}
 					Game0.Stats.Speed.DangerousDisplay += (Game0.Stats.Speed.Dangerous - Game0.Stats.Speed.DangerousDisplay) / 5;
-					ChangeHeight("Ctrl_GameDangerousSpeed", Game0.Stats.Speed.DangerousDisplay * 5 + "px");
+					ChangeHeight("Ctrl_GameDangerousSpeed", 5 * Game0.Stats.Speed.DangerousDisplay + "px");
 
 					// Avg speed
 					Game0.Stats.Speed.AvgDisplay += (Game0.Stats.Speed.Avg - Game0.Stats.Speed.AvgDisplay) / 5;
 					if(Game0.Stats.Speed.AvgDisplay > 999) {
 						Game0.Stats.Speed.AvgDisplay = 999;
 					}
-					ChangeBottom("Ctrl_GameAvgSpeed", Game0.Stats.Speed.AvgDisplay * 5 - 35 + "px");
+					ChangeBottom("Ctrl_GameAvgSpeed", 5 * Game0.Stats.Speed.AvgDisplay - 35 + "px");
 
 			// Balloon
 			Game0.Stats.Speed.BalloonDisplay[1] = Math.trunc(Game0.Stats.Speed.TapeDisplay / 100);
