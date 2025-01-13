@@ -477,15 +477,13 @@
 					Game.Status.IsRunning = true;
 					Game.Stats.StartTime = Game0.Stats.ClockTime;
 					ScrollIntoView("Game");
-					RefreshGame();
-					return;
+					setTimeout(RefreshGame, 0);
 				} else {
 					if(Game.Status.IsPaused == true) {
 						Game.Status.IsPaused = false;
 						Game.Stats.StartTime = Game0.Stats.ClockTime - Game.Stats.ElapsedTime;
 						ScrollIntoView("Game");
-						RefreshGame();
-						return;
+						setTimeout(RefreshGame, 0);
 					}
 				}
 
