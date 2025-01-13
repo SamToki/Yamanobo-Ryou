@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.03;
+		const CurrentVersion = 2.04;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -137,11 +137,11 @@
 		}
 		switch(System.I18n.Language) {
 			case "Auto":
-				/* navigator.language ... */
+				// navigator.language ...
 				break;
 			case "en-US":
 				/* ChangeCursorOverall("wait");
-				window.location.replace("index_" + System.I18n.Language + ".html"); */
+				window.location.replace("index_en-US.html"); */
 				ShowDialog("System_LanguageUnsupported",
 					"Caution",
 					"<span lang=\"en-US\">Sorry, this webpage currently does not support English (US).</span>",
@@ -715,7 +715,7 @@
 			ChangeAnim("CtrlGroup_GameAltitude", "");
 		}
 			// Tape
-			Game0.Stats.Speed.TapeDisplay += (Game0.Stats.Speed.Speed - Game0.Stats.Speed.TapeDisplay) / 200;
+			Game0.Stats.Speed.TapeDisplay += (Game0.Stats.Speed.Speed - Game0.Stats.Speed.TapeDisplay) / 200 * ((Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime) / 30); // Use "ClockTime" here for smoother trend displaying.
 			if(Game0.Stats.Speed.TapeDisplay > 999) {
 				Game0.Stats.Speed.TapeDisplay = 999;
 			}
