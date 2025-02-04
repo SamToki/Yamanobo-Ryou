@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.05;
+		const CurrentVersion = 2.06;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -197,6 +197,7 @@
 		ChangeValue("Textbox_LibraryImport", "");
 		ChangeText("Ctnr_GameTerrain", "");
 		ChangeValue("Textbox_Game", "");
+		HighlightActiveSectionInNav();
 		RefreshSystem();
 		RefreshSubsystem();
 		RefreshGame();
@@ -441,6 +442,10 @@
 
 	// Game
 	function ClockGame() {
+		// Automation
+		clearTimeout(Automation.ClockGame);
+		Automation.ClockGame = setTimeout(ClockGame, 20);
+
 		// Update essentials
 		Game0.Stats.ClockTime = Date.now();
 		if(Game.Status.IsRunning == true) {
@@ -756,7 +761,7 @@
 					if(Game0.Stats.Speed.AvgDisplay > 999) {
 						Game0.Stats.Speed.AvgDisplay = 999;
 					}
-					ChangeBottom("Ctrl_GameAvgSpeed", 5 * Game0.Stats.Speed.AvgDisplay - 35 + "px");
+					ChangeBottom("Ctrl_GameAvgSpeed", 5 * Game0.Stats.Speed.AvgDisplay - 10 + "px");
 
 			// Balloon
 			Game0.Stats.Speed.BalloonDisplay[1] = Math.trunc(Game0.Stats.Speed.TapeDisplay / 100);
@@ -1656,7 +1661,7 @@
 						break;
 					case 2:
 						Object.keys(Automation).forEach(function(AutomationName) {
-							clearInterval(Automation[AutomationName]);
+							clearTimeout(Automation[AutomationName]);
 						});
 						break;
 					case 3:
@@ -1761,9 +1766,6 @@
 
 	// On resizing window
 	window.addEventListener("resize", ClockGame);
-
-// Automations
-Automation.ClockGame = setInterval(ClockGame, 20);
 
 // Features
 	// Converters

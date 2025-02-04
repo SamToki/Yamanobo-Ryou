@@ -75,7 +75,7 @@
 			}
 			#GameChaserBalloon .BalloonTail {
 				bottom: 0; left: 0;
-				width: 100%; height: 50px; clip-path: polygon(20% 0, 40% 0, 0 100%);
+				width: 100%; height: 60px; clip-path: polygon(20% 0, 40% 0, 0 100%);
 			}
 
 			/* Textbox */
@@ -201,8 +201,8 @@
 						background-color: #FF0000;
 					}
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameAvgSpeed {
-						bottom: -35px;
-						width: 20px; height: 70px; clip-path: polygon(100% 30%, 100% 70%, 0 50%);
+						bottom: -10px;
+						width: 20px; height: 20px; clip-path: polygon(100% 0, 100% 100%, 0 50%);
 						background-color: #0090D0C0;
 					}
 
@@ -226,7 +226,7 @@
 				}
 				#Ctrl_GameSpeedBalloon .CtrlGroup .BalloonTail {
 					right: 0;
-					width: 20px; clip-path: polygon(100% 50%, 0 70%, 0 30%);
+					width: 25px; clip-path: polygon(100% 50%, 0 67.85714%, 0 32.14286%);
 				}
 				#Ctrl_GameSpeedBalloon .CtrlGroup .Balloon .CtrlGroup {
 					width: 100%; height: 100%; padding: 5px;
@@ -289,7 +289,7 @@
 				}
 				#Ctrl_GameAltitudeBalloon .CtrlGroup .BalloonTail {
 					left: 0;
-					width: 20px; clip-path: polygon(100% 30%, 100% 70%, 0 50%);
+					width: 25px; clip-path: polygon(100% 32.14286%, 100% 67.85714%, 0 50%);
 				}
 				#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon .CtrlGroup {
 					width: 100%; height: 100%; padding: 5px;
@@ -454,7 +454,7 @@
 					font-size: 1.00em;
 				}
 				#GameChaserBalloon .BalloonTail {
-					width: 100%; height: 40px;
+					width: 100%; height: 50px;
 				}
 
 				/* Textbox */
@@ -519,7 +519,7 @@
 							width: 5px;
 						}
 						#CtrlGroup_GameOtherSpeeds #Ctrl_GameAvgSpeed {
-							width: 15px; clip-path: polygon(100% 36%, 100% 64%, 0 50%);
+							width: 15px; clip-path: polygon(100% 12.5%, 100% 87.5%, 0 50%);
 						}
 
 					/* Balloon */
@@ -531,7 +531,7 @@
 						width: 70px;
 					}
 					#Ctrl_GameSpeedBalloon .CtrlGroup .BalloonTail {
-						width: 15px;
+						width: 20px; clip-path: polygon(100% 50%, 0 70%, 0 30%);
 					}
 					#Ctrl_GameSpeedBalloon .CtrlGroup .Balloon .Ctrl {
 						width: 12.5px;
@@ -564,7 +564,7 @@
 						width: 70px;
 					}
 					#Ctrl_GameAltitudeBalloon .CtrlGroup .BalloonTail {
-						width: 15px;
+						width: 20px; clip-path: polygon(100% 30%, 100% 70%, 0 50%);
 					}
 					#Ctrl_GameAltitudeBalloon .CtrlGroup .Balloon .Ctrl {
 						width: 12.5px;
