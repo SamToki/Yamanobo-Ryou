@@ -395,7 +395,7 @@
 			width: calc(100% - 76px);
 		}
 		.ListItemName {
-			max-width: 271px;
+			max-width: calc(100% - 33px);
 			overflow: hidden;
 		}
 		#Library .Button.ShownAsLabel {
