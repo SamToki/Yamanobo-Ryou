@@ -7,12 +7,9 @@
 /* Area specific */
 	/* Main */
 		/* Game */
-		#Game {
-			background-color: #0060A0;
-		}
 			/* Terrain */
 			.Terrain {
-				background-color: #604000;
+				background-color: #302000;
 			}
 			.Terrain.Ahead {
 				color: #FF80FF;
