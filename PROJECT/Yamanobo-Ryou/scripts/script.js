@@ -551,14 +551,8 @@
 			while((Game.Terrain.Data.length - 1) < Game.Terrain.Text.length) {
 				Game.Terrain.Data[Game.Terrain.Data.length] = {
 					C: Game.Terrain.Text.charAt(Game.Terrain.Data.length - 1),
-					A: Math.round(Game.Terrain.Data[Game.Terrain.Data.length - 1].A + Game.Terrain.Gradient)
+					A: CheckRangeAndCorrect(Math.round(Game.Terrain.Data[Game.Terrain.Data.length - 1].A + Game.Terrain.Gradient), 0, 29000)
 				};
-				if(Game.Terrain.Data[Game.Terrain.Data.length - 1].A < 0) {
-					Game.Terrain.Data[Game.Terrain.Data.length - 1].A = 0;
-				}
-				if(Game.Terrain.Data[Game.Terrain.Data.length - 1].A > 29000) {
-					Game.Terrain.Data[Game.Terrain.Data.length - 1].A = 29000;
-				}
 				Game.Terrain.Gradient += Randomize(-Math.trunc((Game.Terrain.Gradient - 3) * 10) - 60, -Math.trunc((Game.Terrain.Gradient - 3) * 10) + 60) / 40;
 					// This algorithm makes the gradient variation balanced.
 					// For example, if gradient is -3, the variation is randomized between 0 and +3. So the descent cannot be steeper any more.
@@ -724,9 +718,7 @@
 		}
 			// Tape
 			Game0.Stats.Speed.TapeDisplay += (Game0.Stats.Speed.Speed - Game0.Stats.Speed.TapeDisplay) / 200 * ((Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime) / 30); // Use "ClockTime" here for smoother trend displaying.
-			if(Game0.Stats.Speed.TapeDisplay > 999) {
-				Game0.Stats.Speed.TapeDisplay = 999;
-			}
+			Game0.Stats.Speed.TapeDisplay = CheckRangeAndCorrect(Game0.Stats.Speed.TapeDisplay, 0, 999);
 			ChangeTop("CtrlGroup_GameSpeedTape", "calc(50% - 5000px + " + 5 * Game0.Stats.Speed.TapeDisplay + "px)");
 
 			// Additional indicators
@@ -762,10 +754,7 @@
 					ChangeHeight("Ctrl_GameDangerousSpeed", 5 * Game0.Stats.Speed.DangerousDisplay + "px");
 
 					// Avg speed
-					Game0.Stats.Speed.AvgDisplay += (Game0.Stats.Speed.Avg - Game0.Stats.Speed.AvgDisplay) / 5;
-					if(Game0.Stats.Speed.AvgDisplay > 999) {
-						Game0.Stats.Speed.AvgDisplay = 999;
-					}
+					Game0.Stats.Speed.AvgDisplay = CheckRangeAndCorrect(Game0.Stats.Speed.AvgDisplay + (Game0.Stats.Speed.Avg - Game0.Stats.Speed.AvgDisplay) / 5, 0, 999);
 					ChangeBottom("Ctrl_GameAvgSpeed", 5 * Game0.Stats.Speed.AvgDisplay - 10 + "px");
 
 			// Balloon
@@ -1432,33 +1421,15 @@
 			}
 		}
 		function SetDuration() {
-			Game.Progressing.Duration = Math.trunc(ReadValue("Textbox_SettingsDuration"));
-			if(Game.Progressing.Duration < 1) {
-				Game.Progressing.Duration = 1;
-			}
-			if(Game.Progressing.Duration > 60) {
-				Game.Progressing.Duration = 60;
-			}
+			Game.Progressing.Duration = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsDuration")), 1, 60);
 			RefreshGame();
 		}
 		function SetTravelDistance() {
-			Game.Progressing.TravelDistance = Math.trunc(ReadValue("Textbox_SettingsTravelDistance"));
-			if(Game.Progressing.TravelDistance < 50) {
-				Game.Progressing.TravelDistance = 50;
-			}
-			if(Game.Progressing.TravelDistance > 9999) {
-				Game.Progressing.TravelDistance = 9999;
-			}
+			Game.Progressing.TravelDistance = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsTravelDistance")), 50, 9999);
 			RefreshGame();
 		}
 		function SetAltitude() {
-			Game.Progressing.Altitude = Math.trunc(ReadValue("Textbox_SettingsAltitude"));
-			if(Game.Progressing.Altitude < 200) {
-				Game.Progressing.Altitude = 200;
-			}
-			if(Game.Progressing.Altitude > 29000) {
-				Game.Progressing.Altitude = 29000;
-			}
+			Game.Progressing.Altitude = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsAltitude")), 200, 29000);
 			RefreshGame();
 		}
 
@@ -1487,13 +1458,7 @@
 			RefreshGame();
 		}
 		function SetChaserSpeedInitial() {
-			Game.Difficulty.ChaserSpeed.Initial = Math.trunc(ReadValue("Textbox_SettingsChaserSpeedInitial"));
-			if(Game.Difficulty.ChaserSpeed.Initial < 10) {
-				Game.Difficulty.ChaserSpeed.Initial = 10;
-			}
-			if(Game.Difficulty.ChaserSpeed.Initial > 999) {
-				Game.Difficulty.ChaserSpeed.Initial = 999;
-			}
+			Game.Difficulty.ChaserSpeed.Initial = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsChaserSpeedInitial")), 10, 999);
 			if(Game.Difficulty.ChaserSpeed.Initial < Game.Difficulty.ChaserSpeed.Final - 100) {
 				Game.Difficulty.ChaserSpeed.Final = Game.Difficulty.ChaserSpeed.Initial + 100;
 			}
@@ -1503,13 +1468,7 @@
 			RefreshGame();
 		}
 		function SetChaserSpeedFinal() {
-			Game.Difficulty.ChaserSpeed.Final = Math.trunc(ReadValue("Textbox_SettingsChaserSpeedFinal"));
-			if(Game.Difficulty.ChaserSpeed.Final < 10) {
-				Game.Difficulty.ChaserSpeed.Final = 10;
-			}
-			if(Game.Difficulty.ChaserSpeed.Final > 999) {
-				Game.Difficulty.ChaserSpeed.Final = 999;
-			}
+			Game.Difficulty.ChaserSpeed.Final = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsChaserSpeedFinal")), 10, 999);
 			if(Game.Difficulty.ChaserSpeed.Final < Game.Difficulty.ChaserSpeed.Initial) {
 				Game.Difficulty.ChaserSpeed.Initial = Game.Difficulty.ChaserSpeed.Final;
 			}
@@ -1519,13 +1478,7 @@
 			RefreshGame();
 		}
 		function SetMaxSeparation() {
-			Game.Difficulty.MaxSeparation = Math.trunc(ReadValue("Textbox_SettingsMaxSeparation"));
-			if(Game.Difficulty.MaxSeparation < 10) {
-				Game.Difficulty.MaxSeparation = 10;
-			}
-			if(Game.Difficulty.MaxSeparation > 100) {
-				Game.Difficulty.MaxSeparation = 100;
-			}
+			Game.Difficulty.MaxSeparation = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsMaxSeparation")), 10, 100);
 			RefreshGame();
 		}
 
