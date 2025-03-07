@@ -717,7 +717,7 @@
 			ChangeAnim("CtrlGroup_GameAltitude", "");
 		}
 			// Tape
-			Game0.Stats.Speed.TapeDisplay += (Game0.Stats.Speed.Speed - Game0.Stats.Speed.TapeDisplay) / 200 * ((Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime) / 30); // Use "ClockTime" here for smoother trend displaying.
+			Game0.Stats.Speed.TapeDisplay += (Game0.Stats.Speed.Speed - Game0.Stats.Speed.TapeDisplay) / 200 * ((Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime) / 30); // Use "ClockTime" here for smooth trend displaying.
 			Game0.Stats.Speed.TapeDisplay = CheckRangeAndCorrect(Game0.Stats.Speed.TapeDisplay, 0, 999);
 			ChangeTop("CtrlGroup_GameSpeedTape", "calc(50% - 5000px + " + 5 * Game0.Stats.Speed.TapeDisplay + "px)");
 
@@ -754,7 +754,8 @@
 					ChangeHeight("Ctrl_GameDangerousSpeed", 5 * Game0.Stats.Speed.DangerousDisplay + "px");
 
 					// Avg speed
-					Game0.Stats.Speed.AvgDisplay = CheckRangeAndCorrect(Game0.Stats.Speed.AvgDisplay + (Game0.Stats.Speed.Avg - Game0.Stats.Speed.AvgDisplay) / 5, 0, 999);
+					Game0.Stats.Speed.AvgDisplay += (Game0.Stats.Speed.Avg - Game0.Stats.Speed.AvgDisplay) / 200 * ((Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime) / 30);
+					Game0.Stats.Speed.AvgDisplay = CheckRangeAndCorrect(Game0.Stats.Speed.AvgDisplay, 0, 999);
 					ChangeBottom("Ctrl_GameAvgSpeed", 5 * Game0.Stats.Speed.AvgDisplay - 10 + "px");
 
 			// Balloon
