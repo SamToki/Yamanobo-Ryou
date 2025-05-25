@@ -163,24 +163,6 @@
 					overflow: hidden;
 					pointer-events: none;
 				}
-					/* Speed trend */
-					#Needle_GameSpeedTrend {
-						position: absolute; top: unset; right: 30px;
-						width: 15px; height: 0;
-					}
-					#Needle_GameSpeedTrend.Decreasing {
-						transform: scaleY(-1);
-					}
-					#Needle_GameSpeedTrend .NeedleFg {
-						position: absolute; top: 5px; left: calc(50% - 1px);
-						width: 2px; height: calc(50% - 5px); border-radius: 1px;
-						pointer-events: auto;
-					}
-					#Needle_GameSpeedTrend .NeedleArrow {
-						height: 15px;
-						pointer-events: auto;
-					}
-
 					/* Other speeds */
 					#CtrlGroup_GameOtherSpeeds {
 						position: absolute; top: calc(50% - 5000px); right: 0;
@@ -204,6 +186,24 @@
 						bottom: -10px;
 						width: 20px; height: 20px; clip-path: polygon(100% 0, 100% 100%, 0 50%);
 						background-color: #0090D0;
+					}
+
+					/* Speed trend */
+					#Needle_GameSpeedTrend {
+						position: absolute; top: unset; right: 30px;
+						width: 15px; height: 0;
+					}
+					#Needle_GameSpeedTrend.Decreasing {
+						transform: scaleY(-1);
+					}
+					#Needle_GameSpeedTrend .NeedleFg {
+						position: absolute; top: 5px; left: calc(50% - 1px);
+						width: 2px; height: calc(50% - 5px); border-radius: 1px;
+						pointer-events: auto;
+					}
+					#Needle_GameSpeedTrend .NeedleArrow {
+						height: 15px;
+						pointer-events: auto;
 					}
 
 				/* Balloon */
@@ -236,6 +236,7 @@
 					width: 20px; height: 100%;
 				}
 				.Balloon .Box {
+					border-radius: unset;
 					background-color: transparent;
 				}
 				#RollingDigit_GameSpeed1 {

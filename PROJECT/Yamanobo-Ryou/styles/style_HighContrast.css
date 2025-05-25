@@ -50,17 +50,17 @@
 				}
 
 				/* Additional indicators */
-					/* Speed trend */
-					#Needle_GameSpeedTrend .NeedleFg, #Needle_GameSpeedTrend .NeedleArrow {
-						background-color: #00FF00;
-					}
-
 					/* Other speeds */
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameDangerousSpeed {
 						background-color: #FF4040;
 					}
 					#CtrlGroup_GameOtherSpeeds #Ctrl_GameAvgSpeed {
 						background-color: #FF80FF;
+					}
+
+					/* Speed trend */
+					#Needle_GameSpeedTrend .NeedleFg, #Needle_GameSpeedTrend .NeedleArrow {
+						background-color: #00FF00;
 					}
 
 				/* Balloon */
