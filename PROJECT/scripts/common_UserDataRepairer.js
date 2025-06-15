@@ -133,7 +133,10 @@
 			// New feature
 			if(localStorage.GPSPFD_PFD != undefined) {
 				let PFD = JSON.parse(localStorage.getItem("GPSPFD_PFD"));
-				if(PFD.Heading == undefined) {
+				if(PFD.Speed.TakeOff == undefined) {
+					PFD.Speed.TakeOff = {
+						V1: 72.016, VR: 74.588
+					};
 					PFD.Heading = {
 						Mode: "GPS"
 					};
