@@ -20,7 +20,7 @@
 		/* Game */
 			/* Terrain */
 			#Ctnr_GameTerrain {
-				position: absolute; bottom: calc(50% - 1980px); right: 50%;
+				position: absolute; bottom: calc(50% - 1982.5px); right: 50%;
 			}
 			.Terrain {
 				position: absolute; bottom: 0; left: 500000px;
@@ -40,7 +40,7 @@
 				width: 0; height: 0;
 			}
 			.Character {
-				position: absolute; bottom: calc(50% + 20px); left: unset;
+				position: absolute; bottom: calc(50% + 17.5px); left: unset;
 				width: 100px; right: 50%;
 				display: flex;
 			}
@@ -80,7 +80,7 @@
 
 			/* Textbox */
 			#Ctnr_GameTextbox {
-				position: absolute; top: calc(50% - 20px); left: 50%;
+				position: absolute; top: calc(50% - 17.5px); left: 50%;
 				width: calc(50% - 170px);
 			}
 			#Textbox_Game {
@@ -435,12 +435,12 @@
 			/* Game */
 				/* Terrain */
 				#Ctnr_GameTerrain {
-					bottom: calc(80px + (100% - 255px) / 2 - 1980px); right: 50%;
+					bottom: calc(35px + (100% - 210px) / 2 - 1982.5px); right: 50%;
 				}
 
 				/* Characters */
 				.Character {
-					bottom: calc(80px + (100% - 255px) / 2 + 20px);
+					bottom: calc(35px + (100% - 210px) / 2 + 17.5px);
 					width: 50px;
 				}
 				#GameChaserBalloon {
@@ -460,7 +460,7 @@
 
 				/* Textbox */
 				#Ctnr_GameTextbox {
-					top: calc(175px + (100% - 255px) / 2 - 20px);
+					top: calc(175px + (100% - 210px) / 2 - 17.5px);
 					width: 50%;
 				}
 
