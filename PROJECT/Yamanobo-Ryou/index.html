@@ -10,7 +10,7 @@
 		<link rel="icon" type="image/png" href="images/Icon.png" />
 		<title>山田凉上山</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v2.10 (2025/07/17). Since 2024/10/13." />
+		<meta name="version" content="v2.11 (2025/07/30). Since 2024/10/13." />
 		<meta name="description" content="「孤独摇滚！」同人打字训练游戏。屑凉被讨债的波奇酱追上山，开始无尽的逃亡。" />
 		<meta name="copyright" content="© 2024 SAM TOKI STUDIO" />
 
@@ -1008,16 +1008,13 @@
 									</label>
 								</li>
 								<li class="Ctrl">
+									<button class="Button" id="Button_SettingsSwapCharacters" disabled="true" onclick="SwapCharacters()">对调</button>
+								</li>
+								<li class="Ctrl">
 									<label for="Textbox_SettingsBgImage">
 										<span>背景图像：</span>
 										<input class="Textbox" id="Textbox_SettingsBgImage" type="text" onclick="SelectText('Textbox_SettingsBgImage')" onchange="SetBgImage()" placeholder="粘贴 URL" title="粘贴 URL" />
 									</label>
-								</li>
-								<li class="Ctrl WidthDividedBy2">
-									<button class="Button" id="Button_SettingsSwapCharacters" disabled="true" onclick="SwapCharacters()">对调角色</button>
-								</li>
-								<li class="Ctrl WidthDividedBy2">
-									<button class="Button" id="Button_SettingsResetCustomCharacters" disabled="true" onclick="ResetCustomCharacters()">重置</button>
 								</li>
 							</ul>
 						</fieldset>
@@ -1253,7 +1250,7 @@
 							<legend>关于</legend>
 							<p>山田凉上山</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v2.10 (<time datetime="2025-07-17" pubdate="pubdate">2025/07/17</time>)<br />
+							<p>版本 v2.11 (<time datetime="2025-07-30" pubdate="pubdate">2025/07/30</time>)<br />
 								始于 2024/10/13</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">

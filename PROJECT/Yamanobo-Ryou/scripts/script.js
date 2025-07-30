@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.10;
+		const CurrentVersion = 2.11;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -1012,18 +1012,13 @@
 				ChangeImage("Image_GameChaser", "images/GotouHitori.png");
 				ChangeImage("Image_GameChaserBalloon", "images/GotouHitori.png");
 			}
-			ChangeValue("Textbox_SettingsBgImage", Game.CustomCharacters.BgImage);
-			ChangeBgImage(Game.CustomCharacters.BgImage);
 			if(Game.CustomCharacters.PlayerImage != Game.CustomCharacters.ChaserImage) {
 				ChangeDisabled("Button_SettingsSwapCharacters", false);
 			} else {
 				ChangeDisabled("Button_SettingsSwapCharacters", true);
 			}
-			if(Game.CustomCharacters.PlayerImage != "" || Game.CustomCharacters.ChaserImage != "" || Game.CustomCharacters.BgImage != "") {
-				ChangeDisabled("Button_SettingsResetCustomCharacters", false);
-			} else {
-				ChangeDisabled("Button_SettingsResetCustomCharacters", true);
-			}
+			ChangeValue("Textbox_SettingsBgImage", Game.CustomCharacters.BgImage);
+			ChangeBgImage(Game.CustomCharacters.BgImage);
 
 		// Save user data (Only when the game is not running or when the game is paused)
 		if(Game.Status.IsRunning == false || Game.Status.IsPaused == true) {
@@ -1498,21 +1493,14 @@
 			Game.CustomCharacters.ChaserImage = ReadValue("Textbox_SettingsChaserImage");
 			RefreshGame();
 		}
-		function SetBgImage() {
-			Game.CustomCharacters.BgImage = ReadValue("Textbox_SettingsBgImage");
-			RefreshGame();
-		}
 		function SwapCharacters() {
 			let Swapper = Game.CustomCharacters.PlayerImage;
 			Game.CustomCharacters.PlayerImage = Game.CustomCharacters.ChaserImage;
 			Game.CustomCharacters.ChaserImage = Swapper;
 			RefreshGame();
 		}
-		function ResetCustomCharacters() {
-			Game.CustomCharacters = {
-				PlayerImage: "", ChaserImage: "",
-				BgImage: ""
-			};
+		function SetBgImage() {
+			Game.CustomCharacters.BgImage = ReadValue("Textbox_SettingsBgImage");
 			RefreshGame();
 		}
 
