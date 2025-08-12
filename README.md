@@ -1,6 +1,6 @@
 # 简介 Description
 
-山田凉上山，「[孤独摇滚！](https://zh.moegirl.org.cn/孤独摇滚！)」同人打字训练游戏。屑[凉](https://zh.moegirl.org.cn/山田凉)被讨债的[波奇酱](https://zh.moegirl.org.cn/波奇酱)追上山，开始无尽的逃亡。<br>
+山田凉上山，「[孤独摇滚！](https://zh.moegirl.org.cn/孤独摇滚！)」同人打字训练游戏。[屑凉](https://zh.moegirl.org.cn/山田凉)被讨债的[波奇酱](https://zh.moegirl.org.cn/波奇酱)追上山，开始无尽的逃亡。<br>
 Yamanobo-Ryou (lit. [Yamada Ryou](https://bocchi-the-rock.fandom.com/wiki/Ryo_Yamada) climbing mountain) is a [*Bocchi the Rock!*](https://bocchi-the-rock.fandom.com/wiki/Bocchi_the_Rock!_(anime)) Doujin typing game. Ryou, being run after by [Bocchi-chan](https://bocchi-the-rock.fandom.com/wiki/Hitori_Gotoh) for her debt, starts an endless escape towards a mountain.
 
 ![封面 Cover](/PREVIEW/封面%20Cover.png)
