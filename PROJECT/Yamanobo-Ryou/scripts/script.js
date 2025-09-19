@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.11;
+		const CurrentVersion = 2.12;
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -932,7 +932,7 @@
 		if(Game.Status.IsRunning == false) {
 			ChangeDisabled("Button_GamePauseOrReset", true);
 			ChangeText("Button_GamePauseOrReset", "暂停");
-			ChangeDisabled("Fieldset_LibraryLibrary", false);
+			ChangeDisabled("Fieldset_LibraryTexts", false);
 			ChangeDisabled("Fieldset_LibraryTextProperties", false);
 			ChangeDisabled("Fieldset_LibraryManagement", false);
 			ChangeDisabled("Fieldset_SettingsProgressing", false);
@@ -945,7 +945,7 @@
 			} else {
 				ChangeText("Button_GamePauseOrReset", "重置");
 			}
-			ChangeDisabled("Fieldset_LibraryLibrary", true);
+			ChangeDisabled("Fieldset_LibraryTexts", true);
 			ChangeDisabled("Fieldset_LibraryTextProperties", true);
 			ChangeDisabled("Fieldset_LibraryManagement", true);
 			ChangeDisabled("Fieldset_SettingsProgressing", true);
