@@ -404,8 +404,10 @@
 			ChangeChecked("Checkbox_SettingsTryToOptimizePerformance", System.Dev.TryToOptimizePerformance);
 			if(System.Dev.TryToOptimizePerformance == true) {
 				AddClass("Html", "TryToOptimizePerformance");
+				Automation.ClockRate = 40;
 			} else {
 				RemoveClass("Html", "TryToOptimizePerformance");
+				Automation.ClockRate = 20;
 			}
 			ChangeChecked("Checkbox_SettingsShowDebugOutlines", System.Dev.ShowDebugOutlines);
 			if(System.Dev.ShowDebugOutlines == true) {
@@ -456,7 +458,7 @@
 	function ClockGame() {
 		// Automation
 		clearTimeout(Automation.ClockGame);
-		Automation.ClockGame = setTimeout(ClockGame, 20);
+		Automation.ClockGame = setTimeout(ClockGame, Automation.ClockRate);
 
 		// Update essentials
 		Game0.Stats.ClockTime = Date.now();
@@ -1224,7 +1226,7 @@
 		}
 
 	// Library
-		// Library
+		// Filter
 		function FilterLibrary() {
 			let Counter = 0, Counter2 = 0;
 			for(let Looper = 1; Looper < Library.Text.length; Looper++) {
@@ -1241,6 +1243,8 @@
 			}
 			ChangeText("Label_LibraryItemCount", "显示 " + Counter + "/" + Counter2);
 		}
+
+		// Texts
 		function SetText(Number) {
 			Library.Selection = Number;
 			ResetGame();
@@ -1257,7 +1261,7 @@
 			if(System.DontShowAgain.includes("YamanoboRyou_Library_TextExported") == false) {
 				ShowDialog("Library_TextExported",
 					"Info",
-					"已导出文本「" + Library.Text[Number].Name + "」至剪贴板。",
+					"已导出文本「" + ConvertEmptyName(Library.Text[Number].Name) + "」至剪贴板。",
 					"不再弹窗提示", "", "", "确定");
 			} else {
 				ShowToast("已导出文本");
@@ -1355,11 +1359,11 @@
 						Library = JSON.parse(Objects[Looper]);
 						Counter++;
 						break;
-					
+
 					// Empty line
 					case Objects[Looper] == "":
 						break;
-					
+
 					// Failed to import
 					default:
 						Counter2++;
@@ -1614,9 +1618,7 @@
 						ShowIAmHere("Item_SettingsUserData");
 						break;
 					case 2:
-						Object.keys(Automation).forEach(function(SubobjectName) {
-							clearTimeout(Automation[SubobjectName]);
-						});
+						ForceStop();
 						break;
 					case 3:
 						break;
