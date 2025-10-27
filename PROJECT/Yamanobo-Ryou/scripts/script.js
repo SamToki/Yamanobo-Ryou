@@ -6,7 +6,34 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.12;
+		const CurrentVersion = 2.13,
+		Preset = {
+			Game: {
+				Difficulty: {
+					ChaserSpeed: [
+						0,
+						{
+							Name: "Western",
+							Content: {
+								Initial: 180, Final: 240
+							}
+						},
+						{
+							Name: "CJK",
+							Content: {
+								Initial: 40, Final: 60
+							}
+						},
+						{
+							Name: "ZenMode",
+							Content: {
+								Initial: 10, Final: 10
+							}
+						}
+					]
+				}
+			}
+		};
 		var Game0 = {
 			Terrain: {
 				WalkedWidth: 0,
@@ -47,9 +74,7 @@
 				Progressing: "Duration", Duration: 3, TravelDistance: 500, Altitude: 1600
 			},
 			Difficulty: {
-				ChaserSpeed: {
-					Initial: 180, Final: 240
-				},
+				ChaserSpeed: structuredClone(Preset.Game.Difficulty.ChaserSpeed[1].Content),
 				MaxSeparation: 50
 			},
 			CustomCharacters: {
@@ -982,19 +1007,11 @@
 			ChangeValue("Textbox_SettingsAltitude", Game.Progressing.Altitude);
 
 			// Difficulty
-			switch(true) {
-				case Game.Difficulty.ChaserSpeed.Initial == 180 && Game.Difficulty.ChaserSpeed.Final == 240:
-					ChangeValue("Combobox_SettingsChaserSpeedPreset", "Western");
-					break;
-				case Game.Difficulty.ChaserSpeed.Initial == 40 && Game.Difficulty.ChaserSpeed.Final == 60:
-					ChangeValue("Combobox_SettingsChaserSpeedPreset", "CJK");
-					break;
-				case Game.Difficulty.ChaserSpeed.Initial == 10 && Game.Difficulty.ChaserSpeed.Final == 10:
-					ChangeValue("Combobox_SettingsChaserSpeedPreset", "ZenMode");
-					break;
-				default:
-					ChangeValue("Combobox_SettingsChaserSpeedPreset", "");
-					break;
+			ChangeValue("Combobox_SettingsChaserSpeedPreset", "");
+			for(let Looper = 1; Looper < Preset.Game.Difficulty.ChaserSpeed.length; Looper++) {
+				if(JSON.stringify(Game.Difficulty.ChaserSpeed) == JSON.stringify(Preset.Game.Difficulty.ChaserSpeed[Looper].Content)) {
+					ChangeValue("Combobox_SettingsChaserSpeedPreset", Preset.Game.Difficulty.ChaserSpeed[Looper].Name);
+				}
 			}
 			ChangeValue("Textbox_SettingsChaserSpeedInitial", Game.Difficulty.ChaserSpeed.Initial);
 			ChangeValue("Textbox_SettingsChaserSpeedFinal", Game.Difficulty.ChaserSpeed.Final);
@@ -1442,25 +1459,10 @@
 
 		// Difficulty
 		function SetChaserSpeedPreset() {
-			switch(ReadValue("Combobox_SettingsChaserSpeedPreset")) {
-				case "Western":
-					Game.Difficulty.ChaserSpeed = {
-						Initial: 180, Final: 240
-					};
-					break;
-				case "CJK":
-					Game.Difficulty.ChaserSpeed = {
-						Initial: 40, Final: 60
-					};
-					break;
-				case "ZenMode":
-					Game.Difficulty.ChaserSpeed = {
-						Initial: 10, Final: 10
-					};
-					break;
-				default:
-					AlertSystemError("The value of ReadValue(\"Combobox_SettingsChaserSpeedPreset\") \"" + ReadValue("Combobox_SettingsChaserSpeedPreset") + "\" in function SetChaserSpeedPreset is invalid.");
-					break;
+			for(let Looper = 1; Looper < Preset.Game.Difficulty.ChaserSpeed.length; Looper++) {
+				if(ReadValue("Combobox_SettingsChaserSpeedPreset") == Preset.Game.Difficulty.ChaserSpeed[Looper].Name) {
+					Game.Difficulty.ChaserSpeed = structuredClone(Preset.Game.Difficulty.ChaserSpeed[Looper].Content);
+				}
 			}
 			RefreshGame();
 		}
