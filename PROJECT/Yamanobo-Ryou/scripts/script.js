@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.13,
+		const CurrentVersion = 2.14,
 		Preset = {
 			Game: {
 				Difficulty: {
@@ -66,7 +66,7 @@
 		// Saved
 		var Subsystem = {
 			Display: {
-				GameFont: "Default"
+				GameFont: "Iosevka, monospace"
 			}
 		},
 		Game = {
@@ -154,7 +154,8 @@
 		};
 
 	// Load
-	window.onload = Load();
+	// window.onload = Load();
+	document.fonts.onloadingdone = Load();
 	function Load() {
 		// User data
 		if(localStorage.System != undefined) {
@@ -447,7 +448,7 @@
 				ChangeLanguage("Html", "zh-CN");
 			}
 			ChangeValue("Textbox_SettingsFont", System.Dev.Font);
-			ChangeFont("Html", System.Dev.Font);
+			ChangeFontOverall(System.Dev.Font);
 
 			// User data
 			ChangeValue("Textbox_SettingsUserDataImport", "");
@@ -460,15 +461,16 @@
 			// Display
 			ChangeValue("Combobox_SettingsGameFont", Subsystem.Display.GameFont);
 			switch(Subsystem.Display.GameFont) {
-				case "Default":
-					ChangeFont("Ctnr_GameTerrain", "");
-					ChangeFont("Textbox_Game", "");
+				case "Inherit":
+					ChangeFont("Ctnr_GameTerrain", System.Dev.Font);
+					ChangeFont("Textbox_Game", System.Dev.Font);
 					break;
-				case "Sans":
+				case "Sans-serif":
 				case "Serif":
 				case "Monospace":
-					ChangeFont("Ctnr_GameTerrain", Subsystem.Display.GameFont.toLowerCase());
-					ChangeFont("Textbox_Game", Subsystem.Display.GameFont.toLowerCase());
+				case "Iosevka, monospace":
+					ChangeFont("Ctnr_GameTerrain", Subsystem.Display.GameFont);
+					ChangeFont("Textbox_Game", Subsystem.Display.GameFont);
 					break;
 				default:
 					AlertSystemError("The value of Subsystem.Display.GameFont \"" + Subsystem.Display.GameFont + "\" in function RefreshSubsystem is invalid.");

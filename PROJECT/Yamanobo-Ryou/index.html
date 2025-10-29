@@ -10,7 +10,7 @@
 		<link rel="icon" type="image/png" href="images/Icon.png" />
 		<title>山田凉上山</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v2.13 (2025/10/27). Since 2024/10/13." />
+		<meta name="version" content="v2.14 (2025/10/29). Since 2024/10/13." />
 		<meta name="description" content="「孤独摇滚！」同人打字训练游戏。屑凉被讨债的波奇酱追上山，开始无尽的逃亡。" />
 		<meta name="copyright" content="© 2024 SAM TOKI STUDIO" />
 
@@ -1081,10 +1081,11 @@
 									<label for="Combobox_SettingsGameFont">
 										<span>游戏字体：</span>
 										<select class="Combobox" id="Combobox_SettingsGameFont" onchange="SetGameFont()">
-											<option value="Default" selected>默认</option>
-											<option value="Sans">黑体 (Sans)</option>
+											<option value="Inherit">继承</option>
+											<option value="Sans-serif">黑体 (Sans-serif)</option>
 											<option value="Serif">宋体 (Serif)</option>
 											<option value="Monospace">等宽字体 (Monospace)</option>
+											<option value="Iosevka, monospace" selected>Iosevka</option>
 										</select>
 									</label>
 								</li>
@@ -1178,7 +1179,11 @@
 							<legend>简介</legend>
 							<p>山田凉上山，「<a href="https://zh.moegirl.org.cn/孤独摇滚！">孤独摇滚！</a>」同人打字训练游戏。<a href="https://zh.moegirl.org.cn/山田凉">屑凉</a>被讨债的<a href="https://zh.moegirl.org.cn/波奇酱">波奇酱</a>追上山，开始无尽的逃亡。</p>
 							<p>本游戏相比其他打字游戏具备以下特色：<br />
-								①结合了「登山」与「<a href="https://zh.wikipedia.org/wiki/横向卷轴游戏">横板卷轴游戏</a>」的元素。文字显示在斜坡上，且坡度会变化。这降低了可读性，从而增强了挑战性。②打错字时不允许忽略，必须更正。这进一步增强了挑战性。③可调节您身后的追逐者的速度，与其展开紧张刺激的竞速。④可自由更换打字内容与角色图像。⑤实时、直观地显示打字速度。</p>
+								・结合了「登山」与「<a href="https://zh.wikipedia.org/wiki/横向卷轴游戏">横板卷轴游戏</a>」的元素。文字显示在斜坡上，且坡度会变化。这降低了可读性，从而增强了挑战性。<br />
+								・打错字时不允许忽略，必须更正。这进一步增强了挑战性。<br />
+								・可调节您身后的追逐者的速度，与其展开紧张刺激的竞速。<br />
+								・可自由更换打字内容与角色图像。<br />
+								・实时、直观地显示打字速度。</p>
 						</fieldset>
 					</li>
 					<li class="Item" id="Item_HelpTutorial">
@@ -1245,6 +1250,8 @@
 								角色图像可被用户替换。</p>
 							<h3>图标</h3>
 							<p>UI 图标：<a href="https://icons.getbootstrap.com">Bootstrap Icons</a>, <a href="https://icooon-mono.com">ICOOON MONO</a></p>
+							<h3>字体</h3>
+							<p>UI 字体：<a href="https://rsms.me/inter">Inter</a>, <a href="https://typeof.net/Iosevka">Iosevka</a></p>
 						</fieldset>
 					</li>
 					<li class="Item">
@@ -1252,7 +1259,7 @@
 							<legend>关于</legend>
 							<p>山田凉上山</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v2.13 (<time datetime="2025-10-27" pubdate="pubdate">2025/10/27</time>)<br />
+							<p>版本 v2.14 (<time datetime="2025-10-29" pubdate="pubdate">2025/10/29</time>)<br />
 								始于 2024/10/13</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">

@@ -26,7 +26,7 @@
 				position: absolute; bottom: 0; left: 500000px;
 				min-width: 10px; height: 0;
 				background-color: #FFFFC0C0;
-				font-size: 2.00em; text-align: center;
+				font-family: inherit; font-size: 2.00em; text-align: center;
 			}
 			.Terrain.Ahead {
 				color: #00000060;
