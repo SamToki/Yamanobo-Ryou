@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.14,
+		const CurrentVersion = 2.15,
 		Preset = {
 			Game: {
 				Difficulty: {
@@ -155,7 +155,9 @@
 
 	// Load
 	// window.onload = Load();
-	document.fonts.onloadingdone = Load();
+	document.fonts.load("14px Inter");
+	document.fonts.load("14px Iosevka");
+	document.fonts.ready.then(Load);
 	function Load() {
 		// User data
 		if(localStorage.System != undefined) {
