@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.15,
+		const CurrentVersion = 2.16,
 		Preset = {
 			Game: {
 				Difficulty: {
@@ -221,9 +221,6 @@
 		}
 
 		// Refresh
-		ChangeValue("Textbox_LibraryFilter", "");
-		ChangeValue("Textbox_LibraryImport", "");
-		ChangeText("Ctnr_GameTerrain", "");
 		ChangeValue("Textbox_Game", "");
 		HighlightActiveSectionInNav();
 		RefreshSystem();
@@ -253,9 +250,11 @@
 				switch(true) {
 					case ServiceWorkerRegistration.installing != null:
 						ChangeText("Label_SettingsPWAServiceWorkerRegistration", "等待生效");
+						AddClass("Label_SettingsPWAServiceWorkerRegistration", "GreenText");
 						break;
 					case ServiceWorkerRegistration.waiting != null:
 						ChangeText("Label_SettingsPWAServiceWorkerRegistration", "等待更新");
+						AddClass("Label_SettingsPWAServiceWorkerRegistration", "GreenText");
 						Show("Label_HelpPWANewVersionReady");
 						ShowDialog("System_PWANewVersionReady",
 							"Info",
@@ -955,8 +954,11 @@
 		Game0.Stats.Speed.PreviousTapeDisplay = Game0.Stats.Speed.TapeDisplay;
 	}
 	function RefreshGame() {
+		// Text language
+		ChangeLanguage("Ctnr_GameTerrain", Library.Text[Library.Selection].Language);
+		ChangeLanguage("Textbox_Game", Library.Text[Library.Selection].Language);
+
 		// Call
-		RefreshLibrary(); // Section "Game" relies on section "Library".
 		ClockGame();
 
 		// Ctrls
@@ -1137,7 +1139,7 @@
 			}
 
 			// Filter
-			FilterLibrary();
+			FilterTexts();
 
 			// Randomly select
 			if(Library.Text.length > 2) {
@@ -1150,8 +1152,6 @@
 		ChangeValue("Textbox_LibraryName", Library.Text[Library.Selection].Name);
 		ChangeValue("Textbox_LibraryContent", Library.Text[Library.Selection].Content);
 		ChangeLanguage("Textbox_LibraryContent", Library.Text[Library.Selection].Language);
-		ChangeLanguage("Ctnr_GameTerrain", Library.Text[Library.Selection].Language);
-		ChangeLanguage("Textbox_Game", Library.Text[Library.Selection].Language);
 		ChangeValue("Textbox_LibraryLanguage", Library.Text[Library.Selection].Language);
 		ChangeValue("Textbox_LibrarySource", Library.Text[Library.Selection].Source);
 
@@ -1247,8 +1247,8 @@
 		}
 
 	// Library
-		// Filter
-		function FilterLibrary() {
+		// Texts
+		function FilterTexts() {
 			let Counter = 0, Counter2 = 0;
 			for(let Looper = 1; Looper < Library.Text.length; Looper++) {
 				if(Library.Text[Looper].Name.toLowerCase().includes(ReadValue("Textbox_LibraryFilter").toLowerCase()) == true ||
@@ -1264,18 +1264,18 @@
 			}
 			ChangeText("Label_LibraryItemCount", "显示 " + Counter + "/" + Counter2);
 		}
-
-		// Texts
 		function SetText(Number) {
 			Library.Selection = Number;
 			ResetGame();
+			RefreshLibrary();
 		}
 		function DuplicateText(Number) {
 			Library.Text.splice(Number + 1, 0, structuredClone(Library.Text[Number]));
 			if(Library.Selection > Number) {
 				Library.Selection++;
 			}
-			RefreshGame();
+			ResetGame();
+			RefreshLibrary();
 		}
 		function ExportText(Number) {
 			navigator.clipboard.writeText(JSON.stringify(Library.Text[Number]));
@@ -1295,7 +1295,7 @@
 				"您确认要删除文本「" + ConvertEmptyName(Library.Text[Number].Name) + "」？",
 				"", "", "删除", "取消");
 		}
-		function RandomlySelect() {
+		function RandomlySelectText() {
 			if(Library.Text.length > 2) {
 				let LotteryNumber = 0;
 				do {
@@ -1303,7 +1303,7 @@
 				} while(LotteryNumber == Library.Selection);
 				SetText(LotteryNumber);
 			} else {
-				AlertSystemError("Function RandomlySelect was called when the value of Library.Text.length is not greater than 2. There must be at least 2 texts in the library when randomly selecting a text.");
+				AlertSystemError("Function RandomlySelectText was called when the value of Library.Text.length is not greater than 2. There must be at least 2 texts in the library when randomly selecting a text.");
 			}
 		}
 		function NewText() {
@@ -1315,8 +1315,9 @@
 			};
 			Library.Selection = Library.Text.length - 1;
 			ResetGame();
+			RefreshLibrary();
 		}
-		function SortByName() {
+		function SortTextsByName() {
 			for(let Looper = 1; Looper < Library.Text.length - 1; Looper++) {
 				for(let Looper2 = 1; Looper2 < Library.Text.length - 1; Looper2++) {
 					if(Library.Text[Looper2].Name > Library.Text[Looper2 + 1].Name) {
@@ -1337,6 +1338,7 @@
 				}
 			}
 			ResetGame();
+			RefreshLibrary();
 		}
 
 		// Text properties
@@ -1354,10 +1356,12 @@
 					"", "", "", "确定");
 			}
 			ResetGame();
+			RefreshLibrary();
 		}
 		function SetTextLanguage() {
 			Library.Text[Library.Selection].Language = ReadValue("Textbox_LibraryLanguage");
 			ResetGame();
+			RefreshLibrary();
 		}
 		function SetTextSource() {
 			Library.Text[Library.Selection].Source = ReadValue("Textbox_LibrarySource");
@@ -1418,6 +1422,7 @@
 			}
 			ChangeValue("Textbox_LibraryImport", "");
 			ResetGame();
+			RefreshLibrary();
 		}
 		function ExportLibrary() {
 			navigator.clipboard.writeText(JSON.stringify(Library));
@@ -1620,8 +1625,8 @@
 			case "System_Error":
 				switch(Selector) {
 					case 1:
-						ScrollIntoView("Item_SettingsUserData");
-						ShowIAmHere("Item_SettingsUserData");
+						ScrollIntoView("Item_HelpGetInvolved");
+						ShowIAmHere("Item_HelpGetInvolved");
 						break;
 					case 2:
 						ForceStop();
@@ -1655,6 +1660,7 @@
 						Library.Text.splice(Interaction.Deletion, 1);
 						Interaction.Deletion = 0;
 						ResetGame();
+						RefreshLibrary();
 						break;
 					case 3:
 						break;
@@ -1745,8 +1751,8 @@ function AlertSystemError(Message) {
 		Message);
 	ShowDialog("System_Error",
 		"Error",
-		"抱歉，发生了系统错误。您可尝试清空用户数据来修复错误，或向我提供反馈。若无法关闭对话框，请点击「强制停止」。<br />" +
+		"抱歉，发生了系统错误。若错误持续发生，请前往提供反馈。若无法关闭对话框，请点击「强制停止」。<br />" +
 		"<br />" +
 		"错误信息：" + Message,
-		"", "了解更多", "强制停止", "关闭");
+		"", "前往", "强制停止", "关闭");
 }
