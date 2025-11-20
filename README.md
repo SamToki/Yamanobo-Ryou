@@ -35,12 +35,16 @@ Scan the QR code to play on mobile devices:
 
 # 教程 Tutorial
 
-[快速入门](/PROJECT/Yamanobo-Ryou/docs/山田凉上山%20快速入门.pdf) ／ [说明文档](/PROJECT/Yamanobo-Ryou/docs/山田凉上山%20说明文档.pdf)
+[快速入门](/PROJECT/Yamanobo-Ryou/docs/山田凉上山%20快速入门.pdf)<br>
+[Quick Guide](/PROJECT/Yamanobo-Ryou/docs/山田凉上山%20快速入门.pdf) (in simplified Chinese)
+
+「教程」「使用方式」与「隐私权声明」记载于[说明文档](/PROJECT/Yamanobo-Ryou/docs/山田凉上山%20说明文档.pdf)。<br>
+"Tutorial", "Ways of Usage" and "Privacy Statement" are written in the [documentation](/PROJECT/Yamanobo-Ryou/docs/山田凉上山%20说明文档.pdf) (in simplified Chinese).
 
 # 版权说明 Copyright Info
 
 本站的源代码遵循 [GNU GPL v3 软件开源协议](https://www.gnu.org/licenses/gpl-3.0.en.html)。本站的部分内容为他人作品，版权为原作者所有，本站遵循 [fair use](https://zh.wikipedia.org/wiki/fair_use) 原则使用并于 Credits 标注来源。除上述内容之外，本站所有内容以及排版、美术设计均保留版权。文档保留版权。<br>
-The source codes of this website are released under [GNU GPL v3 open source license](https://www.gnu.org/licenses/gpl-3.0.en.html). Some contents in the website are works by other people, and their copyrights belong to the corresponding authors. They are used under the "[fair use](https://en.wikipedia.org/wiki/fair_use)" principle and are credited. Other contents and the webpage design are copyrighted. The documentations are also copyrighted.
+The source codes of this website are released under [GNU GPL v3 open source license](https://www.gnu.org/licenses/gpl-3.0.en.html). Some contents in the website are works by other people, and their copyrights belong to the corresponding authors. They are used under the "[fair use](https://en.wikipedia.org/wiki/fair_use)" principle and are credited. Other contents and the webpage design are copyrighted. The documents are also copyrighted.
 
 「孤独摇滚！」是 はまじあき／芳文社・アニプレックス 的作品与商标。<br>
 *Bocchi the Rock!* is a trademark of Aki Hamazi/Houbunsha, Aniplex.
