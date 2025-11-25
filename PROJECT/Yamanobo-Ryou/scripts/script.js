@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.16,
+		const CurrentVersion = 2.17,
 		Preset = {
 			Game: {
 				Difficulty: {
@@ -442,8 +442,8 @@
 			} else {
 				RemoveClass("Html", "ShowDebugOutlines");
 			}
-			ChangeChecked("Checkbox_SettingsUseJapaneseGlyph", System.Dev.UseJapaneseGlyph);
-			if(System.Dev.UseJapaneseGlyph == true) {
+			ChangeChecked("Checkbox_SettingsUseJapaneseOrthography", System.Dev.UseJapaneseOrthography);
+			if(System.Dev.UseJapaneseOrthography == true) {
 				ChangeLanguage("Html", "ja-JP");
 			} else {
 				ChangeLanguage("Html", "zh-CN");
@@ -463,12 +463,13 @@
 			ChangeValue("Combobox_SettingsGameFont", Subsystem.Display.GameFont);
 			switch(Subsystem.Display.GameFont) {
 				case "Inherit":
-					ChangeFont("Ctnr_GameTerrain", System.Dev.Font);
+					ChangeFont("Ctnr_GameTerrain", System.Dev.Font); // Not set as "Inherit" because that would cause wrong display when with specified language like Japanese.
 					ChangeFont("Textbox_Game", System.Dev.Font);
 					break;
 				case "Sans-serif":
 				case "Serif":
 				case "Monospace":
+				case "Inter, sans-serif":
 				case "Iosevka, monospace":
 					ChangeFont("Ctnr_GameTerrain", Subsystem.Display.GameFont);
 					ChangeFont("Textbox_Game", Subsystem.Display.GameFont);
