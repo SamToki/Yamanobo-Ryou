@@ -224,7 +224,6 @@
 		ChangeValue("Textbox_Game", "");
 		HighlightActiveSectionInNav();
 		RefreshSystem();
-		RefreshSubsystem();
 		RefreshGame();
 		RefreshHighscore();
 		RefreshLibrary();
@@ -456,6 +455,9 @@
 
 		// Save user data
 		localStorage.setItem("System", JSON.stringify(System));
+
+		// Call
+		RefreshSubsystem();
 	}
 	function RefreshSubsystem() {
 		// Settings
