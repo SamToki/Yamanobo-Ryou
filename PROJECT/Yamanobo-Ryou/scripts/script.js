@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.17,
+		const CurrentVersion = 3.00,
 		Preset = {
 			Game: {
 				Difficulty: {
@@ -224,6 +224,7 @@
 		ChangeValue("Textbox_Game", "");
 		HighlightActiveSectionInNav();
 		RefreshSystem();
+		RefreshSubsystem();
 		RefreshGame();
 		RefreshHighscore();
 		RefreshLibrary();
@@ -375,7 +376,7 @@
 			}
 			ChangeValue("Combobox_SettingsCursor", System.Display.Cursor);
 			switch(System.Display.Cursor) {
-				case "Default":
+				case "None":
 					ChangeCursorOverall("");
 					break;
 				case "BTRAhoge":
@@ -441,23 +442,12 @@
 			} else {
 				RemoveClass("Html", "ShowDebugOutlines");
 			}
-			ChangeChecked("Checkbox_SettingsUseJapaneseOrthography", System.Dev.UseJapaneseOrthography);
-			if(System.Dev.UseJapaneseOrthography == true) {
-				ChangeLanguage("Html", "ja-JP");
-			} else {
-				ChangeLanguage("Html", "zh-CN");
-			}
-			ChangeValue("Textbox_SettingsFont", System.Dev.Font);
-			ChangeFontOverall(System.Dev.Font);
 
 			// User data
 			ChangeValue("Textbox_SettingsUserDataImport", "");
 
 		// Save user data
 		localStorage.setItem("System", JSON.stringify(System));
-
-		// Call
-		RefreshSubsystem();
 	}
 	function RefreshSubsystem() {
 		// Settings
@@ -465,14 +455,14 @@
 			ChangeValue("Combobox_SettingsGameFont", Subsystem.Display.GameFont);
 			switch(Subsystem.Display.GameFont) {
 				case "Inherit":
-					ChangeFont("Ctnr_GameTerrain", System.Dev.Font); // Not set as "Inherit" because that would cause wrong display when with specified language like Japanese.
-					ChangeFont("Textbox_Game", System.Dev.Font);
+					ChangeFont("Ctnr_GameTerrain", ""); // Not set as "Inherit" because that would cause wrong display when with specified language like Japanese.
+					ChangeFont("Textbox_Game", "");
 					break;
 				case "Sans-serif":
 				case "Serif":
 				case "Monospace":
-				case "Inter, sans-serif":
-				case "Iosevka, monospace":
+				case "Inter":
+				case "Iosevka":
 					ChangeFont("Ctnr_GameTerrain", Subsystem.Display.GameFont);
 					ChangeFont("Textbox_Game", Subsystem.Display.GameFont);
 					break;

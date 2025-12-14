@@ -10,7 +10,7 @@
 		<link rel="icon" type="image/png" href="images/Icon.png" />
 		<title>山田凉上山</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v2.17 (2025/11/25). Since 2024/10/13." />
+		<meta name="version" content="v3.00 (2025/12/14). Since 2024/10/13." />
 		<meta name="description" content="「孤独摇滚！」同人打字训练游戏。屑凉被讨债的波奇酱追上山，开始无尽的逃亡。" />
 		<meta name="copyright" content="© 2024 SAM TOKI STUDIO" />
 
@@ -1027,12 +1027,12 @@
 									<label for="Combobox_SettingsTheme">
 										<span>主题：</span>
 										<select class="Combobox" id="Combobox_SettingsTheme" onchange="SetTheme()">
-											<option value="Auto" selected>自动 (跟随系统)</option>
+											<option value="Auto" selected>自动</option>
 											<option value="Light">浅色</option>
 											<option value="Dark">深色</option>
 											<option value="AtelierSophie2">苏菲的炼金工房2</option>
 											<option value="Genshin">原神</option>
-											<option value="HighContrast">高对比度 (无障碍)</option>
+											<option value="HighContrast">高对比度</option>
 										</select>
 									</label>
 								</li>
@@ -1040,11 +1040,11 @@
 									<label for="Combobox_SettingsCursor">
 										<span>鼠标指针：</span>
 										<select class="Combobox Width240" id="Combobox_SettingsCursor" onchange="SetCursor()">
-											<option value="Default" selected>默认</option>
+											<option value="None" selected>无</option>
 											<option value="BTRAhoge">孤独摇滚！</option>
 											<option value="Genshin">原神</option>
-											<option value="GenshinFurina">原神-芙宁娜</option>
-											<option value="GenshinNahida">原神-纳西妲</option>
+											<option value="GenshinFurina">原神 芙宁娜</option>
+											<option value="GenshinNahida">原神 纳西妲</option>
 											<option value="SilentWitch">Silent Witch 沉默魔女的秘密</option>
 										</select>
 									</label>
@@ -1070,7 +1070,7 @@
 									<label for="Combobox_SettingsAnim">
 										<span>动画：</span>
 										<select class="Combobox" id="Combobox_SettingsAnim" onchange="SetAnim()">
-											<option value="0">禁用 (无障碍)</option>
+											<option value="0">禁用</option>
 											<option value="100">快速 (100ms)</option>
 											<option value="250" selected>中速 (250ms)</option>
 											<option value="500">慢速 (500ms)</option>
@@ -1085,8 +1085,8 @@
 											<option value="Sans-serif">黑体 (Sans-serif)</option>
 											<option value="Serif">宋体 (Serif)</option>
 											<option value="Monospace">等宽字体 (Monospace)</option>
-											<option value="Inter, sans-serif">Inter</option>
-											<option value="Iosevka, monospace" selected>Iosevka</option>
+											<option value="Inter">Inter</option>
+											<option value="Iosevka" selected>Iosevka</option>
 										</select>
 									</label>
 								</li>
@@ -1132,18 +1132,6 @@
 									<label for="Checkbox_SettingsShowDebugOutlines">
 										<input class="Checkbox" id="Checkbox_SettingsShowDebugOutlines" type="checkbox" checked="false" onchange="SetShowDebugOutlines()" />
 										<span>显示调试用描边</span>
-									</label>
-								</li>
-								<li class="Ctrl">
-									<label for="Checkbox_SettingsUseJapaneseOrthography">
-										<input class="Checkbox" id="Checkbox_SettingsUseJapaneseOrthography" type="checkbox" checked="false" onchange="SetUseJapaneseOrthography()" />
-										<span>使用日文字形</span>
-									</label>
-								</li>
-								<li class="Ctrl">
-									<label for="Textbox_SettingsFont">
-										<span>字体：</span>
-										<input class="Textbox" id="Textbox_SettingsFont" type="text" onchange="SetFont()" />
 									</label>
 								</li>
 							</ul>
@@ -1260,7 +1248,7 @@
 							<legend>关于</legend>
 							<p>山田凉上山</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v2.17 (<time datetime="2025-11-25" pubdate="pubdate">2025/11/25</time>)<br />
+							<p>版本 v3.00 (<time datetime="2025-12-14" pubdate="pubdate">2025/12/14</time>)<br />
 								始于 2024/10/13</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">
