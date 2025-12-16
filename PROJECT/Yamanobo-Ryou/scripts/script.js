@@ -60,7 +60,7 @@
 				}
 			}
 		};
-		Interaction.Deletion = 0;
+		System0.Deletion = 0;
 		Automation.ClockGame = null;
 
 		// Saved
@@ -160,6 +160,7 @@
 	document.fonts.ready.then(Load);
 	function Load() {
 		// User data
+		RepairUserData();
 		if(localStorage.System != undefined) {
 			System = JSON.parse(localStorage.getItem("System"));
 		}
@@ -193,17 +194,16 @@
 				AlertSystemError("The value of System.I18n.Language \"" + System.I18n.Language + "\" in function Load is invalid.");
 				break;
 		}
-		if(System.Version.YamanoboRyou != undefined) {
-			if(Math.trunc(CurrentVersion) - Math.trunc(System.Version.YamanoboRyou) >= 1) {
-				ShowDialog("System_MajorUpdateDetected",
-					"Info",
-					"检测到大版本更新。若您继续使用旧版本的用户数据，则有可能发生兼容性问题。敬请留意。",
-					"", "", "", "确定");
-				System.Version.YamanoboRyou = CurrentVersion;
-			}
-		} else {
-			System.Version.YamanoboRyou = CurrentVersion;
+		if(System.Version.YamanoboRyou != undefined && System0.RepairedUserData != "") {
+			ShowDialog("System_MajorUpdateDetected",
+				"Info",
+				"检测到影响用户数据的版本更新。若您继续使用旧版本的用户数据，则有可能发生兼容性问题。敬请留意。<br />" +
+				"<br />" +
+				"版本：v" + System.Version.YamanoboRyou.toFixed(2) + " → v" + CurrentVersion.toFixed(2) + "<br />" +
+				"已修复用户数据：" + System0.RepairedUserData,
+				"", "", "", "确定");
 		}
+		System.Version.YamanoboRyou = CurrentVersion;
 		if(localStorage.YamanoboRyou_Subsystem != undefined) {
 			Subsystem = JSON.parse(localStorage.getItem("YamanoboRyou_Subsystem"));
 		}
@@ -528,7 +528,7 @@
 				}
 
 				// Check typed text
-				if(Interaction.IsInIMEComposition == false) {
+				if(System0.IsInIMEComposition == false) {
 					if(ReadValue("Textbox_Game").charAt(0) == Game.Terrain.Text.charAt(Game.Stats.Odometer)) {
 						Game.Stats.Odometer++;
 						if(IsElementExisting("Terrain_Game" + Game.Stats.Odometer) == true) {
@@ -1282,7 +1282,7 @@
 			}
 		}
 		function ConfirmDeleteText(Number) {
-			Interaction.Deletion = Number;
+			System0.Deletion = Number;
 			ShowDialog("Library_ConfirmDeleteText",
 				"Caution",
 				"您确认要删除文本「" + ConvertEmptyName(Library.Text[Number].Name) + "」？",
@@ -1567,7 +1567,7 @@
 
 	// Dialog
 	function AnswerDialog(Selector) {
-		let DialogEvent = Interaction.Dialog[Interaction.Dialog.length - 1].Event;
+		let DialogEvent = System0.Dialog[System0.Dialog.length - 1].Event;
 		ShowDialog("Previous");
 		switch(DialogEvent) {
 			case "System_LanguageUnsupported":
@@ -1647,11 +1647,11 @@
 			case "Library_ConfirmDeleteText":
 				switch(Selector) {
 					case 2:
-						if(Library.Selection >= Interaction.Deletion && Library.Selection > 1) {
+						if(Library.Selection >= System0.Deletion && Library.Selection > 1) {
 							Library.Selection--;
 						}
-						Library.Text.splice(Interaction.Deletion, 1);
-						Interaction.Deletion = 0;
+						Library.Text.splice(System0.Deletion, 1);
+						System0.Deletion = 0;
 						ResetGame();
 						RefreshLibrary();
 						break;
