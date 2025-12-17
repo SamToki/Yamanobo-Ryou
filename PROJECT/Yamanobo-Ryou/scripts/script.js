@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 3.00,
+		const CurrentVersion = 3.01,
 		Preset = {
 			Game: {
 				Difficulty: {
@@ -1727,6 +1727,15 @@
 
 	// On resizing window
 	window.addEventListener("resize", ClockGame);
+
+	// On visibility change
+	window.addEventListener("visibilitychange", function() {
+		if(document.visibilityState == "hidden" && Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+			Game.Status.IsPaused = true;
+			ChangeValue("Textbox_Game", "");
+			RefreshGame();
+		}
+	});
 
 // Features
 	// Converters
