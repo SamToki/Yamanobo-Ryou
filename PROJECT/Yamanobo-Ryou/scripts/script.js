@@ -391,7 +391,7 @@
 					break;
 			}
 			ChangeChecked("Checkbox_SettingsBlurBgImage", System.Display.BlurBgImage);
-			if(System.Display.BlurBgImage == true) {
+			if(System.Display.BlurBgImage) {
 				AddClass("BgImage", "Blur");
 			} else {
 				RemoveClass("BgImage", "Blur");
@@ -421,7 +421,7 @@
 			ChangeAnimOverall(System.Display.Anim);
 
 			// PWA
-			if(window.matchMedia("(display-mode: standalone)").matches == true) {
+			if(window.matchMedia("(display-mode: standalone)").matches) {
 				ChangeText("Label_SettingsPWAStandaloneDisplay", "是");
 			} else {
 				ChangeText("Label_SettingsPWAStandaloneDisplay", "否");
@@ -429,7 +429,7 @@
 
 			// Dev
 			ChangeChecked("Checkbox_SettingsTryToOptimizePerformance", System.Dev.TryToOptimizePerformance);
-			if(System.Dev.TryToOptimizePerformance == true) {
+			if(System.Dev.TryToOptimizePerformance) {
 				AddClass("Html", "TryToOptimizePerformance");
 				Automation.ClockRate = 40;
 			} else {
@@ -437,7 +437,7 @@
 				Automation.ClockRate = 20;
 			}
 			ChangeChecked("Checkbox_SettingsShowDebugOutlines", System.Dev.ShowDebugOutlines);
-			if(System.Dev.ShowDebugOutlines == true) {
+			if(System.Dev.ShowDebugOutlines) {
 				AddClass("Html", "ShowDebugOutlines");
 			} else {
 				RemoveClass("Html", "ShowDebugOutlines");
@@ -483,7 +483,7 @@
 
 		// Update essentials
 		Game0.Stats.ClockTime = Date.now();
-		if(Game.Status.IsRunning == true) {
+		if(Game.Status.IsRunning) {
 			if(Game.Status.IsPaused == false) {
 				Game.Stats.ElapsedTime = Game0.Stats.ClockTime - Game.Stats.StartTime;
 			} else {
@@ -510,8 +510,8 @@
 			// Player
 			RemoveClass("Textbox_Game", "HasTypo");
 			if(ReadValue("Textbox_Game") != "" &&
-			!(Game.Status.IsRunning == true && Game0.Stats.Progress >= 100) &&
-			!(Game.Status.IsRunning == true && Game.Stats.Odometer > 20 && Game.Stats.ChaserOdometer >= Game.Stats.Odometer)) {
+			!(Game.Status.IsRunning && Game0.Stats.Progress >= 100) &&
+			!(Game.Status.IsRunning && Game.Stats.Odometer > 20 && Game.Stats.ChaserOdometer >= Game.Stats.Odometer)) {
 				// Start or continue game
 				if(Game.Status.IsRunning == false) {
 					Game.Status.IsRunning = true;
@@ -519,7 +519,7 @@
 					ScrollIntoView("Game");
 					setTimeout(RefreshGame, 0);
 				} else {
-					if(Game.Status.IsPaused == true) {
+					if(Game.Status.IsPaused) {
 						Game.Status.IsPaused = false;
 						Game.Stats.StartTime = Game0.Stats.ClockTime - Game.Stats.ElapsedTime;
 						ScrollIntoView("Game");
@@ -531,7 +531,7 @@
 				if(System0.IsInIMEComposition == false) {
 					if(ReadValue("Textbox_Game").charAt(0) == Game.Terrain.Text.charAt(Game.Stats.Odometer)) {
 						Game.Stats.Odometer++;
-						if(IsElementExisting("Terrain_Game" + Game.Stats.Odometer) == true) {
+						if(IsElementExisting("Terrain_Game" + Game.Stats.Odometer)) {
 							Game0.Terrain.WalkedWidth += ReadWidth("Terrain_Game" + Game.Stats.Odometer);
 						}
 						Game.Stats.TypeTimestamp.splice(1, 1);
@@ -540,7 +540,7 @@
 						if(Game.Stats.Score > 99999999) {
 							Game.Stats.Score = 99999999;
 						}
-						if(IsElementExisting("Terrain_Game" + Game.Stats.Odometer) == true) {
+						if(IsElementExisting("Terrain_Game" + Game.Stats.Odometer)) {
 							RemoveClass("Terrain_Game" + Game.Stats.Odometer, "Ahead");
 						}
 						ChangeValue("Textbox_Game", ReadValue("Textbox_Game").substring(1));
@@ -560,7 +560,7 @@
 			} else {
 				Game0.Stats.Speed.Chaser = 0;
 			}
-			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+			if(Game.Status.IsRunning && Game.Status.IsPaused == false) {
 				Game.Stats.ChaserOdometer += (Game0.Stats.Speed.Chaser / 60000) * (Game0.Stats.ClockTime - Game0.Stats.PreviousClockTime);
 				if(Game.Stats.Odometer - Game.Stats.ChaserOdometer > Game.Difficulty.MaxSeparation) {
 					Game.Stats.ChaserOdometer = Game.Stats.Odometer - Game.Difficulty.MaxSeparation;
@@ -632,7 +632,7 @@
 
 				// Removal
 				for(let Looper = 0; Looper <= Game0.Terrain.Generation.Behind - 1; Looper++) {
-					if(IsElementExisting("Terrain_Game" + Looper) == true) {
+					if(IsElementExisting("Terrain_Game" + Looper)) {
 						RemoveElement("Terrain_Game" + Looper);
 					}
 				}
@@ -664,7 +664,7 @@
 				// Horizontal separation
 				let HorizontalSeparation = 0;
 				for(let Looper = Math.trunc(Game.Stats.ChaserOdometer) + 1; Looper <= Game.Stats.Odometer; Looper++) {
-					if(IsElementExisting("Terrain_Game" + Looper) == true) {
+					if(IsElementExisting("Terrain_Game" + Looper)) {
 						HorizontalSeparation += ReadWidth("Terrain_Game" + Looper);
 					}
 				}
@@ -675,7 +675,7 @@
 
 			// Chaser balloon
 			if((IsMobileLayout() == false && ReadLeft("Character_GameChaser") < -115) ||
-			(IsMobileLayout() == true && ReadLeft("Character_GameChaser") < -65)) {
+			(IsMobileLayout() && ReadLeft("Character_GameChaser") < -65)) {
 				Show("GameChaserBalloon");
 			} else {
 				Fade("GameChaserBalloon");
@@ -739,7 +739,7 @@
 				RemoveClass("CtrlGroup_GameSpeedBalloon", "Transparent");
 			}
 		}
-		if(Game.Status.IsRunning == true && System.Display.Anim > 0) {
+		if(Game.Status.IsRunning && System.Display.Anim > 0) {
 			ChangeAnim("CtrlGroup_GameSpeed", "100ms");
 			ChangeAnim("CtrlGroup_GameAltitude", "100ms");
 		} else {
@@ -827,7 +827,7 @@
 						break;
 				}
 			}
-			if(Game.Status.IsRunning == true && Game.Stats.Odometer > 20 && Game0.Stats.Speed.TapeDisplay <= Game0.Stats.Speed.DangerousDisplay) {
+			if(Game.Status.IsRunning && Game.Stats.Odometer > 20 && Game0.Stats.Speed.TapeDisplay <= Game0.Stats.Speed.DangerousDisplay) {
 				AddClass("CtrlGroup_GameSpeedBalloon", "RedText");
 			} else {
 				RemoveClass("CtrlGroup_GameSpeedBalloon", "RedText");
@@ -902,14 +902,14 @@
 				}
 			}
 		}
-		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Stats.Odometer <= 20) {
+		if(Game.Status.IsRunning && Game.Status.IsPaused == false && Game.Stats.Odometer <= 20) {
 			Show("Ctrl_GameChasePrompt");
 		} else {
 			Hide("Ctrl_GameChasePrompt");
 		}
 
 		// Victory
-		if(Game.Status.IsRunning == true && Game0.Stats.Progress >= 100) {
+		if(Game.Status.IsRunning && Game0.Stats.Progress >= 100) {
 			Game0.Stats.Progress = 100;
 			ChangeDisabled("Button_GamePauseOrReset", true);
 			if(Game.Status.IsPaused == false) {
@@ -931,7 +931,7 @@
 		}
 
 		// Game over
-		if(Game.Status.IsRunning == true && Game.Stats.Odometer > 20 && Game.Stats.ChaserOdometer >= Game.Stats.Odometer) {
+		if(Game.Status.IsRunning && Game.Stats.Odometer > 20 && Game.Stats.ChaserOdometer >= Game.Stats.Odometer) {
 			Game.Stats.ChaserOdometer = Game.Stats.Odometer;
 			ChangeDisabled("Button_GamePauseOrReset", true);
 			if(Game.Status.IsPaused == false) {
@@ -1040,7 +1040,7 @@
 			ChangeBgImage(Game.CustomCharacters.BgImage);
 
 		// Save user data (Only when the game is not running or when the game is paused)
-		if(Game.Status.IsRunning == false || Game.Status.IsPaused == true) {
+		if(Game.Status.IsRunning == false || Game.Status.IsPaused) {
 			localStorage.setItem("YamanoboRyou_Game", JSON.stringify(Game));
 		}
 	}
@@ -1156,14 +1156,14 @@
 	// Game
 		// Textbox
 		function Keypress() {
-			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+			if(Game.Status.IsRunning && Game.Status.IsPaused == false) {
 				Game.Stats.Keystroke.Count++;
 				Game.Stats.Keystroke.Timestamp.splice(1, 1);
 				Game.Stats.Keystroke.Timestamp[21] = Game.Stats.ElapsedTime;
 			}
 		}
 		function WarnAboutPasting() {
-			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
+			if(Game.Status.IsRunning && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
 				Game.Status.IsPaused = true;
 				ChangeValue("Textbox_Game", "");
 				RefreshGame();
@@ -1176,7 +1176,7 @@
 
 		// Ctrl
 		function PauseOrResetGame() {
-			if(Game.Status.IsRunning == true) {
+			if(Game.Status.IsRunning) {
 				if(Game.Status.IsPaused == false) {
 					Game.Status.IsPaused = true;
 					ChangeValue("Textbox_Game", "");
@@ -1244,10 +1244,10 @@
 		function FilterTexts() {
 			let Counter = 0, Counter2 = 0;
 			for(let Looper = 1; Looper < Library.Text.length; Looper++) {
-				if(Library.Text[Looper].Name.toLowerCase().includes(ReadValue("Textbox_LibraryFilter").toLowerCase()) == true ||
-				Library.Text[Looper].Content.toLowerCase().includes(ReadValue("Textbox_LibraryFilter").toLowerCase()) == true ||
-				Library.Text[Looper].Language.toLowerCase().includes(ReadValue("Textbox_LibraryFilter").toLowerCase()) == true ||
-				Library.Text[Looper].Source.toLowerCase().includes(ReadValue("Textbox_LibraryFilter").toLowerCase()) == true) {
+				if(Library.Text[Looper].Name.toLowerCase().includes(ReadValue("Textbox_LibraryFilter").toLowerCase()) ||
+				Library.Text[Looper].Content.toLowerCase().includes(ReadValue("Textbox_LibraryFilter").toLowerCase()) ||
+				Library.Text[Looper].Language.toLowerCase().includes(ReadValue("Textbox_LibraryFilter").toLowerCase()) ||
+				Library.Text[Looper].Source.toLowerCase().includes(ReadValue("Textbox_LibraryFilter").toLowerCase())) {
 					Show("Ctrl_LibraryText" + Looper);
 					Counter++;
 				} else {
@@ -1367,13 +1367,13 @@
 			for(let Looper = 0; Looper < Objects.length; Looper++) {
 				switch(true) {
 					// Text
-					case Objects[Looper].startsWith("{\"Name\":") == true:
+					case Objects[Looper].startsWith("{\"Name\":"):
 						Library.Text[Library.Text.length] = JSON.parse(Objects[Looper]);
 						Counter++;
 						break;
 
 					// Whole library
-					case Objects[Looper].startsWith("{\"Selection\":") == true:
+					case Objects[Looper].startsWith("{\"Selection\":"):
 						Library = JSON.parse(Objects[Looper]);
 						Counter++;
 						break;
@@ -1530,7 +1530,7 @@
 		// User data
 		function ImportUserData() {
 			if(ReadValue("Textbox_SettingsUserDataImport") != "") {
-				if(ReadValue("Textbox_SettingsUserDataImport").startsWith("{\"System\":{\"Display\":{\"Theme\":") == true) {
+				if(ReadValue("Textbox_SettingsUserDataImport").startsWith("{\"System\":{\"Display\":{\"Theme\":")) {
 					let UserData = JSON.parse(ReadValue("Textbox_SettingsUserDataImport"));
 					Object.keys(UserData).forEach(function(SubobjectName) {
 						localStorage.setItem(SubobjectName, JSON.stringify(UserData[SubobjectName]));
@@ -1634,7 +1634,7 @@
 			case "Library_TextExported":
 				switch(Selector) {
 					case 3:
-						if(IsChecked("Checkbox_DialogCheckboxOption") == true) {
+						if(IsChecked("Checkbox_DialogCheckboxOption")) {
 							System.DontShowAgain[System.DontShowAgain.length] = "YamanoboRyou_Library_TextExported";
 							RefreshSystem();
 						}
@@ -1693,7 +1693,7 @@
 	// On keyboard
 	document.addEventListener("keydown", function(Hotkey) {
 		if(Hotkey.key == "F1") {
-			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
+			if(Game.Status.IsRunning && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
 				Game.Status.IsPaused = true;
 				ChangeValue("Textbox_Game", "");
 				RefreshGame();
@@ -1730,7 +1730,7 @@
 
 	// On visibility change
 	window.addEventListener("visibilitychange", function() {
-		if(document.visibilityState == "hidden" && Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+		if(document.visibilityState == "hidden" && Game.Status.IsRunning && Game.Status.IsPaused == false) {
 			Game.Status.IsPaused = true;
 			ChangeValue("Textbox_Game", "");
 			RefreshGame();
