@@ -66,7 +66,7 @@
 		// Saved
 		var Subsystem = {
 			Display: {
-				GameFont: "Iosevka, monospace"
+				GameFont: "Iosevka"
 			}
 		},
 		Game = {
