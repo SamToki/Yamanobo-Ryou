@@ -294,6 +294,19 @@
 			ChangeInert("DropctrlGroup_Nav", true);
 		}
 
+		// Fieldsets
+		let Elements = document.getElementsByTagName("fieldset");
+		for(let Looper = 0; Looper < Elements.length; Looper++) {
+			if(Elements[Looper].id != "") {
+				if(System.CollapsedFieldset.includes(Elements[Looper].id.replace("Fieldset_", "")) == false) {
+					console.log(Elements[Looper].id);
+					Show(Elements[Looper].id);
+				} else {
+					Hide(Elements[Looper].id);
+				}
+			}
+		}
+
 		// Fullscreen
 		if(IsFullscreen() == false) {
 			Show("Topbar");
@@ -1581,7 +1594,7 @@
 				switch(Selector) {
 					case 2:
 						ScrollIntoView("Item_HelpTutorial");
-						ShowIAmHere("Item_HelpTutorial");
+						ShowIAmHere("HelpTutorial");
 						break;
 					case 3:
 						break;
@@ -1607,7 +1620,7 @@
 				switch(Selector) {
 					case 1:
 						ScrollIntoView("Item_HelpGetInvolved");
-						ShowIAmHere("Item_HelpGetInvolved");
+						ShowIAmHere("HelpGetInvolved");
 						break;
 					case 2:
 						ForceStop();
