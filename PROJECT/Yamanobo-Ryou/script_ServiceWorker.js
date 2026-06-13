@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CacheName = "Yamanobo-Ryou_v3.01";
+		const CacheName = "Yamanobo-Ryou_v3.02";
 
 // Listeners
 	// Service worker (https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/how-to/#step-5---add-a-service-worker)
@@ -37,7 +37,7 @@
 				"../fonts/Inter-Italic.woff2",
 				"../fonts/Inter-Bold.woff2",
 				"../fonts/Inter-BoldItalic.woff2",
-				"../fonts/Iosevka-Regular.woff2",
+				"../fonts/VictorMono-Medium.woff2",
 				"images/Background.jpg",
 				"../cursors/BTRAhoge.cur",
 				"../cursors/Genshin.cur",

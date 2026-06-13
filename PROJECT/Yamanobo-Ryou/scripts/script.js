@@ -65,7 +65,7 @@
 		// Saved
 		var Subsystem = {
 			Display: {
-				GameFont: "Iosevka"
+				GameFont: "Victor Mono"
 			}
 		},
 		Game = {
@@ -155,7 +155,7 @@
 	// Load
 	// window.onload = Load();
 	document.fonts.load("14px Inter");
-	document.fonts.load("14px Iosevka");
+	document.fonts.load("14px 'Victor Mono'");
 	document.fonts.ready.then(Load);
 	function Load() {
 		// User data
@@ -299,7 +299,6 @@
 		for(let Looper = 0; Looper < Elements.length; Looper++) {
 			if(Elements[Looper].id != "") {
 				if(System.CollapsedFieldset.includes(Elements[Looper].id.replace("Fieldset_", "")) == false) {
-					console.log(Elements[Looper].id);
 					Show(Elements[Looper].id);
 				} else {
 					Hide(Elements[Looper].id);
@@ -464,7 +463,7 @@
 				case "Serif":
 				case "Monospace":
 				case "Inter":
-				case "Iosevka":
+				case "Victor Mono":
 					ChangeFont("Ctnr_GameTerrain", Subsystem.Display.GameFont);
 					ChangeFont("Textbox_Game", Subsystem.Display.GameFont);
 					break;
