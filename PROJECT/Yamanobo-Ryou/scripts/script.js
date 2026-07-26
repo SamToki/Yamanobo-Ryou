@@ -52,7 +52,7 @@
 				Speed: {
 					Speed: 0, TapeDisplay: 0, PreviousTapeDisplay: 0, BalloonDisplay: [0, 0, 0, 0],
 					Trend: 0, TrendDisplay: 0,
-					Avg: 0, AvgDisplay: 0, Chaser: 0, ChaserDisplay: 0, Dangerous: 0, DangerousDisplay: 0,
+					Avg: 0, AvgDisplay: 0, Chaser: 0, ChaserDisplay: 0, Dangerous: 0, DangerousDisplay: 0
 				},
 				Altitude: {
 					Altitude: 0, TapeDisplay: 0, BalloonDisplay: [0, 0, 0, 0, 0]
@@ -1228,7 +1228,7 @@
 					Speed: {
 						Speed: 0, TapeDisplay: 0, PreviousTapeDisplay: 0, BalloonDisplay: [0, 0, 0, 0],
 						Trend: 0, TrendDisplay: 0,
-						Avg: 0, AvgDisplay: 0, Chaser: 0, ChaserDisplay: 0, Dangerous: 0, DangerousDisplay: 0,
+						Avg: 0, AvgDisplay: 0, Chaser: 0, ChaserDisplay: 0, Dangerous: 0, DangerousDisplay: 0
 					},
 					Altitude: {
 						Altitude: 0, TapeDisplay: 0, BalloonDisplay: [0, 0, 0, 0, 0]
