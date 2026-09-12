@@ -327,12 +327,7 @@
 
 		// Settings
 			// Display
-			if(window.matchMedia("(prefers-contrast: more)").matches == false) {
-				ChangeDisabled("Combobox_SettingsTheme", false);
-			} else {
-				System.Display.Theme = "HighContrast";
-				ChangeDisabled("Combobox_SettingsTheme", true);
-			}
+			ChangeEnabled("Combobox_SettingsTheme", !IsOSHighContrast());
 			ChangeValue("Combobox_SettingsTheme", System.Display.Theme);
 			switch(System.Display.Theme) {
 				case "Auto":
@@ -412,12 +407,7 @@
 					AlertSystemError("The value of System.Display.HotkeyIndicators \"" + System.Display.HotkeyIndicators + "\" in function RefreshSystem is invalid.");
 					break;
 			}
-			if(window.matchMedia("(prefers-reduced-motion: reduce)").matches == false) {
-				ChangeDisabled("Combobox_SettingsAnim", false);
-			} else {
-				System.Display.Anim = 0;
-				ChangeDisabled("Combobox_SettingsAnim", true);
-			}
+			ChangeEnabled("Combobox_SettingsAnim", IsOSAnimEnabled());
 			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
 			ChangeAnimOverall(System.Display.Anim);
 
@@ -436,6 +426,11 @@
 			} else {
 				RemoveClass("Html", "TryToOptimizePerformance");
 				Automation.ClockRate = 20;
+			}
+			if(IsOSHighContrast() == false && System.Display.Theme != "HighContrast") {
+				ChangeEnabled("Checkbox_SettingsShowDebugOutlines", true);
+			} else {
+				ChangeEnabled("Checkbox_SettingsShowDebugOutlines", false);
 			}
 			ChangeChecked("Checkbox_SettingsShowDebugOutlines", System.Dev.ShowDebugOutlines);
 			if(System.Dev.ShowDebugOutlines) {
@@ -715,7 +710,7 @@
 			Game0.Stats.Accuracy = 0;
 		}
 		ChangeText("Label_GameAccuracy", Game0.Stats.Accuracy.toFixed(2) + "%");
-		if(System.Display.Anim > 0) {
+		if(IsOSAnimEnabled() && System.Display.Anim > 0) {
 			Game0.Stats.ScoreDisplay += (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
 		} else {
 			Game0.Stats.ScoreDisplay = Game.Stats.Score;
@@ -740,7 +735,7 @@
 				RemoveClass("CtrlGroup_GameSpeedBalloon", "Transparent");
 			}
 		}
-		if(Game.Status.IsRunning && System.Display.Anim > 0) {
+		if(Game.Status.IsRunning && IsOSAnimEnabled() && System.Display.Anim > 0) {
 			ChangeAnim("CtrlGroup_GameSpeed", "100ms");
 			ChangeAnim("CtrlGroup_GameAltitude", "100ms");
 		} else {
@@ -793,7 +788,7 @@
 			Game0.Stats.Speed.BalloonDisplay[1] = Math.trunc(Game0.Stats.Speed.TapeDisplay / 100);
 			Game0.Stats.Speed.BalloonDisplay[2] = Math.trunc(Game0.Stats.Speed.TapeDisplay % 100 / 10);
 			Game0.Stats.Speed.BalloonDisplay[3] = Game0.Stats.Speed.TapeDisplay % 10;
-			if(System.Display.Anim > 0) {
+			if(IsOSAnimEnabled() && System.Display.Anim > 0) {
 				if(Game0.Stats.Speed.BalloonDisplay[3] > 9) {Game0.Stats.Speed.BalloonDisplay[2] += (Game0.Stats.Speed.BalloonDisplay[3] - 9);} // Imitating the cockpit PFD rolling digits.
 				if(Game0.Stats.Speed.BalloonDisplay[2] > 9) {Game0.Stats.Speed.BalloonDisplay[1] += (Game0.Stats.Speed.BalloonDisplay[2] - 9);}
 			} else {
@@ -844,7 +839,7 @@
 			Game0.Stats.Altitude.BalloonDisplay[2] = Math.trunc(Game0.Stats.Altitude.TapeDisplay % 10000 / 1000);
 			Game0.Stats.Altitude.BalloonDisplay[3] = Math.trunc(Game0.Stats.Altitude.TapeDisplay % 1000 / 100);
 			Game0.Stats.Altitude.BalloonDisplay[4] = Game0.Stats.Altitude.TapeDisplay % 100;
-			if(System.Display.Anim > 0) {
+			if(IsOSAnimEnabled() && System.Display.Anim > 0) {
 				if(Game0.Stats.Altitude.BalloonDisplay[4] > 80) {Game0.Stats.Altitude.BalloonDisplay[3] += ((Game0.Stats.Altitude.BalloonDisplay[4] - 80) / 20);}
 				if(Game0.Stats.Altitude.BalloonDisplay[3] > 9) {Game0.Stats.Altitude.BalloonDisplay[2] += (Game0.Stats.Altitude.BalloonDisplay[3] - 9);}
 				if(Game0.Stats.Altitude.BalloonDisplay[2] > 9) {Game0.Stats.Altitude.BalloonDisplay[1] += (Game0.Stats.Altitude.BalloonDisplay[2] - 9);}
@@ -912,7 +907,7 @@
 		// Victory
 		if(Game.Status.IsRunning && Game0.Stats.Progress >= 100) {
 			Game0.Stats.Progress = 100;
-			ChangeDisabled("Button_GamePauseOrReset", true);
+			ChangeEnabled("Button_GamePauseOrReset", false);
 			if(Game.Status.IsPaused == false) {
 				Game.Status.IsPaused = true;
 				ChangeValue("Textbox_Game", "");
@@ -934,7 +929,7 @@
 		// Game over
 		if(Game.Status.IsRunning && Game.Stats.Odometer > 20 && Game.Stats.ChaserOdometer >= Game.Stats.Odometer) {
 			Game.Stats.ChaserOdometer = Game.Stats.Odometer;
-			ChangeDisabled("Button_GamePauseOrReset", true);
+			ChangeEnabled("Button_GamePauseOrReset", false);
 			if(Game.Status.IsPaused == false) {
 				Game.Status.IsPaused = true;
 				ChangeValue("Textbox_Game", "");
@@ -957,27 +952,27 @@
 
 		// Ctrls
 		if(Game.Status.IsRunning == false) {
-			ChangeDisabled("Button_GamePauseOrReset", true);
+			ChangeEnabled("Button_GamePauseOrReset", false);
 			ChangeText("Button_GamePauseOrReset", "暂停");
-			ChangeDisabled("Fieldset_LibraryTexts", false);
-			ChangeDisabled("Fieldset_LibraryTextProperties", false);
-			ChangeDisabled("Fieldset_LibraryManagement", false);
-			ChangeDisabled("Fieldset_SettingsProgressing", false);
-			ChangeDisabled("Fieldset_SettingsDifficulty", false);
-			ChangeDisabled("Combobox_SettingsGameFont", false);
+			ChangeEnabled("Fieldset_LibraryTexts", true);
+			ChangeEnabled("Fieldset_LibraryTextProperties", true);
+			ChangeEnabled("Fieldset_LibraryManagement", true);
+			ChangeEnabled("Fieldset_SettingsProgressing", true);
+			ChangeEnabled("Fieldset_SettingsDifficulty", true);
+			ChangeEnabled("Combobox_SettingsGameFont", true);
 		} else {
-			ChangeDisabled("Button_GamePauseOrReset", false);
+			ChangeEnabled("Button_GamePauseOrReset", true);
 			if(Game.Status.IsPaused == false) {
 				ChangeText("Button_GamePauseOrReset", "暂停");
 			} else {
 				ChangeText("Button_GamePauseOrReset", "重置");
 			}
-			ChangeDisabled("Fieldset_LibraryTexts", true);
-			ChangeDisabled("Fieldset_LibraryTextProperties", true);
-			ChangeDisabled("Fieldset_LibraryManagement", true);
-			ChangeDisabled("Fieldset_SettingsProgressing", true);
-			ChangeDisabled("Fieldset_SettingsDifficulty", true);
-			ChangeDisabled("Combobox_SettingsGameFont", true);
+			ChangeEnabled("Fieldset_LibraryTexts", false);
+			ChangeEnabled("Fieldset_LibraryTextProperties", false);
+			ChangeEnabled("Fieldset_LibraryManagement", false);
+			ChangeEnabled("Fieldset_SettingsProgressing", false);
+			ChangeEnabled("Fieldset_SettingsDifficulty", false);
+			ChangeEnabled("Combobox_SettingsGameFont", false);
 		}
 
 		// Settings
@@ -1033,9 +1028,9 @@
 				ChangeImage("Image_GameChaserBalloon", "images/GotouHitori.png");
 			}
 			if(Game.CustomCharacters.PlayerImage != Game.CustomCharacters.ChaserImage) {
-				ChangeDisabled("Button_SettingsSwapCharacters", false);
+				ChangeEnabled("Button_SettingsSwapCharacters", true);
 			} else {
-				ChangeDisabled("Button_SettingsSwapCharacters", true);
+				ChangeEnabled("Button_SettingsSwapCharacters", false);
 			}
 			ChangeValue("Textbox_SettingsBgImage", Game.CustomCharacters.BgImage);
 			ChangeBgImage(Game.CustomCharacters.BgImage);
@@ -1118,7 +1113,7 @@
 				AlertSystemError("The library is empty.");
 			}
 			if(Library.Text.length == 2) {
-				ChangeDisabled("Button_LibraryText1Delete", true);
+				ChangeEnabled("Button_LibraryText1Delete", false);
 			}
 
 			// Selection
@@ -1137,9 +1132,9 @@
 
 			// Randomly select
 			if(Library.Text.length > 2) {
-				ChangeDisabled("Button_LibraryRandomlySelect", false);
+				ChangeEnabled("Button_LibraryRandomlySelect", true);
 			} else {
-				ChangeDisabled("Button_LibraryRandomlySelect", true);
+				ChangeEnabled("Button_LibraryRandomlySelect", false);
 			}
 
 		// Text properties
