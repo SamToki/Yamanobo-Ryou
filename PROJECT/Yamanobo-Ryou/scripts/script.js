@@ -65,7 +65,10 @@
 		// Saved
 		var Subsystem = {
 			Display: {
-				GameFont: "Victor Mono"
+				GameFont: "Victor Mono",
+				PlayerImage: "", ChaserImage: "",
+				BgImage: "",
+				ShowAvgSpeedOnSpeedometer: true
 			}
 		},
 		Game = {
@@ -75,10 +78,6 @@
 			Difficulty: {
 				ChaserSpeed: structuredClone(Preset.Game.Difficulty.ChaserSpeed[1].Content),
 				MaxSeparation: 50
-			},
-			CustomCharacters: {
-				PlayerImage: "", ChaserImage: "",
-				BgImage: ""
 			},
 			Status: {
 				IsRunning: false, IsPaused: false
@@ -298,7 +297,7 @@
 		let Elements = document.getElementsByTagName("fieldset");
 		for(let Looper = 0; Looper < Elements.length; Looper++) {
 			if(Elements[Looper].id != "") {
-				if(System.CollapsedFieldset.includes(Elements[Looper].id.replace("Fieldset_", "")) == false) {
+				if(System.Display.CollapsedFieldset.includes(Elements[Looper].id.replace("Fieldset_", "")) == false) {
 					Show(Elements[Looper].id);
 				} else {
 					Hide(Elements[Looper].id);
@@ -392,6 +391,9 @@
 			} else {
 				RemoveClass("BgImage", "Blur");
 			}
+			ChangeEnabled("Combobox_SettingsAnim", IsOSAnimEnabled());
+			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
+			ChangeAnimOverall(System.Display.Anim);
 			ChangeValue("Combobox_SettingsHotkeyIndicators", System.Display.HotkeyIndicators);
 			switch(System.Display.HotkeyIndicators) {
 				case "Disabled":
@@ -407,9 +409,6 @@
 					AlertSystemError("The value of System.Display.HotkeyIndicators \"" + System.Display.HotkeyIndicators + "\" in function RefreshSystem is invalid.");
 					break;
 			}
-			ChangeEnabled("Combobox_SettingsAnim", IsOSAnimEnabled());
-			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
-			ChangeAnimOverall(System.Display.Anim);
 
 			// PWA
 			if(window.matchMedia("(display-mode: standalone)").matches) {
@@ -465,6 +464,33 @@
 				default:
 					AlertSystemError("The value of Subsystem.Display.GameFont \"" + Subsystem.Display.GameFont + "\" in function RefreshSubsystem is invalid.");
 					break;
+			}
+			ChangeValue("Textbox_SettingsPlayerImage", Subsystem.Display.PlayerImage);
+			if(Subsystem.Display.PlayerImage != "") {
+				ChangeImage("Image_GamePlayer", Subsystem.Display.PlayerImage);
+			} else {
+				ChangeImage("Image_GamePlayer", "images/YamadaRyou.png");
+			}
+			ChangeValue("Textbox_SettingsChaserImage", Subsystem.Display.ChaserImage);
+			if(Subsystem.Display.ChaserImage != "") {
+				ChangeImage("Image_GameChaser", Subsystem.Display.ChaserImage);
+				ChangeImage("Image_GameChaserBalloon", Subsystem.Display.ChaserImage);
+			} else {
+				ChangeImage("Image_GameChaser", "images/GotouHitori.png");
+				ChangeImage("Image_GameChaserBalloon", "images/GotouHitori.png");
+			}
+			if(Subsystem.Display.PlayerImage != Subsystem.Display.ChaserImage) {
+				ChangeEnabled("Button_SettingsSwapCharacters", true);
+			} else {
+				ChangeEnabled("Button_SettingsSwapCharacters", false);
+			}
+			ChangeValue("Textbox_SettingsBgImage", Subsystem.Display.BgImage);
+			ChangeBgImage(Subsystem.Display.BgImage);
+			ChangeChecked("Checkbox_SettingsShowAvgSpeedOnSpeedometer", Subsystem.Display.ShowAvgSpeedOnSpeedometer);
+			if(Subsystem.Display.ShowAvgSpeedOnSpeedometer) {
+				Show("Ctrl_GameAvgSpeed");
+			} else {
+				Fade("Ctrl_GameAvgSpeed");
 			}
 
 		// Save user data
@@ -1012,29 +1038,6 @@
 			ChangeValue("Textbox_SettingsChaserSpeedFinal", Game.Difficulty.ChaserSpeed.Final);
 			ChangeValue("Textbox_SettingsMaxSeparation", Game.Difficulty.MaxSeparation);
 
-			// Custom characters
-			ChangeValue("Textbox_SettingsPlayerImage", Game.CustomCharacters.PlayerImage);
-			if(Game.CustomCharacters.PlayerImage != "") {
-				ChangeImage("Image_GamePlayer", Game.CustomCharacters.PlayerImage);
-			} else {
-				ChangeImage("Image_GamePlayer", "images/YamadaRyou.png");
-			}
-			ChangeValue("Textbox_SettingsChaserImage", Game.CustomCharacters.ChaserImage);
-			if(Game.CustomCharacters.ChaserImage != "") {
-				ChangeImage("Image_GameChaser", Game.CustomCharacters.ChaserImage);
-				ChangeImage("Image_GameChaserBalloon", Game.CustomCharacters.ChaserImage);
-			} else {
-				ChangeImage("Image_GameChaser", "images/GotouHitori.png");
-				ChangeImage("Image_GameChaserBalloon", "images/GotouHitori.png");
-			}
-			if(Game.CustomCharacters.PlayerImage != Game.CustomCharacters.ChaserImage) {
-				ChangeEnabled("Button_SettingsSwapCharacters", true);
-			} else {
-				ChangeEnabled("Button_SettingsSwapCharacters", false);
-			}
-			ChangeValue("Textbox_SettingsBgImage", Game.CustomCharacters.BgImage);
-			ChangeBgImage(Game.CustomCharacters.BgImage);
-
 		// Save user data (Only when the game is not running or when the game is paused)
 		if(Game.Status.IsRunning == false || Game.Status.IsPaused) {
 			localStorage.setItem("YamanoboRyou_Game", JSON.stringify(Game));
@@ -1268,7 +1271,7 @@
 		}
 		function ExportText(Number) {
 			navigator.clipboard.writeText(JSON.stringify(Library.Text[Number]));
-			if(System.DontShowAgain.includes("YamanoboRyou_Library_TextExported") == false) {
+			if(System.Display.DontShowAgain.includes("YamanoboRyou_Library_TextExported") == false) {
 				ShowDialog("Library_TextExported",
 					"Info",
 					"已导出文本「" + ConvertEmptyName(Library.Text[Number].Name) + "」至剪贴板。",
@@ -1489,36 +1492,36 @@
 			RefreshGame();
 		}
 
-		// Custom characters
-		function SetPlayerImage() {
-			Game.CustomCharacters.PlayerImage = ReadValue("Textbox_SettingsPlayerImage");
-			RefreshGame();
-		}
-		function SetChaserImage() {
-			Game.CustomCharacters.ChaserImage = ReadValue("Textbox_SettingsChaserImage");
-			RefreshGame();
-		}
-		function SwapCharacters() {
-			let Swapper = Game.CustomCharacters.PlayerImage;
-			Game.CustomCharacters.PlayerImage = Game.CustomCharacters.ChaserImage;
-			Game.CustomCharacters.ChaserImage = Swapper;
-			RefreshGame();
-		}
-		function SetBgImage() {
-			Game.CustomCharacters.BgImage = ReadValue("Textbox_SettingsBgImage");
-			RefreshGame();
-		}
-
 		// Display
 		function SetGameFont() {
 			Subsystem.Display.GameFont = ReadValue("Combobox_SettingsGameFont");
 			RefreshSubsystem();
 			ResetGame();
 		}
-
-		// Misc
-		function ResetAllDontShowAgainDialogs() {
-			System.DontShowAgain = [0];
+		function SetPlayerImage() {
+			Subsystem.Display.PlayerImage = ReadValue("Textbox_SettingsPlayerImage");
+			RefreshSubsystem();
+		}
+		function SetChaserImage() {
+			Subsystem.Display.ChaserImage = ReadValue("Textbox_SettingsChaserImage");
+			RefreshSubsystem();
+		}
+		function SwapCharacters() {
+			let Swapper = Subsystem.Display.PlayerImage;
+			Subsystem.Display.PlayerImage = Subsystem.Display.ChaserImage;
+			Subsystem.Display.ChaserImage = Swapper;
+			RefreshSubsystem();
+		}
+		function SetBgImage() {
+			Subsystem.Display.BgImage = ReadValue("Textbox_SettingsBgImage");
+			RefreshSubsystem();
+		}
+		function SetShowAvgSpeedOnSpeedometer() {
+			Subsystem.Display.ShowAvgSpeedOnSpeedometer = IsChecked("Checkbox_SettingsShowAvgSpeedOnSpeedometer");
+			RefreshSubsystem();
+		}
+		function ResetDontShowAgainDialogs() {
+			System.Display.DontShowAgain = [0];
 			RefreshSystem();
 			ShowToast("已重置");
 		}
@@ -1630,7 +1633,7 @@
 				switch(Selector) {
 					case 3:
 						if(IsChecked("Checkbox_DialogCheckboxOption")) {
-							System.DontShowAgain[System.DontShowAgain.length] = "YamanoboRyou_Library_TextExported";
+							System.Display.DontShowAgain[System.Display.DontShowAgain.length] = "YamanoboRyou_Library_TextExported";
 							RefreshSystem();
 						}
 						break;
