@@ -121,10 +121,10 @@
 			if(localStorage.YamanoboRyou_Subsystem != undefined) {
 				let Subsystem = JSON.parse(localStorage.getItem("YamanoboRyou_Subsystem"));
 				let Game = JSON.parse(localStorage.getItem("YamanoboRyou_Game"));
-				if(Subsystem.Display.PlayerImage == undefined) {
-					Subsystem.Display.PlayerImage = Game.CustomCharacters.PlayerImage;
-					Subsystem.Display.ChaserImage = Game.CustomCharacters.ChaserImage;
-					Subsystem.Display.BgImage = Game.CustomCharacters.BgImage;
+				if(Subsystem.Display.CustomCharacter.PlayerImage == undefined) {
+					Subsystem.Display.CustomCharacter.PlayerImage = Game.CustomCharacters.PlayerImage;
+					Subsystem.Display.CustomCharacter.ChaserImage = Game.CustomCharacters.ChaserImage;
+					Subsystem.Display.CustomCharacter.BgImage = Game.CustomCharacters.BgImage;
 					Subsystem.Display.ShowAvgSpeedOnSpeedometer = true;
 					localStorage.setItem("YamanoboRyou_Subsystem", JSON.stringify(Subsystem));
 				}

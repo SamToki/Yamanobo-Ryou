@@ -66,8 +66,9 @@
 		var Subsystem = {
 			Display: {
 				GameFont: "Victor Mono",
-				PlayerImage: "", ChaserImage: "",
-				BgImage: "",
+				CustomCharacter: {
+					PlayerImage: "", ChaserImage: "", BgImage: ""
+				},
 				ShowAvgSpeedOnSpeedometer: true
 			}
 		},
@@ -465,27 +466,27 @@
 					AlertSystemError("The value of Subsystem.Display.GameFont \"" + Subsystem.Display.GameFont + "\" in function RefreshSubsystem is invalid.");
 					break;
 			}
-			ChangeValue("Textbox_SettingsPlayerImage", Subsystem.Display.PlayerImage);
-			if(Subsystem.Display.PlayerImage != "") {
-				ChangeImage("Image_GamePlayer", Subsystem.Display.PlayerImage);
+			ChangeValue("Textbox_SettingsPlayerImage", Subsystem.Display.CustomCharacter.PlayerImage);
+			if(Subsystem.Display.CustomCharacter.PlayerImage != "") {
+				ChangeImage("Image_GamePlayer", Subsystem.Display.CustomCharacter.PlayerImage);
 			} else {
 				ChangeImage("Image_GamePlayer", "images/YamadaRyou.png");
 			}
-			ChangeValue("Textbox_SettingsChaserImage", Subsystem.Display.ChaserImage);
-			if(Subsystem.Display.ChaserImage != "") {
-				ChangeImage("Image_GameChaser", Subsystem.Display.ChaserImage);
-				ChangeImage("Image_GameChaserBalloon", Subsystem.Display.ChaserImage);
+			ChangeValue("Textbox_SettingsChaserImage", Subsystem.Display.CustomCharacter.ChaserImage);
+			if(Subsystem.Display.CustomCharacter.ChaserImage != "") {
+				ChangeImage("Image_GameChaser", Subsystem.Display.CustomCharacter.ChaserImage);
+				ChangeImage("Image_GameChaserBalloon", Subsystem.Display.CustomCharacter.ChaserImage);
 			} else {
 				ChangeImage("Image_GameChaser", "images/GotouHitori.png");
 				ChangeImage("Image_GameChaserBalloon", "images/GotouHitori.png");
 			}
-			if(Subsystem.Display.PlayerImage != Subsystem.Display.ChaserImage) {
+			if(Subsystem.Display.CustomCharacter.PlayerImage != Subsystem.Display.CustomCharacter.ChaserImage) {
 				ChangeEnabled("Button_SettingsSwapCharacters", true);
 			} else {
 				ChangeEnabled("Button_SettingsSwapCharacters", false);
 			}
-			ChangeValue("Textbox_SettingsBgImage", Subsystem.Display.BgImage);
-			ChangeBgImage(Subsystem.Display.BgImage);
+			ChangeValue("Textbox_SettingsBgImage", Subsystem.Display.CustomCharacter.BgImage);
+			ChangeBgImage(Subsystem.Display.CustomCharacter.BgImage);
 			ChangeChecked("Checkbox_SettingsShowAvgSpeedOnSpeedometer", Subsystem.Display.ShowAvgSpeedOnSpeedometer);
 			if(Subsystem.Display.ShowAvgSpeedOnSpeedometer) {
 				Show("Ctrl_GameAvgSpeed");
@@ -1499,21 +1500,21 @@
 			ResetGame();
 		}
 		function SetPlayerImage() {
-			Subsystem.Display.PlayerImage = ReadValue("Textbox_SettingsPlayerImage");
+			Subsystem.Display.CustomCharacter.PlayerImage = ReadValue("Textbox_SettingsPlayerImage");
 			RefreshSubsystem();
 		}
 		function SetChaserImage() {
-			Subsystem.Display.ChaserImage = ReadValue("Textbox_SettingsChaserImage");
+			Subsystem.Display.CustomCharacter.ChaserImage = ReadValue("Textbox_SettingsChaserImage");
 			RefreshSubsystem();
 		}
 		function SwapCharacters() {
-			let Swapper = Subsystem.Display.PlayerImage;
-			Subsystem.Display.PlayerImage = Subsystem.Display.ChaserImage;
-			Subsystem.Display.ChaserImage = Swapper;
+			let Swapper = Subsystem.Display.CustomCharacter.PlayerImage;
+			Subsystem.Display.CustomCharacter.PlayerImage = Subsystem.Display.CustomCharacter.ChaserImage;
+			Subsystem.Display.CustomCharacter.ChaserImage = Swapper;
 			RefreshSubsystem();
 		}
 		function SetBgImage() {
-			Subsystem.Display.BgImage = ReadValue("Textbox_SettingsBgImage");
+			Subsystem.Display.CustomCharacter.BgImage = ReadValue("Textbox_SettingsBgImage");
 			RefreshSubsystem();
 		}
 		function SetShowAvgSpeedOnSpeedometer() {
